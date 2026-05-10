@@ -48,11 +48,45 @@
         (function(){
             var GEO_PRIZES = { BD: "250,000 BDT" };
             var DEFAULT_PRIZE = "$1,000";
+            window.__PRIZE__ = DEFAULT_PRIZE;
             try {
-                var geo = (new URL(location.href)).searchParams.get('geo') || '';
-                window.__PRIZE__ = GEO_PRIZES[geo.toUpperCase()] || DEFAULT_PRIZE;
-            } catch(e){ window.__PRIZE__ = DEFAULT_PRIZE; }
+                var urlGeo = (new URL(location.href)).searchParams.get('geo') || '';
+                if (urlGeo && GEO_PRIZES[urlGeo.toUpperCase()]) {
+                    window.__PRIZE__ = GEO_PRIZES[urlGeo.toUpperCase()];
+                }
+            } catch(e){}
             if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = window.__PRIZE__;
+
+            // Detect visitor country via Cloudflare trace, then update prize if needed
+            try {
+                fetch('/cdn-cgi/trace').then(function(r){return r.text();}).then(function(t){
+                    var m = t.match(/loc=([A-Z]{2})/);
+                    if (!m) return;
+                    var newPrize = GEO_PRIZES[m[1]] || DEFAULT_PRIZE;
+                    if (newPrize === window.__PRIZE__) return;
+                    var oldPrize = window.__PRIZE__;
+                    window.__PRIZE__ = newPrize;
+                    if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = newPrize;
+                    function update(){
+                        var els = document.querySelectorAll('[data-translate="you_have_10_seconds_tap_to_earn"]');
+                        var done = false;
+                        els.forEach(function(el){
+                            if (el.textContent.indexOf(oldPrize) !== -1) {
+                                el.textContent = el.textContent.split(oldPrize).join(newPrize);
+                                done = true;
+                            }
+                        });
+                        return done;
+                    }
+                    if (!update()) {
+                        var tries = 0;
+                        var iv = setInterval(function(){
+                            tries++;
+                            if (update() || tries > 50) clearInterval(iv);
+                        }, 100);
+                    }
+                }).catch(function(){});
+            } catch(e){}
         })();
     </script>
     <script defer src="./assets/scripts/common.js"></script>
