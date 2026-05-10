@@ -1,7 +1,7 @@
 {
   "get_your_offer": "あなたのオファーを受け取る！",
   "congratulations": "おめでとうございます！",
-  "you_have_10_seconds_tap_to_earn": "残り{seconds}秒です。タップしてボーナスを獲得しましょう！",
+  "you_have_10_seconds_tap_to_earn": "{prize}を獲得するチャンス。タップしてボーナスを獲得！",
   "start": "開始",
   "tap_to_earn": "タップしてボーナスを獲得",
   "you_have_10_seconds": "あなたには{seconds}秒あります",

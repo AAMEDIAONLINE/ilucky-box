@@ -27,6 +27,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
     <link rel="stylesheet" id="main-css" href="./assets/styles/style.css">
+    <script>
+        (function(){
+            var GEO_PRIZES = { BD: "250,000 BDT" };
+            var DEFAULT_PRIZE = "$1,000";
+            try {
+                var geo = (new URL(location.href)).searchParams.get('geo') || '';
+                window.__PRIZE__ = GEO_PRIZES[geo.toUpperCase()] || DEFAULT_PRIZE;
+            } catch(e){ window.__PRIZE__ = DEFAULT_PRIZE; }
+            if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = window.__PRIZE__;
+        })();
+    </script>
     <script defer src="./assets/scripts/common.js"></script>
     <!-- UNCOMMENT SCRIPTS BELLOW AND COMMENT LINE ABOVE, IF YOU WANT TO CUSTOMIZE FEATURES-->
     <!--
@@ -129,7 +140,7 @@
                 Congratulations!
             </h3>
             <p class="modal__window__text" data-translate="you_have_10_seconds_tap_to_earn">
-                You have only 10 seconds. Tap to earn your bonus!
+                Your chance to win $1,000. Tap to earn your bonus!
             </p>
             <a class="modal__window__button" href="#" data-translate="start">
                 Start

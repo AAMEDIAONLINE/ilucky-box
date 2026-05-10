@@ -1,7 +1,7 @@
 {
   "get_your_offer": "รับข้อเสนอของคุณ!",
   "congratulations": "ขอแสดงความยินดี!",
-  "you_have_10_seconds_tap_to_earn": "คุณมีเวลาเพียง {seconds} วินาที แตะเพื่อรับโบนัสของคุณ!",
+  "you_have_10_seconds_tap_to_earn": "โอกาสของคุณที่จะชนะ {prize} แตะเพื่อรับโบนัสของคุณ!",
   "start": "เริ่มต้น",
   "tap_to_earn": "แตะเพื่อรับ โบนัสของคุณ",
   "you_have_10_seconds": "คุณมีเวลา {seconds} วินาที",

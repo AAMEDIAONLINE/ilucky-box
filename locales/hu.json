@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Szerezd meg az ajánlatodat!",
   "congratulations": "Gratulálunk!",
-  "you_have_10_seconds_tap_to_earn": "Csak {seconds} másodperced van. Koppints a bónuszért!",
+  "you_have_10_seconds_tap_to_earn": "Esélyed van {prize} nyerni. Koppints a bónuszért!",
   "start": "Start",
   "tap_to_earn": "Koppints a bónuszodért",
   "you_have_10_seconds": "{seconds} másodperced van",

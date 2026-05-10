@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Получите ваше предложение!",
   "congratulations": "Поздравляем!",
-  "you_have_10_seconds_tap_to_earn": "У вас всего {seconds} секунд. Нажмите, чтобы получить бонус!",
+  "you_have_10_seconds_tap_to_earn": "Ваш шанс выиграть {prize}. Нажмите, чтобы получить бонус!",
   "start": "Начать",
   "tap_to_earn": "Нажмите, чтобы получить ваш бонус",
   "you_have_10_seconds": "У вас есть {seconds} секунд",
