@@ -50,7 +50,7 @@
             var DEFAULT_PRIZE = "$1,000";
             window.__PRIZE__ = DEFAULT_PRIZE;
             try {
-                var urlGeo = (new URL(location.href)).searchParams.get('countryname') || '';
+                var urlGeo = (new URL(location.href)).searchParams.get('country') || '';
                 if (urlGeo && GEO_PRIZES[urlGeo.toUpperCase()]) {
                     window.__PRIZE__ = GEO_PRIZES[urlGeo.toUpperCase()];
                 }
