@@ -58,7 +58,9 @@
         (function(){
             var GEO_PRIZES = { BD: "250,000 BDT" };
             var DEFAULT_PRIZE = "$1,000";
+            var FALLBACK_TOKENS = ["$1,000", "{prize}"];
             window.__PRIZE__ = DEFAULT_PRIZE;
+
             try {
                 var urlGeo = (new URL(location.href)).searchParams.get('country') || '';
                 if (urlGeo && GEO_PRIZES[urlGeo.toUpperCase()]) {
@@ -67,34 +69,42 @@
             } catch(e){}
             if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = window.__PRIZE__;
 
-            // Detect visitor country via Cloudflare trace, then update prize if needed
+            function injectPrize() {
+                var els = document.querySelectorAll('[data-translate="you_have_10_seconds_tap_to_earn"]');
+                var changed = false;
+                els.forEach(function(el){
+                    var t = el.textContent;
+                    for (var i=0; i<FALLBACK_TOKENS.length; i++) {
+                        var token = FALLBACK_TOKENS[i];
+                        if (token !== window.__PRIZE__ && t.indexOf(token) !== -1) {
+                            t = t.split(token).join(window.__PRIZE__);
+                            changed = true;
+                        }
+                    }
+                    if (changed) el.textContent = t;
+                });
+                return changed;
+            }
+
+            // Run on a tight interval until prize is injected (handles any translate timing)
+            var injectTries = 0;
+            var injectIv = setInterval(function(){
+                injectTries++;
+                injectPrize();
+                if (injectTries > 80) clearInterval(injectIv);
+            }, 50);
+
+            // Also fetch geo via Cloudflare trace if no URL param
             try {
                 fetch('/cdn-cgi/trace').then(function(r){return r.text();}).then(function(t){
                     var m = t.match(/loc=([A-Z]{2})/);
                     if (!m) return;
                     var newPrize = GEO_PRIZES[m[1]] || DEFAULT_PRIZE;
                     if (newPrize === window.__PRIZE__) return;
-                    var oldPrize = window.__PRIZE__;
+                    FALLBACK_TOKENS.push(window.__PRIZE__);
                     window.__PRIZE__ = newPrize;
                     if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = newPrize;
-                    function update(){
-                        var els = document.querySelectorAll('[data-translate="you_have_10_seconds_tap_to_earn"]');
-                        var done = false;
-                        els.forEach(function(el){
-                            if (el.textContent.indexOf(oldPrize) !== -1) {
-                                el.textContent = el.textContent.split(oldPrize).join(newPrize);
-                                done = true;
-                            }
-                        });
-                        return done;
-                    }
-                    if (!update()) {
-                        var tries = 0;
-                        var iv = setInterval(function(){
-                            tries++;
-                            if (update() || tries > 50) clearInterval(iv);
-                        }, 100);
-                    }
+                    injectPrize();
                 }).catch(function(){});
             } catch(e){}
         })();
