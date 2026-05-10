@@ -56,57 +56,18 @@
     <link rel="stylesheet" id="main-css" href="./assets/styles/style.css">
     <script>
         (function(){
-            var GEO_PRIZES = { BD: "250,000 BDT" };
-            var DEFAULT_PRIZE = "$1,000";
-            var FALLBACK_TOKENS = ["$1,000", "{prize}"];
-            window.__PRIZE__ = DEFAULT_PRIZE;
-
-            try {
-                var urlGeo = (new URL(location.href)).searchParams.get('country') || '';
-                if (urlGeo && GEO_PRIZES[urlGeo.toUpperCase()]) {
-                    window.__PRIZE__ = GEO_PRIZES[urlGeo.toUpperCase()];
-                }
-            } catch(e){}
+            window.__PRIZE__ = "250,000 BDT";
             if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = window.__PRIZE__;
-
-            function injectPrize() {
+            function injectPrize(){
                 var els = document.querySelectorAll('[data-translate="you_have_10_seconds_tap_to_earn"]');
-                var changed = false;
                 els.forEach(function(el){
                     var t = el.textContent;
-                    for (var i=0; i<FALLBACK_TOKENS.length; i++) {
-                        var token = FALLBACK_TOKENS[i];
-                        if (token !== window.__PRIZE__ && t.indexOf(token) !== -1) {
-                            t = t.split(token).join(window.__PRIZE__);
-                            changed = true;
-                        }
-                    }
-                    if (changed) el.textContent = t;
+                    if (t.indexOf("{prize}") !== -1) t = t.split("{prize}").join(window.__PRIZE__);
+                    if (t.indexOf("$1,000") !== -1) t = t.split("$1,000").join(window.__PRIZE__);
+                    el.textContent = t;
                 });
-                return changed;
             }
-
-            // Run on a tight interval until prize is injected (handles any translate timing)
-            var injectTries = 0;
-            var injectIv = setInterval(function(){
-                injectTries++;
-                injectPrize();
-                if (injectTries > 80) clearInterval(injectIv);
-            }, 50);
-
-            // Also fetch geo via Cloudflare trace if no URL param
-            try {
-                fetch('/cdn-cgi/trace').then(function(r){return r.text();}).then(function(t){
-                    var m = t.match(/loc=([A-Z]{2})/);
-                    if (!m) return;
-                    var newPrize = GEO_PRIZES[m[1]] || DEFAULT_PRIZE;
-                    if (newPrize === window.__PRIZE__) return;
-                    FALLBACK_TOKENS.push(window.__PRIZE__);
-                    window.__PRIZE__ = newPrize;
-                    if (typeof APP_CONFIG !== 'undefined') APP_CONFIG.prize = newPrize;
-                    injectPrize();
-                }).catch(function(){});
-            } catch(e){}
+            var n=0,iv=setInterval(function(){n++;injectPrize();if(n>80)clearInterval(iv);},50);
         })();
     </script>
     <script defer src="./assets/scripts/common.js"></script>
@@ -211,7 +172,7 @@
                 Congratulations!
             </h3>
             <p class="modal__window__text" data-translate="you_have_10_seconds_tap_to_earn">
-                Your chance to win $1,000. Tap to earn your bonus!
+                Your chance to win 250,000 BDT. Tap to earn your bonus!
             </p>
             <a class="modal__window__button" href="#" data-translate="start">
                 Start
