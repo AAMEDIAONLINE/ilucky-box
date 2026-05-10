@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Hent tilbudet ditt!",
+  "congratulations": "Gratulerer!",
+  "you_have_only_some_seconds": "Du har bare {seconds} sekunder.",
+  "tap_to_start_earning": "Trykk for å få mynter!",
+  "start": "Start",
+  "you_have_some_seconds": "DU HAR {seconds} SEKUNDER",
+  "time_left": "Tid igjen:",
+  "offer_expires_in": "Tilbudet utløper om {final_seconds}",
+  "click_and_get_your_offer": "Trykk på knappen nedenfor for å låse det opp!",
+  "get_special_offer": "Fortsett"
+}

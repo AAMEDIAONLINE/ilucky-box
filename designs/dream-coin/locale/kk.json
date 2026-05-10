@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Өз ұсынысыңызды алыңыз!",
+  "congratulations": "Құттықтаймыз!",
+  "you_have_only_some_seconds": "Сізде тек {seconds} секунд бар.",
+  "tap_to_start_earning": "Тиын алу үшін түртіңіз!",
+  "start": "Бастау",
+  "you_have_some_seconds": "СІЗДЕ {seconds} СЕКУНД БАР",
+  "time_left": "Қалған уақыт:",
+  "offer_expires_in": "Ұсыныс {final_seconds} ішінде аяқталады",
+  "click_and_get_your_offer": "Оны ашу үшін төмендегі батырманы басыңыз!",
+  "get_special_offer": "Жалғастыру"
+}

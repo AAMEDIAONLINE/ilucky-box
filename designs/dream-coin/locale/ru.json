@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Получите ваше предложение!",
+  "congratulations": "Поздравляем!",
+  "you_have_only_some_seconds": "У вас всего {seconds} секунд.",
+  "tap_to_start_earning": "Нажмите, чтобы получить монеты!",
+  "start": "Начать",
+  "you_have_some_seconds": "У ВАС {seconds} СЕКУНД",
+  "time_left": "Оставшееся время:",
+  "offer_expires_in": "Предложение истекает через {final_seconds}",
+  "click_and_get_your_offer": "Нажмите кнопку ниже, чтобы разблокировать это!",
+  "get_special_offer": "Продолжить"
+}

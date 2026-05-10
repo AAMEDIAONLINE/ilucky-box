@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "あなたのオファーを受け取る！",
+  "congratulations": "おめでとうございます！",
+  "you_have_only_some_seconds": "残り{seconds}秒しかありません。",
+  "tap_to_start_earning": "タップしてコインをゲット！",
+  "start": "開始",
+  "you_have_some_seconds": "残り {seconds} 秒",
+  "time_left": "残り時間：",
+  "offer_expires_in": "オファーは {final_seconds} で終了します",
+  "click_and_get_your_offer": "下のボタンをタップしてロックを解除しましょう！",
+  "get_special_offer": "続ける"
+}
