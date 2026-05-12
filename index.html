@@ -54,75 +54,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
     <link rel="stylesheet" id="main-css" href="./assets/styles/style.css">
-    <script>
-        (function(){
-            var GEO_PRIZES = {
-                BD: "250,000 BDT",
-                ZA: "R4,000"
-            };
-            var DEFAULT_PRIZE = "$1,000";
-
-            function lookup(g){ return GEO_PRIZES[(g||"").toUpperCase()] || null; }
-
-            // 1) Try URL param ?country=XX first (Voluum passes this)
-            var urlGeo = "";
-            try { urlGeo = (new URL(location.href)).searchParams.get("country") || ""; } catch(e){}
-            var hasUrlGeo = !!lookup(urlGeo);
-
-            window.__PRIZE__ = lookup(urlGeo) || DEFAULT_PRIZE;
-            if (typeof APP_CONFIG !== "undefined") APP_CONFIG.prize = window.__PRIZE__;
-
-            // Build list of all known prize strings (for stale-DOM cleanup)
-            var ALL_PRIZES = [DEFAULT_PRIZE];
-            for (var k in GEO_PRIZES) {
-                if (GEO_PRIZES.hasOwnProperty(k)) ALL_PRIZES.push(GEO_PRIZES[k]);
-            }
-
-            function injectPrize(){
-                var els = document.querySelectorAll('[data-translate="you_have_10_seconds_tap_to_earn"]');
-                els.forEach(function(el){
-                    var t = el.textContent;
-                    var changed = false;
-                    if (t.indexOf("{prize}") !== -1) {
-                        t = t.split("{prize}").join(window.__PRIZE__);
-                        changed = true;
-                    }
-                    for (var i=0; i<ALL_PRIZES.length; i++) {
-                        var stale = ALL_PRIZES[i];
-                        if (stale !== window.__PRIZE__ && t.indexOf(stale) !== -1) {
-                            t = t.split(stale).join(window.__PRIZE__);
-                            changed = true;
-                        }
-                    }
-                    if (changed) el.textContent = t;
-                });
-            }
-
-            // Poll DOM for 4s to ensure prize gets injected after async translation
-            var n=0, iv=setInterval(function(){
-                n++;
-                injectPrize();
-                if (n>80) clearInterval(iv);
-            }, 50);
-
-            // 2) Fallback: Cloudflare trace, ONLY if URL param wasn't a known geo
-            if (!hasUrlGeo) {
-                try {
-                    fetch("/cdn-cgi/trace").then(function(r){return r.text();}).then(function(t){
-                        var m = t.match(/loc=([A-Z]{2})/);
-                        if (!m) return;
-                        var tracePrize = lookup(m[1]);
-                        if (tracePrize && tracePrize !== window.__PRIZE__) {
-                            window.__PRIZE__ = tracePrize;
-                            if (typeof APP_CONFIG !== "undefined") APP_CONFIG.prize = tracePrize;
-                            injectPrize();
-                        }
-                    }).catch(function(){});
-                } catch(e){}
-            }
-        })();
-    </script>
-    <script defer src="./assets/scripts/common.js"></script>
+<script defer src="./assets/scripts/common.js"></script>
     <!-- UNCOMMENT SCRIPTS BELLOW AND COMMENT LINE ABOVE, IF YOU WANT TO CUSTOMIZE FEATURES-->
     <!--
         <script type="module" defer src="./assets/scripts/appSdk.js"></script>
@@ -224,7 +156,7 @@
                 Congratulations!
             </h3>
             <p class="modal__window__text" data-translate="you_have_10_seconds_tap_to_earn">
-                Your chance to win {prize}. Tap to earn your bonus!
+                Your chance to win 250,000 BDT. Tap to earn your bonus!
             </p>
             <a class="modal__window__button" href="#" data-translate="start">
                 Start
