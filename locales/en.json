@@ -1,12 +1,12 @@
 {
-  "get_your_offer": "Get Your Offer!",
-  "congratulations": "Congratulations!",
-  "you_have_10_seconds_tap_to_earn": "Your chance to win G 50,000. Tap to earn your bonus!",
-  "start": "Start",
-  "tap_to_earn": "Tap to earn your bonus",
-  "you_have_10_seconds": "You have {seconds} seconds",
-  "time_left": "Time left:",
-  "you_have_to_get_the_bonus": "You have {final_seconds} to get the bonus!",
-  "click_and_get_your_offer": "Click the button below to get your special offer.",
-  "get_special_offer": "Get Special Offer"
+  "get_your_offer": "Jwenn Òf Ou a!",
+  "congratulations": "Felisitasyon!",
+  "you_have_10_seconds_tap_to_earn": "Chans ou pou genyen G 50,000. Peze pou pran bonis ou!",
+  "start": "Kòmanse",
+  "tap_to_earn": "Peze pou pran bonis ou",
+  "you_have_10_seconds": "Ou gen {seconds} segond",
+  "time_left": "Tan ki rete:",
+  "you_have_to_get_the_bonus": "Ou gen {final_seconds} pou pran bonis la!",
+  "click_and_get_your_offer": "Klike sou bouton an anba a pou pran òf espesyal ou.",
+  "get_special_offer": "Pran Òf Espesyal"
 }
