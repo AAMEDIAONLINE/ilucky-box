@@ -132,6 +132,14 @@
         }
         /* Hide the "click button below" subline — user wants only title + body + image + button */
         .game-final-screen .game__header__h3 { display: none !important; }
+        /* Override constructor's scale(1.45) on final image — too big, covers heading */
+        .game-final-screen .game__main__image {
+            transform: none !important;
+            max-width: 55% !important;
+            max-height: 38vh !important;
+            object-fit: contain;
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+        }
         /* Style the claim button like the modal start button (chunky yellow with white border) */
         .game-final-screen .game__button {
             background: linear-gradient(180deg, #ffe27a 0%, #ffbd2e 100%) !important;
