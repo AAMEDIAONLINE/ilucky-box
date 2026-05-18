@@ -77,26 +77,26 @@
         /* Lock visually fades on final stage (about to shatter) */
         .ub-stage-5 .lock { animation: ub-flash 0.4s ease-out 2 alternate; }
         @keyframes ub-flash { from { filter: brightness(1); } to { filter: brightness(1.6) drop-shadow(0 0 6px #ffd54a); } }
-        /* Final screen — overlay iPhone on top of open chest */
-        .game-final-screen .game__main { position: relative; }
+        /* Final screen — overlay iPhone INSIDE the chest area, never above it */
+        .game-final-screen .game__main { position: relative; overflow: hidden; }
         .ub-iphone-reveal {
             position: absolute;
-            top: 0; left: 50%;
-            transform: translate(-50%, -20%);
-            max-width: 38%;
-            max-height: 100%;
+            top: 20%; left: 50%;
+            transform: translate(-50%, 0);
+            max-width: 26%;
+            max-height: 55%;
             object-fit: contain;
-            filter: drop-shadow(0 0 24px rgba(255, 213, 74, 0.7)) drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 0 18px rgba(255, 213, 74, 0.7)) drop-shadow(0 8px 18px rgba(0,0,0,0.6));
             animation: ub-rise 1.2s ease-out 0.2s both, ub-float 2.4s ease-in-out 1.4s infinite;
             pointer-events: none;
         }
         @keyframes ub-rise {
-            from { transform: translate(-50%, 60%); opacity: 0; }
-            to { transform: translate(-50%, -20%); opacity: 1; }
+            from { transform: translate(-50%, 80%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
         }
         @keyframes ub-float {
-            0%, 100% { transform: translate(-50%, -20%); }
-            50% { transform: translate(-50%, -26%); }
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -6%); }
         }
     </style>
 <script defer src="./assets/scripts/common.js"></script>
@@ -155,7 +155,50 @@
             </h3>
         </header>
         <main class="game__main">
-            <img aria-hidden="true" alt="Locked treasure chest" class="game__main__image" src="./assets/images/locked-chest.svg" />
+            <svg class="game__main__image" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="lc_wood" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#7a4a1d"/>
+                        <stop offset="0.5" stop-color="#5c3713"/>
+                        <stop offset="1" stop-color="#3d2408"/>
+                    </linearGradient>
+                    <linearGradient id="lc_lid" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#8c5a28"/>
+                        <stop offset="1" stop-color="#5c3713"/>
+                    </linearGradient>
+                    <linearGradient id="lc_metal" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#d4a93d"/>
+                        <stop offset="0.5" stop-color="#a87f1f"/>
+                        <stop offset="1" stop-color="#7a5a14"/>
+                    </linearGradient>
+                    <linearGradient id="lc_lockBody" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#888b8e"/>
+                        <stop offset="0.5" stop-color="#4a4d50"/>
+                        <stop offset="1" stop-color="#2a2c2e"/>
+                    </linearGradient>
+                </defs>
+                <rect x="60" y="200" width="280" height="150" rx="8" fill="url(#lc_wood)" stroke="#2a1804" stroke-width="3"/>
+                <path d="M 60 200 Q 200 110 340 200 Z" fill="url(#lc_lid)" stroke="#2a1804" stroke-width="3"/>
+                <rect x="60" y="245" width="280" height="10" fill="url(#lc_metal)" stroke="#5c3a08" stroke-width="1"/>
+                <rect x="60" y="310" width="280" height="10" fill="url(#lc_metal)" stroke="#5c3a08" stroke-width="1"/>
+                <rect x="80" y="200" width="8" height="150" fill="url(#lc_metal)" stroke="#5c3a08" stroke-width="0.5"/>
+                <rect x="312" y="200" width="8" height="150" fill="url(#lc_metal)" stroke="#5c3a08" stroke-width="0.5"/>
+                <g class="lock" transform="translate(155, 240)">
+                    <path class="lock-shackle" d="M 30 30 L 30 18 Q 30 0 45 0 L 60 0 Q 75 0 75 18 L 75 30"
+                          fill="none" stroke="url(#lc_lockBody)" stroke-width="10" stroke-linecap="round"/>
+                    <rect class="lock-body" x="15" y="30" width="80" height="70" rx="8" fill="url(#lc_lockBody)" stroke="#1a1c1e" stroke-width="2"/>
+                    <circle cx="55" cy="58" r="6" fill="#1a1c1e"/>
+                    <rect x="52" y="58" width="6" height="14" fill="#1a1c1e"/>
+                    <g class="cracks" stroke="#1a1c1e" stroke-width="2" fill="none" stroke-linecap="round">
+                        <path class="crack crack-1" d="M 25 50 L 35 60 L 30 72 L 42 80" opacity="0"/>
+                        <path class="crack crack-2" d="M 80 45 L 70 58 L 78 70 L 65 82" opacity="0"/>
+                        <path class="crack crack-3" d="M 55 40 L 50 50 L 60 65" opacity="0"/>
+                        <path class="crack crack-4" d="M 20 75 L 35 85 L 50 90 L 70 88 L 90 80" opacity="0"/>
+                        <path class="crack crack-5" d="M 15 60 L 30 65 L 45 95 M 75 50 L 65 75 L 85 95" opacity="0"/>
+                    </g>
+                </g>
+                <rect x="180" y="232" width="40" height="20" rx="2" fill="url(#lc_metal)" stroke="#5c3a08" stroke-width="1"/>
+            </svg>
             <img aria-hidden="true" alt="Hand" class="game__main__image-hand game__main__image-hand-animation-pulse" src="./assets/images/hand.webp" />
             <div class="game__main__bonus-container"></div>
         </main>
