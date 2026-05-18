@@ -110,15 +110,29 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.35);
             transition: color 0.15s;
         }
-        /* Golden glow halo around the gift box on the game screen (not final screen) */
-        .game .game__main__image {
-            filter: drop-shadow(0 0 24px rgba(255, 213, 74, 0.65)) drop-shadow(0 0 48px rgba(255, 213, 74, 0.35));
-            animation: glow-pulse 2.2s ease-in-out infinite;
+        /* Golden glow halo around the gift box — uses a pseudo-element with opacity pulse
+           (much cheaper for mobile GPUs than animating filter: drop-shadow). */
+        .game .game__main { position: relative; isolation: isolate; }
+        .game .game__main::before {
+            content: '';
+            position: absolute;
+            inset: -15%;
+            background: radial-gradient(circle, rgba(255, 213, 74, 0.45) 0%, rgba(255, 213, 74, 0) 65%);
+            pointer-events: none;
+            z-index: -1;
+            animation: glow-pulse 2.4s ease-in-out infinite;
+            will-change: opacity;
         }
         @keyframes glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 24px rgba(255, 213, 74, 0.65)) drop-shadow(0 0 48px rgba(255, 213, 74, 0.35)); }
-            50% { filter: drop-shadow(0 0 38px rgba(255, 213, 74, 0.85)) drop-shadow(0 0 70px rgba(255, 213, 74, 0.5)); }
+            0%, 100% { opacity: 0.75; }
+            50% { opacity: 1; }
         }
+        .game .game__main__image {
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+        }
+        /* Hide constructor's bonus-value popups — they accumulate in the DOM on rapid tapping
+           and never get cleaned up, causing memory pressure that crashes iOS Safari. */
+        .game__main__bonus-value { display: none !important; }
         /* Urgent flash — applied via inline script when countdown <= 3 seconds */
         .game__header__h3.urgent,
         .game__progress__value.urgent {
