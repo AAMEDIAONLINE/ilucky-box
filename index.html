@@ -104,7 +104,13 @@
             text-align: center;
             color: #fff;
         }
-        .modal__window__image { display: none !important; }
+        .modal__window__image {
+            display: block !important;
+            max-width: 48%;
+            max-height: 30vh;
+            margin: 0 auto 1rem;
+            filter: drop-shadow(0 10px 22px rgba(0,0,0,0.4));
+        }
         .modal__celebrate {
             display: block;
             font-size: clamp(4.5rem, 22vw, 7.5rem);
@@ -254,6 +260,7 @@
     <!-- Section Modal -->
     <section class="modal">
         <div class="modal__window">
+            <img aria-hidden="true" alt="iPhone 17 Pro" class="modal__window__image" src="./assets/images/17pro.png" />
             <span class="modal__celebrate" aria-hidden="true">🎉</span>
             <h3 class="modal__window__title" data-translate="congratulations">
                 Congratulations!
