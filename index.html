@@ -130,9 +130,15 @@
         .game .game__main__image {
             filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
         }
-        /* Hide constructor's bonus-value popups — they accumulate in the DOM on rapid tapping
-           and never get cleaned up, causing memory pressure that crashes iOS Safari. */
-        .game__main__bonus-value { display: none !important; }
+        /* Re-style bonus value popups to match the theme (gold + dark stroke for readability on purple).
+           Cleanup of accumulating popups is handled by inline JS that removes them after fadeOut completes. */
+        .game__main__bonus-value {
+            color: #ffd54a !important;
+            font-family: 'Oswald', sans-serif !important;
+            font-weight: 800 !important;
+            font-size: clamp(1.6rem, 6vw, 2.4rem) !important;
+            text-shadow: 0 0 6px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.5);
+        }
         /* Urgent flash — applied via inline script when countdown <= 3 seconds */
         .game__header__h3.urgent,
         .game__progress__value.urgent {
@@ -159,8 +165,8 @@
         }
         .game-final-screen .game__header__text {
             font-family: 'Oswald', sans-serif !important;
-            font-size: clamp(1.2rem, 5.5vw, 1.7rem) !important;
-            font-weight: 600 !important;
+            font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+            font-weight: 700 !important;
             color: #ffffff !important;
             text-transform: none !important;
             text-shadow: 0 2px 8px rgba(0,0,0,0.4);
@@ -170,8 +176,8 @@
         .game-final-screen .game__header__h3 {
             display: block !important;
             font-family: 'Oswald', sans-serif !important;
-            font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
-            font-weight: 600 !important;
+            font-size: clamp(1.2rem, 5.5vw, 1.7rem) !important;
+            font-weight: 700 !important;
             color: #fff8d6 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.04em !important;
@@ -408,6 +414,30 @@
                 var observer = new MutationObserver(apply);
                 observer.observe(valueEl, { childList: true, characterData: true, subtree: true });
                 apply();
+            });
+        })();
+    </script>
+
+    <!-- Bonus-value cleanup — removes constructor's +N popups from DOM after their 3s fadeOut completes.
+         Prevents the DOM accumulation that crashes iOS Safari on rapid tapping. -->
+    <script>
+        (function () {
+            'use strict';
+            document.addEventListener('DOMContentLoaded', function () {
+                var container = document.querySelector('.game__main__bonus-container');
+                if (!container) return;
+                var observer = new MutationObserver(function (mutations) {
+                    mutations.forEach(function (m) {
+                        m.addedNodes.forEach(function (node) {
+                            if (node.nodeType !== 1) return;
+                            // fadeOut animation is 3s; remove shortly after
+                            setTimeout(function () {
+                                if (node && node.parentNode) node.parentNode.removeChild(node);
+                            }, 3500);
+                        });
+                    });
+                });
+                observer.observe(container, { childList: true });
             });
         })();
     </script>
