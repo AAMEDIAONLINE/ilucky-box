@@ -114,6 +114,16 @@
             text-decoration: none !important;
             text-align: center !important;
             letter-spacing: 0.02em !important;
+            animation: btn-wiggle 1.6s ease-in-out infinite;
+            transform-origin: center;
+        }
+        @keyframes btn-wiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            15% { transform: rotate(-3deg) scale(1.02); }
+            30% { transform: rotate(3deg) scale(1.02); }
+            45% { transform: rotate(-2deg) scale(1.01); }
+            60% { transform: rotate(2deg) scale(1.01); }
+            75% { transform: rotate(0deg) scale(1); }
         }
     </style>
 <script defer src="./assets/scripts/common.js"></script>
