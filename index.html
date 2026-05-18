@@ -180,6 +180,21 @@
             filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
             margin: 0 auto;
         }
+        /* Down arrow that bobs to point at the claim button */
+        .final-arrow {
+            display: block;
+            text-align: center;
+            font-size: clamp(2.8rem, 11vw, 4.2rem);
+            line-height: 1;
+            color: #ffd54a;
+            margin-top: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.45);
+            animation: arrow-bob 1s ease-in-out infinite;
+        }
+        @keyframes arrow-bob {
+            0%, 100% { transform: translateY(0); opacity: 0.85; }
+            50% { transform: translateY(12px); opacity: 1; }
+        }
         /* Style the claim button like the modal start button (chunky yellow with white border) */
         .game-final-screen .game__button {
             background: linear-gradient(180deg, #ffe27a 0%, #ffbd2e 100%) !important;
@@ -351,6 +366,7 @@
         <main class="game__main">
             <img aria-hidden="true" alt="iPhone 17 Pro" class="game__main__image" src="./assets/images/17pro.png" />
         </main>
+        <div class="final-arrow" aria-hidden="true">↓</div>
         <footer class="game__footer">
             <button class="game__button" data-translate="get_special_offer">
                 CLAIM NOW
