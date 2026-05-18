@@ -130,8 +130,25 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.4);
             margin: 0.5rem 0 1.5rem !important;
         }
-        /* Hide the "click button below" subline — user wants only title + body + image + button */
-        .game-final-screen .game__header__h3 { display: none !important; }
+        /* Subline below "You've won..." — visible, styled to match theme */
+        .game-final-screen .game__header__h3 {
+            display: block !important;
+            font-family: 'Oswald', sans-serif !important;
+            font-size: clamp(1rem, 4.5vw, 1.4rem) !important;
+            font-weight: 600 !important;
+            color: #fff8d6 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.04em !important;
+            margin: 0.5rem 0 1rem !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        /* Center the iPhone image within .game__main on final screen */
+        .game-final-screen .game__main {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+        }
         /* Override constructor's scale(1.45) on final image — too big, covers heading */
         .game-final-screen .game__main__image {
             transform: none !important;
@@ -139,6 +156,7 @@
             max-height: 38vh !important;
             object-fit: contain;
             filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5));
+            margin: 0 auto;
         }
         /* Style the claim button like the modal start button (chunky yellow with white border) */
         .game-final-screen .game__button {
@@ -305,7 +323,7 @@
                 You've won an iPhone 17 Pro!
             </p>
             <h3 class="game__header__h3" data-translate="click_and_get_your_offer">
-                Click the button below to claim your prize.
+                Tap the CLAIM NOW button below!
             </h3>
         </header>
         <main class="game__main">
