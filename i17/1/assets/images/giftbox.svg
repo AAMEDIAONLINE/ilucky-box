@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="gb_body" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff5b6e"/>
+      <stop offset="1" stop-color="#b8152a"/>
+    </linearGradient>
+    <linearGradient id="gb_lid" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff8090"/>
+      <stop offset="1" stop-color="#d62240"/>
+    </linearGradient>
+    <linearGradient id="gb_ribbon" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff0a8"/>
+      <stop offset="0.5" stop-color="#ffd54a"/>
+      <stop offset="1" stop-color="#c08400"/>
+    </linearGradient>
+    <linearGradient id="gb_ribbon_dark" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffd54a"/>
+      <stop offset="1" stop-color="#a06d00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Box body -->
+  <rect x="80" y="180" width="240" height="200" rx="6" fill="url(#gb_body)" stroke="#6a0e1c" stroke-width="3"/>
+
+  <!-- Box lid (sits on top, slightly wider) -->
+  <rect x="65" y="150" width="270" height="50" rx="6" fill="url(#gb_lid)" stroke="#6a0e1c" stroke-width="3"/>
+
+  <!-- Horizontal ribbon across body -->
+  <rect x="80" y="240" width="240" height="28" fill="url(#gb_ribbon)" stroke="#7a4a00" stroke-width="1.5"/>
+
+  <!-- Vertical ribbon on body -->
+  <rect x="180" y="180" width="40" height="200" fill="url(#gb_ribbon)" stroke="#7a4a00" stroke-width="1.5"/>
+
+  <!-- Vertical ribbon on lid -->
+  <rect x="180" y="150" width="40" height="50" fill="url(#gb_ribbon)" stroke="#7a4a00" stroke-width="1.5"/>
+
+  <!-- Bow — left loop -->
+  <path d="M 200 130 Q 140 95 130 125 Q 125 150 175 145 Q 195 140 200 130 Z"
+        fill="url(#gb_ribbon_dark)" stroke="#7a4a00" stroke-width="2"/>
+
+  <!-- Bow — right loop -->
+  <path d="M 200 130 Q 260 95 270 125 Q 275 150 225 145 Q 205 140 200 130 Z"
+        fill="url(#gb_ribbon_dark)" stroke="#7a4a00" stroke-width="2"/>
+
+  <!-- Bow tails -->
+  <path d="M 195 145 L 180 165 L 195 155 Z" fill="url(#gb_ribbon_dark)" stroke="#7a4a00" stroke-width="1.5"/>
+  <path d="M 205 145 L 220 165 L 205 155 Z" fill="url(#gb_ribbon_dark)" stroke="#7a4a00" stroke-width="1.5"/>
+
+  <!-- Bow center knot -->
+  <rect x="185" y="118" width="30" height="32" rx="4" fill="url(#gb_ribbon)" stroke="#7a4a00" stroke-width="2"/>
+
+  <!-- Highlight on box body -->
+  <rect x="90" y="190" width="6" height="180" fill="#ffffff" opacity="0.15"/>
+</svg>

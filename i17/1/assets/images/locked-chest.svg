@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="wood" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7a4a1d"/>
+      <stop offset="0.5" stop-color="#5c3713"/>
+      <stop offset="1" stop-color="#3d2408"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#8c5a28"/>
+      <stop offset="1" stop-color="#5c3713"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#d4a93d"/>
+      <stop offset="0.5" stop-color="#a87f1f"/>
+      <stop offset="1" stop-color="#7a5a14"/>
+    </linearGradient>
+    <linearGradient id="lockBody" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#888b8e"/>
+      <stop offset="0.5" stop-color="#4a4d50"/>
+      <stop offset="1" stop-color="#2a2c2e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Chest body -->
+  <rect x="60" y="200" width="280" height="150" rx="8" fill="url(#wood)" stroke="#2a1804" stroke-width="3"/>
+
+  <!-- Chest lid -->
+  <path d="M 60 200 Q 200 110 340 200 Z" fill="url(#lid)" stroke="#2a1804" stroke-width="3"/>
+
+  <!-- Metal bands on chest -->
+  <rect x="60" y="245" width="280" height="10" fill="url(#metal)" stroke="#5c3a08" stroke-width="1"/>
+  <rect x="60" y="310" width="280" height="10" fill="url(#metal)" stroke="#5c3a08" stroke-width="1"/>
+
+  <!-- Vertical metal strips -->
+  <rect x="80" y="200" width="8" height="150" fill="url(#metal)" stroke="#5c3a08" stroke-width="0.5"/>
+  <rect x="312" y="200" width="8" height="150" fill="url(#metal)" stroke="#5c3a08" stroke-width="0.5"/>
+
+  <!-- Padlock group — centered front -->
+  <g class="lock" transform="translate(155, 240)">
+    <!-- Shackle -->
+    <path class="lock-shackle" d="M 30 30 L 30 18 Q 30 0 45 0 L 60 0 Q 75 0 75 18 L 75 30"
+          fill="none" stroke="url(#lockBody)" stroke-width="10" stroke-linecap="round"/>
+    <!-- Body -->
+    <rect class="lock-body" x="15" y="30" width="80" height="70" rx="8" fill="url(#lockBody)" stroke="#1a1c1e" stroke-width="2"/>
+    <!-- Keyhole -->
+    <circle cx="55" cy="58" r="6" fill="#1a1c1e"/>
+    <rect x="52" y="58" width="6" height="14" fill="#1a1c1e"/>
+
+    <!-- Progressive cracks — hidden by default, revealed via .stage-N classes on parent -->
+    <g class="cracks" stroke="#1a1c1e" stroke-width="2" fill="none" stroke-linecap="round">
+      <path class="crack crack-1" d="M 25 50 L 35 60 L 30 72 L 42 80" opacity="0"/>
+      <path class="crack crack-2" d="M 80 45 L 70 58 L 78 70 L 65 82" opacity="0"/>
+      <path class="crack crack-3" d="M 55 40 L 50 50 L 60 65" opacity="0"/>
+      <path class="crack crack-4" d="M 20 75 L 35 85 L 50 90 L 70 88 L 90 80" opacity="0"/>
+      <path class="crack crack-5" d="M 15 60 L 30 65 L 45 95 M 75 50 L 65 75 L 85 95" opacity="0"/>
+    </g>
+  </g>
+
+  <!-- Latch on chest where lock attaches -->
+  <rect x="180" y="232" width="40" height="20" rx="2" fill="url(#metal)" stroke="#5c3a08" stroke-width="1"/>
+</svg>
