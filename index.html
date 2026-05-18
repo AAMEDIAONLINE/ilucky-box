@@ -82,9 +82,11 @@
         }
         /* Hide clouds + sky — keep apple logo stars visible (icons brought back) */
         .background__cloud, .background__sky { display: none !important; }
-        /* Modal — same purple gradient as the game wallpaper */
+        /* Modal — same purple gradient as the game wallpaper, content pushed up from top */
         .modal {
             background: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
+            align-items: flex-start !important;
+            padding-top: 4vh !important;
         }
         /* Chunky game header font — Lilita One, uppercase, dual-color */
         .game__header__h1 {
