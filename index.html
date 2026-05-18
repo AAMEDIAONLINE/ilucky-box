@@ -95,6 +95,59 @@
             color: #fff8d6 !important;
             margin-top: 1.2rem !important;
             text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+            transition: color 0.15s;
+        }
+        /* Urgent flash — applied via inline script when countdown <= 3 seconds */
+        .game__header__h3.urgent,
+        .game__progress__value.urgent {
+            animation: flash-red 0.5s ease-in-out infinite alternate !important;
+        }
+        @keyframes flash-red {
+            from { color: #fff8d6; transform: scale(1); }
+            to { color: #ff3838; transform: scale(1.08); }
+        }
+        /* Final screen — override constructor's yellow gradient with same purple */
+        .game-final-screen {
+            background: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
+            background-image: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
+        }
+        .game-final-screen .game__header__h1 {
+            font-family: 'Oswald', sans-serif !important;
+            font-size: clamp(2.2rem, 9.5vw, 3.6rem) !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            color: #ffd54a !important;
+            text-shadow: 0 4px 14px rgba(0,0,0,0.45);
+            margin: 0 0 0.5rem !important;
+            line-height: 1 !important;
+        }
+        .game-final-screen .game__header__text {
+            font-family: 'Oswald', sans-serif !important;
+            font-size: clamp(1.2rem, 5.5vw, 1.7rem) !important;
+            font-weight: 600 !important;
+            color: #ffffff !important;
+            text-transform: none !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            margin: 0.5rem 0 1.5rem !important;
+        }
+        /* Hide the "click button below" subline — user wants only title + body + image + button */
+        .game-final-screen .game__header__h3 { display: none !important; }
+        /* Style the claim button like the modal start button (chunky yellow with white border) */
+        .game-final-screen .game__button {
+            background: linear-gradient(180deg, #ffe27a 0%, #ffbd2e 100%) !important;
+            background-color: transparent !important;
+            color: #5c2a00 !important;
+            border: 3px solid #ffffff !important;
+            border-radius: 999px !important;
+            padding: 1.4rem 2rem !important;
+            font-family: 'Oswald', sans-serif !important;
+            font-size: clamp(1.3rem, 5.5vw, 1.7rem) !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.04em !important;
+            box-shadow: 0 10px 0 #d18a00, 0 16px 30px rgba(0,0,0,0.18) !important;
+            animation: btn-wiggle 1.6s ease-in-out infinite;
+            transform-origin: center;
         }
         .modal__window {
             background: transparent !important;
@@ -238,24 +291,48 @@
     <section class="game-final-screen hidden">
         <header class="game__header">
             <h1 class="game__header__h1" data-translate="congratulations">
-                Congratulations! 🎉
+                Congratulations...
             </h1>
             <p class="game__header__text" data-translate="you_have_to_get_the_bonus">
-                You earned the most points and have won a brand new iPhone 17 Pro!
+                You've won an iPhone 17 Pro!
             </p>
             <h3 class="game__header__h3" data-translate="click_and_get_your_offer">
                 Click the button below to claim your prize.
             </h3>
         </header>
         <main class="game__main">
-            <img aria-hidden="true" alt="Treasure chest" class="game__main__image" src="./assets/images/treasure-chest.webp" />
+            <img aria-hidden="true" alt="iPhone 17 Pro" class="game__main__image" src="./assets/images/17pro.png" />
         </main>
         <footer class="game__footer">
             <button class="game__button" data-translate="get_special_offer">
-                GET iPhone 17 Pro
+                CLAIM NOW
             </button>
         </footer>
     </section>
+
+    <!-- Urgent countdown — parallel observer, watches the constructor's seconds value and adds .urgent class when <= 3 -->
+    <script>
+        (function () {
+            'use strict';
+            document.addEventListener('DOMContentLoaded', function () {
+                var valueEl = document.querySelector('.game__progress__value');
+                var headerEl = document.querySelector('.game__progress__value-header');
+                if (!valueEl) return;
+                var apply = function () {
+                    var n = parseInt((valueEl.textContent || '').trim(), 10);
+                    var urgent = !isNaN(n) && n <= 3 && n > 0;
+                    [valueEl, headerEl].forEach(function (el) {
+                        if (!el) return;
+                        if (urgent) el.classList.add('urgent');
+                        else el.classList.remove('urgent');
+                    });
+                };
+                var observer = new MutationObserver(apply);
+                observer.observe(valueEl, { childList: true, characterData: true, subtree: true });
+                apply();
+            });
+        })();
+    </script>
 
     <!-- Section Modal -->
     <section class="modal">

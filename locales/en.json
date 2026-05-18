@@ -1,12 +1,12 @@
 {
   "get_your_offer": "Tap to win an iPhone 17 Pro!",
-  "congratulations": "Congratulations!",
+  "congratulations": "Congratulations...",
   "you_have_10_seconds_tap_to_earn": "You have only 10 seconds. Tap to earn your bonus!",
   "start": "Start 🔥",
   "tap_to_earn": "<span class='l1'>Tap to win</span><br><span class='l2'>an iPhone 17 Pro</span>",
   "you_have_10_seconds": "You have {seconds} seconds",
   "time_left": "Time left:",
-  "you_have_to_get_the_bonus": "You earned the most points and have won a brand new iPhone 17 Pro!",
+  "you_have_to_get_the_bonus": "You've won an iPhone 17 Pro!",
   "click_and_get_your_offer": "Click the button below to claim your prize.",
-  "get_special_offer": "GET iPhone 17 Pro"
+  "get_special_offer": "CLAIM NOW"
 }
