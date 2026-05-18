@@ -53,6 +53,52 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
     <link rel="stylesheet" id="main-css" href="./assets/styles/style.css">
+    <style>
+        /* Hide the constructor's auto-generated bonus popups during the game — they don't fit the lock-cracking theme */
+        .game__main__bonus-value { display: none !important; }
+        /* Disable the constructor's image rotation classes so the chest stays steady (we control its shake animation) */
+        .game__main__image.game__main__image-rotate-1,
+        .game__main__image.game__main__image-rotate-2 { transform: none !important; }
+        /* Lock cracking — parallel visual layer driven by our inline script */
+        .game__main__image { transition: filter 0.2s; }
+        .ub-shake { animation: ub-shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+        @keyframes ub-shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+        /* Progressive crack reveal — keyed off classes added to the .game__main wrapper */
+        .ub-stage-1 .crack-1 { opacity: 1 !important; }
+        .ub-stage-2 .crack-1, .ub-stage-2 .crack-2 { opacity: 1 !important; }
+        .ub-stage-3 .crack-1, .ub-stage-3 .crack-2, .ub-stage-3 .crack-3 { opacity: 1 !important; }
+        .ub-stage-4 .crack-1, .ub-stage-4 .crack-2, .ub-stage-4 .crack-3, .ub-stage-4 .crack-4 { opacity: 1 !important; }
+        .ub-stage-5 .crack-1, .ub-stage-5 .crack-2, .ub-stage-5 .crack-3, .ub-stage-5 .crack-4, .ub-stage-5 .crack-5 { opacity: 1 !important; }
+        /* Lock visually fades on final stage (about to shatter) */
+        .ub-stage-5 .lock { animation: ub-flash 0.4s ease-out 2 alternate; }
+        @keyframes ub-flash { from { filter: brightness(1); } to { filter: brightness(1.6) drop-shadow(0 0 6px #ffd54a); } }
+        /* Final screen — overlay iPhone on top of open chest */
+        .game-final-screen .game__main { position: relative; }
+        .ub-iphone-reveal {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translate(-50%, -20%);
+            max-width: 38%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 24px rgba(255, 213, 74, 0.7)) drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+            animation: ub-rise 1.2s ease-out 0.2s both, ub-float 2.4s ease-in-out 1.4s infinite;
+            pointer-events: none;
+        }
+        @keyframes ub-rise {
+            from { transform: translate(-50%, 60%); opacity: 0; }
+            to { transform: translate(-50%, -20%); opacity: 1; }
+        }
+        @keyframes ub-float {
+            0%, 100% { transform: translate(-50%, -20%); }
+            50% { transform: translate(-50%, -26%); }
+        }
+    </style>
 <script defer src="./assets/scripts/common.js"></script>
     <!-- UNCOMMENT SCRIPTS BELLOW AND COMMENT LINE ABOVE, IF YOU WANT TO CUSTOMIZE FEATURES-->
     <!--
@@ -109,7 +155,7 @@
             </h3>
         </header>
         <main class="game__main">
-            <img aria-hidden="true" alt="Treasure chest" class="game__main__image" src="./assets/images/treasure-chest.webp" />
+            <img aria-hidden="true" alt="Locked treasure chest" class="game__main__image" src="./assets/images/locked-chest.svg" />
             <img aria-hidden="true" alt="Hand" class="game__main__image-hand game__main__image-hand-animation-pulse" src="./assets/images/hand.webp" />
             <div class="game__main__bonus-container"></div>
         </main>
@@ -139,7 +185,8 @@
             </h3>
         </header>
         <main class="game__main">
-            <img aria-hidden="true" alt="Treasure chest" class="game__main__image" src="./assets/images/treasure-chest.webp" />
+            <img aria-hidden="true" alt="Open treasure chest" class="game__main__image" src="./assets/images/open-chest.svg" />
+            <img aria-hidden="true" alt="iPhone 17 Pro" class="ub-iphone-reveal" src="./assets/images/17pro.png" />
         </main>
         <footer class="game__footer">
             <button class="game__button" data-translate="get_special_offer">
@@ -148,15 +195,41 @@
         </footer>
     </section>
 
+    <!-- Lock-cracking parallel animation script (additive — runs alongside main.js's own click handler, doesn't intercept) -->
+    <script>
+        (function () {
+            'use strict';
+            var MAX_STAGE = 5;
+            var stage = 0;
+            // Wait for DOM, then attach listener to game container (not document — so we only animate when user taps the chest area)
+            document.addEventListener('DOMContentLoaded', function () {
+                var gameEl = document.querySelector('.game');
+                var imgEl = document.querySelector('.game .game__main__image');
+                if (!gameEl || !imgEl) return;
+                gameEl.addEventListener('click', function () {
+                    // Trigger shake animation (restart by toggling class)
+                    imgEl.classList.remove('ub-shake');
+                    void imgEl.offsetWidth; // force reflow to restart animation
+                    imgEl.classList.add('ub-shake');
+                    // Progressive crack damage (capped at MAX_STAGE)
+                    if (stage < MAX_STAGE) {
+                        stage += 1;
+                        imgEl.classList.add('ub-stage-' + stage);
+                    }
+                });
+            });
+        })();
+    </script>
+
     <!-- Section Modal -->
     <section class="modal">
         <div class="modal__window">
             <img aria-hidden="true" alt="iPhone 17 Pro" class="modal__window__image" src="./assets/images/17pro.png" style="max-width: 60%; height: auto; display: block; margin: 0 auto 1rem;" />
             <h3 class="modal__window__title" data-translate="win_an_iphone_17">
-                You could WIN an iPhone 17 Pro!
+                🔐 Crack the lock to WIN an iPhone 17 Pro!
             </h3>
             <p class="modal__window__text" data-translate="you_have_10_seconds_tap_to_earn">
-                Tap to earn points and see if you can win!
+                Tap fast to break the padlock and reveal your prize!
             </p>
             <a class="modal__window__button" href="#" data-translate="start">
                 START

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="wood2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7a4a1d"/>
+      <stop offset="0.5" stop-color="#5c3713"/>
+      <stop offset="1" stop-color="#3d2408"/>
+    </linearGradient>
+    <linearGradient id="lid2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#8c5a28"/>
+      <stop offset="1" stop-color="#5c3713"/>
+    </linearGradient>
+    <linearGradient id="metal2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#d4a93d"/>
+      <stop offset="0.5" stop-color="#a87f1f"/>
+      <stop offset="1" stop-color="#7a5a14"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd54a" stop-opacity="0.8"/>
+      <stop offset="0.6" stop-color="#ffd54a" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#ffd54a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="innerDark" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1a0e02"/>
+      <stop offset="1" stop-color="#3d2408"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Golden glow burst behind everything -->
+  <circle cx="200" cy="180" r="170" fill="url(#glow)"/>
+
+  <!-- Chest body -->
+  <rect x="60" y="220" width="280" height="150" rx="8" fill="url(#wood2)" stroke="#2a1804" stroke-width="3"/>
+
+  <!-- Inner dark cavity (opened) -->
+  <rect x="75" y="225" width="250" height="40" fill="url(#innerDark)"/>
+
+  <!-- Metal bands on chest body -->
+  <rect x="60" y="270" width="280" height="10" fill="url(#metal2)" stroke="#5c3a08" stroke-width="1"/>
+  <rect x="60" y="330" width="280" height="10" fill="url(#metal2)" stroke="#5c3a08" stroke-width="1"/>
+
+  <!-- Vertical metal strips -->
+  <rect x="80" y="220" width="8" height="150" fill="url(#metal2)" stroke="#5c3a08" stroke-width="0.5"/>
+  <rect x="312" y="220" width="8" height="150" fill="url(#metal2)" stroke="#5c3a08" stroke-width="0.5"/>
+
+  <!-- Open lid — rotated back/up -->
+  <g transform="translate(200, 220) rotate(-30) translate(-200, -220)">
+    <path d="M 60 220 Q 200 130 340 220 L 340 232 Q 200 142 60 232 Z" fill="url(#lid2)" stroke="#2a1804" stroke-width="3"/>
+    <rect x="60" y="220" width="280" height="14" fill="url(#metal2)" stroke="#5c3a08" stroke-width="0.5"/>
+  </g>
+
+  <!-- Sparkle stars -->
+  <g fill="#ffd54a">
+    <circle cx="120" cy="160" r="3"/>
+    <circle cx="280" cy="150" r="4"/>
+    <circle cx="320" cy="200" r="2.5"/>
+    <circle cx="80" cy="200" r="2.5"/>
+    <circle cx="200" cy="120" r="3.5"/>
+  </g>
+
+  <!-- Broken lock pieces falling beside chest -->
+  <g fill="#4a4d50" stroke="#1a1c1e" stroke-width="1">
+    <rect x="40" y="365" width="14" height="10" rx="2" transform="rotate(20 47 370)"/>
+    <rect x="350" y="368" width="12" height="9" rx="2" transform="rotate(-15 356 372)"/>
+  </g>
+</svg>
