@@ -62,11 +62,16 @@
             background: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
             min-height: 100vh;
         }
+        /* Override constructor's .background section that has its own teal gradient */
+        .background {
+            background: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
+            background-image: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
+        }
         /* Hide clouds + sky — keep apple logo stars visible (icons brought back) */
         .background__cloud, .background__sky { display: none !important; }
-        /* Modal — orange peachy gradient, covers stars while modal is showing */
+        /* Modal — same purple gradient as the game wallpaper */
         .modal {
-            background: linear-gradient(180deg, #ffb47e 0%, #ff7a3d 100%) !important;
+            background: linear-gradient(135deg, #6a2cb8 0%, #2a0e6e 100%) !important;
         }
         /* Chunky game header font — Lilita One, uppercase, dual-color */
         .game__header__h1 {
