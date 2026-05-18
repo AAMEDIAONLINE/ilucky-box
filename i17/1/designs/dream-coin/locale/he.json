@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "קבל את ההצעה שלך!",
+  "congratulations": "מזל טוב!",
+  "you_have_only_some_seconds": "יש לכם רק {seconds} שניות.",
+  "tap_to_start_earning": "הקישו כדי לקבל מטבעות!",
+  "start": "התחל",
+  "you_have_some_seconds": "יש לך {seconds} שניות",
+  "time_left": "זמן שנותר:",
+  "offer_expires_in": "ההצעה פגה בעוד {final_seconds}",
+  "click_and_get_your_offer": "לחצו על הכפתור למטה כדי לפתוח אותו!",
+  "get_special_offer": "המשך"
+}

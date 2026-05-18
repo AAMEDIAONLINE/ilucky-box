@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "获取您的优惠！",
+  "congratulations": "恭喜你！",
+  "you_have_only_some_seconds": "你只有 {seconds} 秒。",
+  "tap_to_start_earning": "点击获取金币！",
+  "start": "开始",
+  "you_have_some_seconds": "你还有 {seconds} 秒",
+  "time_left": "剩余时间：",
+  "offer_expires_in": "优惠将在 {final_seconds} 后到期",
+  "click_and_get_your_offer": "点击下方按钮解锁！",
+  "get_special_offer": "继续"
+}

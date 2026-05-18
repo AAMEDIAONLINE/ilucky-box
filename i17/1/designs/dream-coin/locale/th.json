@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "รับข้อเสนอของคุณ!",
+  "congratulations": "ขอแสดงความยินดี!",
+  "you_have_only_some_seconds": "คุณมีเวลาเพียง {seconds} วินาที.",
+  "tap_to_start_earning": "แตะเพื่อรับเหรียญ!",
+  "start": "เริ่มต้น",
+  "you_have_some_seconds": "คุณมี {seconds} วินาที",
+  "time_left": "เวลาที่เหลือ:",
+  "offer_expires_in": "ข้อเสนอหมดอายุใน {final_seconds}",
+  "click_and_get_your_offer": "แตะปุ่มด้านล่างเพื่อปลดล็อก!",
+  "get_special_offer": "ต่อไป"
+}

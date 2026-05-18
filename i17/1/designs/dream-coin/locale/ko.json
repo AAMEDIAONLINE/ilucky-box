@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "당신의 혜택 받기!",
+  "congratulations": "축하합니다!",
+  "you_have_only_some_seconds": "{seconds}초밖에 없습니다.",
+  "tap_to_start_earning": "탭하여 코인 받기!",
+  "start": "시작",
+  "you_have_some_seconds": "{seconds}초 남았습니다",
+  "time_left": "남은 시간:",
+  "offer_expires_in": "오퍼가 {final_seconds} 후 만료됩니다",
+  "click_and_get_your_offer": "아래 버튼을 탭하여 잠금을 해제하세요!",
+  "get_special_offer": "계속"
+}

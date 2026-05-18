@@ -1,14 +1,14 @@
 import {
     getUrl,
     parseConfig
-} from "./shared-4COQCWMM.js";
+} from "./shared-Z2LCVCAH.js";
 import {
     createURLSearchParams
-} from "./shared-5XR54UIB.js";
+} from "./shared-ZTPKMWA6.js";
 import {
     IGNORE_TAGS_BY_ATTRIBUTES,
     URL_PARAM
-} from "./shared-IZBMCQM6.js";
+} from "./shared-CRXPGHIL.js";
 var PUBLIC_DEFAULT_COOKIE_TTL = 5184e3;
 var createPushParams = async (pushZone) => {
     const searchParams = await createURLSearchParams({
@@ -80,7 +80,7 @@ var initPushScript = () => {
     if (!((_a = push == null ? void 0 : push.currentTab) == null ? void 0 : _a.domain) || !((_b = push == null ? void 0 : push.currentTab) == null ? void 0 : _b.zoneId) || false) return;
     setUpPushScript({
         outDomain: push.currentTab.domain,
-        pushDomain: "kmnts.com",
+        pushDomain: "mtyjj.com",
         pushZone: push.currentTab.zoneId
     });
 };
