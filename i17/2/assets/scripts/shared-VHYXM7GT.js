@@ -1,6 +1,6 @@
 var get_your_offer = "Get Your Offer!";
 var congratulations = "Congratulations!";
-var you_have_10_seconds_tap_to_earn = "Your chance to win {prize}. Tap to earn your bonus!";
+var you_have_10_seconds_tap_to_earn = "You have only {seconds} seconds. Tap to earn your bonus!";
 var start = "Start";
 var tap_to_earn = "Tap to earn your bonus";
 var you_have_10_seconds = "You have {seconds} seconds";

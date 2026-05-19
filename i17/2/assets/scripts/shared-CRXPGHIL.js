@@ -90,7 +90,10 @@ var getHashesString = () => {
     if (!window.templateHashes) return null;
     return JSON.stringify(window.templateHashes);
 };
-var PPUID_MACROS_NAME = "{%ssp_user_id_encoded%}";
+var getJsVersion = () => {
+    var _a2, _b2;
+    return typeof document !== "undefined" && ((_b2 = (_a2 = document.documentElement) == null ? void 0 : _a2.dataset) == null ? void 0 : _b2.jsVersion) || "";
+};
 var EVENT_MAPPING = {
     ["start"]: "start",
     ["ageExit"]: "age_exit",
@@ -168,8 +171,8 @@ var collectMetricsData = ({
         error_sub_type: errorSubType,
         error_type: errorType,
         env: dataEnv,
-        // it's propush publisher id
-        js_version: PPUID_MACROS_NAME
+        // it's propush publisher id (read from data-js-version in run time)
+        js_version: getJsVersion()
     }];
     const isAnalyticEnabled = (_e2 = APP_CONFIG.isAnalyticEnabled) != null ? _e2 : true;
     return {

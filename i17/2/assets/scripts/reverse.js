@@ -1,12 +1,12 @@
 import {
     initBackIfNeeded,
     makeRedirect
-} from "./shared-SX2B747D.js";
+} from "./shared-QQCYK43W.js";
 import {
     parseConfig
-} from "./shared-4COQCWMM.js";
-import "./shared-5XR54UIB.js";
-import "./shared-IZBMCQM6.js";
+} from "./shared-Z2LCVCAH.js";
+import "./shared-ZTPKMWA6.js";
+import "./shared-CRXPGHIL.js";
 var Reverse = async () => {
     const config = parseConfig(APP_CONFIG);
     if (!config) return;

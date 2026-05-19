@@ -1,10 +1,10 @@
 import {
     getTranslations,
     isFallbackTranslation
-} from "./shared-PQWVR7YF.js";
+} from "./shared-CHHIAVRV.js";
 import {
     getCurrentLanguage
-} from "./shared-IZBMCQM6.js";
+} from "./shared-CRXPGHIL.js";
 var translateElements = async (loadFallbackTranslation, macroses, localePath) => {
     const lang = getCurrentLanguage();
     document.documentElement.setAttribute("lang", lang);

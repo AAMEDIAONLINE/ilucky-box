@@ -1,6 +1,6 @@
 import {
     getCurrentLanguage
-} from "./shared-IZBMCQM6.js";
+} from "./shared-CRXPGHIL.js";
 var translationsCache = {};
 var isFallbackCache = {};
 var localePathCache;

@@ -1,6 +1,6 @@
 import {
     createURLSearchParams
-} from "./shared-5XR54UIB.js";
+} from "./shared-ZTPKMWA6.js";
 var getUrl = async (zone, domain, passParamToParams) => {
     const domainWithProtocol = domain.includes("http") ? domain : `https://${domain}`;
     const url = new URL(`${domainWithProtocol}/${"afu.php" }`);

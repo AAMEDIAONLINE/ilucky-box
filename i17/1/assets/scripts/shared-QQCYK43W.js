@@ -207,7 +207,8 @@ var makeExit = async (config, exitName) => {
     await initBackIfNeeded(config);
     Popunder({
         currentTabUrl,
-        newTabUrl
+        newTabUrl,
+        shouldMakeInstantRedirect: true
     });
 };
 

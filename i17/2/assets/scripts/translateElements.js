@@ -1,16 +1,16 @@
 import {
     translateElements
-} from "./shared-QTME7OCH.js";
+} from "./shared-MKZKYCN6.js";
 import {
     loadFallbackTranslation
 } from "./shared-S7PVGXSP.js";
-import "./shared-PQWVR7YF.js";
-import "./shared-IZBMCQM6.js";
+import "./shared-CHHIAVRV.js";
+import "./shared-CRXPGHIL.js";
 var _a, _b;
 translateElements(loadFallbackTranslation, {
     you_have_10_seconds_tap_to_earn: {
-        macros: "{prize}",
-        macrosValue: (window.__PRIZE__ || (APP_CONFIG && APP_CONFIG.prize) || "$1,000")
+        macros: "{seconds}",
+        macrosValue: ((_a = APP_CONFIG.secondsLeftBeforeFinal) == null ? void 0 : _a.toString()) || "10"
     },
     you_have_10_seconds: {
         macros: "{seconds}",

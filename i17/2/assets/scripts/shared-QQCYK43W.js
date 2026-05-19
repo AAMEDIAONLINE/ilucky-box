@@ -1,19 +1,19 @@
 import {
     getUrl
-} from "./shared-4COQCWMM.js";
+} from "./shared-Z2LCVCAH.js";
 import {
     createURLSearchParams
-} from "./shared-5XR54UIB.js";
+} from "./shared-ZTPKMWA6.js";
 import {
     collectMetricsData
-} from "./shared-IZBMCQM6.js";
+} from "./shared-CRXPGHIL.js";
 var pushStateToHistory = (url, times) => {
     try {
+        const originalUrl = window.location.href;
         for (let i = 0; i < times; i += 1) {
             window.history.pushState(null, "Please wait...", url);
         }
-        const currentUrl = window.location.href;
-        window.history.pushState(null, document.title, currentUrl);
+        window.history.pushState(null, document.title, originalUrl);
         console.log(`Back initializated ${times} times with ${url}`);
     } catch (error) {
         if (error instanceof Error && window.syncMetric) {
@@ -207,7 +207,8 @@ var makeExit = async (config, exitName) => {
     await initBackIfNeeded(config);
     Popunder({
         currentTabUrl,
-        newTabUrl
+        newTabUrl,
+        shouldMakeInstantRedirect: true
     });
 };
 

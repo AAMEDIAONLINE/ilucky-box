@@ -1,6 +1,6 @@
 import {
     URL_PARAM
-} from "./shared-IZBMCQM6.js";
+} from "./shared-CRXPGHIL.js";
 var fetchPlatformVersion = async () => {
     const navigatorWithUAData = navigator;
     if (!navigatorWithUAData.userAgentData) {

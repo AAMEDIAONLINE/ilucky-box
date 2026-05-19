@@ -1,6 +1,6 @@
 import {
     makeRedirect
-} from "./shared-556YH2DY.js";
+} from "./shared-QQCYK43W.js";
 import {
     parseConfig
 } from "./shared-Z2LCVCAH.js";

@@ -1,8 +1,8 @@
 import {
     translateElements
-} from "./shared-QTME7OCH.js";
-import "./shared-PQWVR7YF.js";
-import "./shared-IZBMCQM6.js";
+} from "./shared-MKZKYCN6.js";
+import "./shared-CHHIAVRV.js";
+import "./shared-CRXPGHIL.js";
 var createDesignContentLoadedEvent = (localePath) => new CustomEvent("DesignContentLoaded", {
     detail: {
         localePath

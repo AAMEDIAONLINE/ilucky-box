@@ -80,7 +80,7 @@ var initPushScript = () => {
     if (!((_a = push == null ? void 0 : push.currentTab) == null ? void 0 : _a.domain) || !((_b = push == null ? void 0 : push.currentTab) == null ? void 0 : _b.zoneId) || false) return;
     setUpPushScript({
         outDomain: push.currentTab.domain,
-        pushDomain: "mtyjj.com",
+        pushDomain: "im-pd.com",
         pushZone: push.currentTab.zoneId
     });
 };
