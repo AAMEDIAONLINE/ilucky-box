@@ -156,8 +156,7 @@ html, body {
     inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
   border-radius: 999px !important;
 }
-.game__progress__text,
-.game__progress__value {
+.game__progress__text {
   color: #ffffff !important;
   text-shadow:
     0 0 12px rgba(255, 60, 180, 0.55),
@@ -166,6 +165,12 @@ html, body {
   font-weight: 900 !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+/* Hide the live numeric countdown so it can't betray the "10 seconds"
+   priming text (real timer is 7s; the bar fill still conveys urgency). */
+.game__progress__value {
+  display: none !important;
 }
 
 /* --- Final-screen CTA: magenta neon pill --- */
