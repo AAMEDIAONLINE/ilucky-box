@@ -167,10 +167,89 @@ html, body {
   letter-spacing: 0.08em;
 }
 
-/* Hide the live numeric countdown so it can't betray the "10 seconds"
-   priming text (real timer is 7s; the bar fill still conveys urgency). */
+/* Numeric countdown is visible (Zeydoo-style "TIME: 10" pill). */
 .game__progress__value {
-  display: none !important;
+  display: inline !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+/* --- Tap-game mid-screen hint: "🎁 TAP AS FAST AS YOU CAN! 🎁" --- */
+.game__tap-hint {
+  text-align: center;
+  color: rgba(255, 220, 250, 0.95);
+  font-family: "Arial Black", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.95rem, 3.6vw, 1.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 14px rgba(255, 100, 200, 0.7),
+    0 0 28px rgba(255, 60, 180, 0.35);
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* --- Final screen: dark cosmic background (override base orange gradient) --- */
+.game-final-screen {
+  background-image: linear-gradient(160deg, #1a0030 0%, #2d0050 40%, #1a0030 100%) !important;
+}
+.game-final-screen .game__header__h3 {
+  color: rgba(255, 200, 240, 0.85) !important;
+}
+
+/* Party-popper emoji at top of final screen */
+.game__header__emoji {
+  font-size: clamp(2.4rem, 9vw, 3.4rem);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 14px rgba(255, 180, 220, 0.6));
+}
+
+/* "OFFER EXPIRES IN" subtitle on final screen */
+.game__header__h3--expires {
+  text-transform: uppercase !important;
+  letter-spacing: 0.18em !important;
+  font-size: clamp(0.85rem, 3vw, 1.05rem) !important;
+  margin-top: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Big pink-gradient countdown timer on final screen */
+.game__header__text--timer {
+  font-family: "Arial Black", Arial, sans-serif !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.6rem, 11vw, 4rem) !important;
+  text-align: center;
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, #ff6ec4 0%, #b266ff 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent !important;
+  text-shadow:
+    0 0 24px rgba(255, 110, 200, 0.45),
+    0 0 48px rgba(180, 90, 255, 0.25) !important;
+  margin: 0 0 0.6rem;
+  line-height: 1.05;
+}
+
+/* Final-screen sub-text under the gift */
+.game-final-screen__subtext {
+  text-align: center;
+  color: rgba(255, 210, 240, 0.85);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+  margin: 0.4rem 0 1rem;
+  text-shadow: 0 0 12px rgba(255, 100, 200, 0.35);
+}
+
+/* Final-screen gift box: smaller per Zeydoo */
+.game-final-screen .game__main__image {
+  transform: scale(1) !important;
+  width: clamp(170px, 45vw, 260px) !important;
 }
 
 /* --- Final-screen CTA: magenta neon pill --- */

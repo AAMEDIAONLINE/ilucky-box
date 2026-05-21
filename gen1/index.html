@@ -87,11 +87,14 @@
             <img aria-hidden="true" alt="Hand" class="game__main__image-hand game__main__image-hand-animation-pulse" src="./assets/images/hand.webp" />
             <div class="game__main__bonus-container"></div>
         </main>
+        <div class="game__tap-hint" data-translate="tap_as_fast_as_you_can">
+            🎁 TAP AS FAST AS YOU CAN! 🎁
+        </div>
         <footer class="game__footer">
-            <div class="game__progress hidden">
+            <div class="game__progress">
                 <div class="game__progress__bar"></div>
                 <div class="game__progress__text">
-                    <span data-translate="time_left"> Time left: </span>
+                    <span data-translate="time_left"> TIME: </span>
                     &nbsp;
                     <span class="game__progress__value"> 10 </span>
                 </div>
@@ -102,22 +105,26 @@
     <!-- Section Game Clicker: Final Screen -->
     <section class="game-final-screen hidden">
         <header class="game__header">
+            <div class="game__header__emoji" aria-hidden="true">🎉</div>
             <h1 class="game__header__h1" data-translate="congratulations">
                 Congratulations
             </h1>
-            <p class="game__header__text" data-translate="you_have_to_get_the_bonus">
-                You have 00:01:30 to get the bonus!
-            </p>
-            <h3 class="game__header__h3" data-translate="click_and_get_your_offer">
-                Click the button below to get your special offer.
+            <h3 class="game__header__h3 game__header__h3--expires" data-translate="offer_expires_in">
+                Offer expires in
             </h3>
+            <p class="game__header__text game__header__text--timer" data-translate="you_have_to_get_the_bonus">
+                00:01:30
+            </p>
         </header>
         <main class="game__main">
             <img aria-hidden="true" alt="Gift box" class="game__main__image" src="./assets/images/gift-box.svg" />
         </main>
         <footer class="game__footer">
+            <p class="game-final-screen__subtext" data-translate="click_and_get_your_offer">
+                Tap the button below to unlock it!
+            </p>
             <button class="game__button" data-translate="get_special_offer">
-                Get Special Offer
+                Continue
             </button>
         </footer>
     </section>

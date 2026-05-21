@@ -1,12 +1,14 @@
 {
   "get_your_offer": "Get Your Offer!",
-  "congratulations": "Congratulations!",
+  "congratulations": "Congratulations",
   "you_have_10_seconds_tap_to_earn": "You have only 10 seconds. Tap to earn your bonus!",
   "start": "Start",
-  "tap_to_earn": "Tap to earn your bonus",
-  "you_have_10_seconds": "You have 10 seconds",
-  "time_left": "Time left:",
-  "you_have_to_get_the_bonus": "You have {final_seconds} to get the bonus!",
-  "click_and_get_your_offer": "Click the button below to get your special offer.",
-  "get_special_offer": "Get Special Offer"
+  "tap_to_earn": "Tap to earn your bonus!",
+  "you_have_10_seconds": "You have only 10 seconds",
+  "time_left": "TIME:",
+  "tap_as_fast_as_you_can": "🎁 TAP AS FAST AS YOU CAN! 🎁",
+  "offer_expires_in": "Offer expires in",
+  "you_have_to_get_the_bonus": "{final_seconds}",
+  "click_and_get_your_offer": "Tap the button below to unlock it!",
+  "get_special_offer": "Continue"
 }
