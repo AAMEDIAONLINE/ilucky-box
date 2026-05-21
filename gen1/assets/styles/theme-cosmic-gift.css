@@ -252,6 +252,80 @@ html, body {
   width: clamp(170px, 45vw, 260px) !important;
 }
 
+/* --- Tap-active wiggle on the gift box (Zeydoo: .ctc-planet--tapped + lid-shake combined) --- */
+.game .game__main__image.tap-active {
+  animation: cosmic-gift-tap-shake 0.13s ease-in-out !important;
+}
+@keyframes cosmic-gift-tap-shake {
+  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
+  33%  { transform: translateY(-6px) rotate(-6deg) scale(0.92); }
+  66%  { transform: translateY(-9px) rotate(6deg)  scale(0.88); }
+  100% { transform: translateY(0)    rotate(0deg)  scale(0.85); }
+}
+
+/* --- Tap-hint blink (Zeydoo: ctc-hint-blink 0.9s) --- */
+.game__tap-hint {
+  animation: cosmic-tap-hint-blink 0.9s ease-in-out infinite;
+}
+@keyframes cosmic-tap-hint-blink {
+  0%, 100% { opacity: 1;   }
+  50%      { opacity: 0.2; }
+}
+
+/* --- Final-screen twinkle star field (Zeydoo: .ctc-gift-result-stars ::before/::after) --- */
+.cosmic-result-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.cosmic-result-stars::before,
+.cosmic-result-stars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  opacity: 0.65;
+  box-shadow:
+    3vw 6vh 0 0 rgba(255,255,255,0.85), 18vw 4vh 0 0 rgba(255,255,255,0.5),
+    42vw 11vh 0 0 #e9a6ff, 71vw 7vh 0 0 rgba(255,255,255,0.7),
+    96vw 14vh 0 0 #ffd16b, 8vw 22vh 0 0 rgba(255,255,255,0.55),
+    55vw 19vh 0 0 rgba(255,255,255,0.45), 88vw 24vh 0 0 #e9a6ff,
+    1vw 38vh 0 0 rgba(255,255,255,0.6), 28vw 35vh 0 0 #ffd16b,
+    63vw 41vh 0 0 rgba(255,255,255,0.75), 92vw 36vh 0 0 rgba(255,255,255,0.4),
+    14vw 52vh 0 0 #e9a6ff, 48vw 58vh 0 0 rgba(255,255,255,0.8),
+    77vw 54vh 0 0 rgba(255,255,255,0.5), 99vw 49vh 0 0 #ffd16b,
+    6vw 68vh 0 0 rgba(255,255,255,0.55), 35vw 72vh 0 0 rgba(255,255,255,0.45),
+    58vw 66vh 0 0 #e9a6ff, 84vw 71vh 0 0 rgba(255,255,255,0.7),
+    22vw 86vh 0 0 #ffd16b, 50vw 91vh 0 0 rgba(255,255,255,0.65),
+    73vw 88vh 0 0 rgba(255,255,255,0.5), 95vw 94vh 0 0 #e9a6ff;
+}
+.cosmic-result-stars::after {
+  opacity: 0.5;
+  box-shadow:
+    11vw 9vh 0 0 rgba(255,255,255,0.55), 33vw 2vh 0 0 #e9a6ff,
+    61vw 16vh 0 0 rgba(255,255,255,0.7), 82vw 3vh 0 0 #ffd16b,
+    5vw 28vh 0 0 rgba(255,255,255,0.45), 44vw 26vh 0 0 rgba(255,255,255,0.6),
+    94vw 31vh 0 0 #e9a6ff, 19vw 46vh 0 0 #ffd16b,
+    66vw 48vh 0 0 rgba(255,255,255,0.75), 91vw 44vh 0 0 rgba(255,255,255,0.4),
+    2vw 61vh 0 0 rgba(255,255,255,0.5), 38vw 63vh 0 0 #e9a6ff,
+    52vw 59vh 0 0 rgba(255,255,255,0.65), 79vw 62vh 0 0 #ffd16b,
+    12vw 78vh 0 0 rgba(255,255,255,0.55), 41vw 82vh 0 0 rgba(255,255,255,0.45),
+    69vw 77vh 0 0 #e9a6ff, 87vw 83vh 0 0 rgba(255,255,255,0.7),
+    26vw 96vh 0 0 #ffd16b, 59vw 97vh 0 0 rgba(255,255,255,0.6),
+    97vw 72vh 0 0 rgba(255,255,255,0.5);
+}
+/* Use the deeper radial bg on the final screen (Zeydoo result-screen tone) */
+.game-final-screen {
+  background-image: radial-gradient(ellipse 120% 90% at 50% 0%, #3a1a5c 0%, #1a0a2e 55%, #12051f 100%) !important;
+}
+
 /* --- Final-screen CTA: magenta neon pill --- */
 .game__button {
   background: linear-gradient(90deg, #b266ff 0%, #ff66c4 100%) !important;

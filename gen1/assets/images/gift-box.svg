@@ -1,76 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="300" height="330">
+<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
   <defs>
-    <linearGradient id="gb-body" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="ctc-gift-box-body-grad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ff80ee"/>
       <stop offset="100%" stop-color="#c020c0"/>
     </linearGradient>
-    <linearGradient id="gb-side" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="ctc-gift-box-side-grad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#801080"/>
       <stop offset="100%" stop-color="#a020a0"/>
     </linearGradient>
-    <linearGradient id="gb-lid" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="ctc-gift-lid-grad" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ff99ff"/>
       <stop offset="100%" stop-color="#dd22dd"/>
     </linearGradient>
-    <linearGradient id="gb-ribbon" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%"   stop-color="#ffe566"/>
-      <stop offset="50%"  stop-color="#fff5aa"/>
+    <linearGradient id="ctc-gift-ribbon-vertical" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffe566"/>
+      <stop offset="50%" stop-color="#fff5aa"/>
       <stop offset="100%" stop-color="#e6c200"/>
     </linearGradient>
-    <radialGradient id="gb-bow" cx="50%" cy="40%">
-      <stop offset="0%"   stop-color="#fff8cc"/>
+    <radialGradient id="ctc-gift-bow-grad" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#fff8cc"/>
       <stop offset="100%" stop-color="#e6a800"/>
     </radialGradient>
-    <linearGradient id="gb-shine" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="rgba(255,255,255,0.25)"/>
+    <linearGradient id="ctc-gift-shine-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </linearGradient>
-    <filter id="gb-glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+    <filter id="ctc-gift-glow-filter">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="coloredBlur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-
-  <!-- ground shadow -->
   <ellipse cx="100" cy="212" rx="65" ry="8" fill="rgba(0,0,0,0.35)"/>
-
-  <!-- box body -->
-  <rect x="30" y="110" width="140" height="100" rx="6" fill="url(#gb-body)"/>
-  <polygon points="170,110 185,98 185,198 170,210" fill="url(#gb-side)"/>
+  <rect x="30" y="110" width="140" height="100" rx="6" fill="url(#ctc-gift-box-body-grad)"/>
+  <polygon points="170,110 185,98 185,198 170,210" fill="url(#ctc-gift-box-side-grad)"/>
   <polygon points="30,210 170,210 185,198 45,198" fill="#801080"/>
-  <rect x="30" y="110" width="140" height="50" rx="6" fill="url(#gb-shine)" opacity="0.6"/>
-
-  <!-- body ribbons -->
-  <rect x="92" y="110" width="16" height="100" fill="url(#gb-ribbon)"/>
-  <rect x="30" y="148" width="140" height="14" fill="url(#gb-ribbon)"/>
+  <rect x="30" y="110" width="140" height="50" rx="6" fill="url(#ctc-gift-shine-grad)" opacity="0.6"/>
+  <rect x="92" y="110" width="16" height="100" fill="url(#ctc-gift-ribbon-vertical)"/>
+  <rect x="30" y="148" width="140" height="14" fill="url(#ctc-gift-ribbon-vertical)"/>
   <polygon points="170,148 185,136 185,150 170,162" fill="#e6c200" opacity="0.9"/>
-
-  <!-- lid -->
-  <g>
-    <rect x="22" y="88" width="156" height="28" rx="5" fill="url(#gb-lid)"/>
+  <g class="ctc-gift-lid">
+    <rect x="22" y="88" width="156" height="28" rx="5" fill="url(#ctc-gift-lid-grad)"/>
     <polygon points="178,88 192,76 192,104 178,116" fill="#a020a0"/>
     <polygon points="22,88 178,88 192,76 36,76" fill="#dd66dd"/>
     <rect x="22" y="88" width="156" height="14" rx="5" fill="rgba(255,255,255,0.2)"/>
-    <rect x="92" y="76" width="16" height="40" fill="url(#gb-ribbon)"/>
-    <rect x="22" y="96" width="156" height="12" fill="url(#gb-ribbon)" opacity="0.9"/>
-
-    <!-- bow -->
-    <ellipse cx="85"  cy="66" rx="28" ry="16" fill="url(#gb-bow)" transform="rotate(-30,85,66)"  filter="url(#gb-glow)"/>
-    <ellipse cx="85"  cy="66" rx="20" ry="10" fill="rgba(255,255,255,0.15)" transform="rotate(-30,85,66)"/>
-    <ellipse cx="115" cy="66" rx="28" ry="16" fill="url(#gb-bow)" transform="rotate( 30,115,66)" filter="url(#gb-glow)"/>
-    <ellipse cx="115" cy="66" rx="20" ry="10" fill="rgba(255,255,255,0.15)" transform="rotate( 30,115,66)"/>
-    <path d="M100 82 Q75 100 65 112" stroke="url(#gb-ribbon)" stroke-width="10" fill="none" stroke-linecap="round"/>
-    <path d="M100 82 Q125 100 135 112" stroke="url(#gb-ribbon)" stroke-width="10" fill="none" stroke-linecap="round"/>
-    <circle cx="100" cy="76" r="14" fill="url(#gb-bow)" filter="url(#gb-glow)"/>
-    <circle cx="100" cy="74" r="7"  fill="rgba(255,255,255,0.35)"/>
+    <rect x="92" y="76" width="16" height="40" fill="url(#ctc-gift-ribbon-vertical)"/>
+    <rect x="22" y="96" width="156" height="12" fill="url(#ctc-gift-ribbon-vertical)" opacity="0.9"/>
+    <ellipse cx="85" cy="66" rx="28" ry="16" fill="url(#ctc-gift-bow-grad)" transform="rotate(-30,85,66)" filter="url(#ctc-gift-glow-filter)"/>
+    <ellipse cx="85" cy="66" rx="20" ry="10" fill="rgba(255,255,255,0.15)" transform="rotate(-30,85,66)"/>
+    <ellipse cx="115" cy="66" rx="28" ry="16" fill="url(#ctc-gift-bow-grad)" transform="rotate(30,115,66)" filter="url(#ctc-gift-glow-filter)"/>
+    <ellipse cx="115" cy="66" rx="20" ry="10" fill="rgba(255,255,255,0.15)" transform="rotate(30,115,66)"/>
+    <path d="M100 82 Q75 100 65 112" stroke="url(#ctc-gift-ribbon-vertical)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M100 82 Q125 100 135 112" stroke="url(#ctc-gift-ribbon-vertical)" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <circle cx="100" cy="76" r="14" fill="url(#ctc-gift-bow-grad)" filter="url(#ctc-gift-glow-filter)"/>
+    <circle cx="100" cy="74" r="7" fill="rgba(255,255,255,0.35)"/>
   </g>
-
-  <!-- decorative stars -->
-  <text x="50"  y="170" font-size="14" fill="rgba(255,255,255,0.5)"  text-anchor="middle">✦</text>
-  <text x="155" y="185" font-size="10" fill="rgba(255,255,255,0.4)"  text-anchor="middle">✦</text>
-  <text x="145" y="140" font-size="8"  fill="rgba(255,255,255,0.4)"  text-anchor="middle">★</text>
-  <text x="48"  y="195" font-size="8"  fill="rgba(255,255,255,0.35)" text-anchor="middle">★</text>
+  <text x="50" y="170" font-size="14" fill="rgba(255,255,255,0.5)" text-anchor="middle">✦</text>
+  <text x="155" y="185" font-size="10" fill="rgba(255,255,255,0.4)" text-anchor="middle">✦</text>
+  <text x="145" y="140" font-size="8" fill="rgba(255,255,255,0.4)" text-anchor="middle">★</text>
+  <text x="48" y="195" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">★</text>
 </svg>

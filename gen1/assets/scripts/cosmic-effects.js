@@ -1,17 +1,15 @@
 /* ==========================================================================
    cosmic-effects.js — purely additive visual layer for /gen1/
-
-   Listens to clicks on .game (the tap-game phase) and spawns emoji + dot
-   burst effects. Does NOT call stopPropagation, NOT touch constructor
-   handlers, NOT modify game state. Constructor (common.js / main.js)
-   handles all timing and exits as normal.
-
+   Zeydoo-port pass: adds .tap-active wiggle (130ms), result-screen star
+   field, and confetti burst when the final screen reveals. Still does NOT
+   call stopPropagation, NOT touch constructor handlers, NOT mutate game
+   state. Constructor (common.js / main.js) handles timing & exits as normal.
    Per constructor-ui-only-rule.md: additive parallel code only.
    ========================================================================== */
 (function () {
   'use strict';
 
-  // ---- Ambient sparkle layer ----
+  /* ---------- Ambient sparkle layer ---------- */
   function initSparkles() {
     if (document.querySelector('.cosmic-sparkle-layer')) return;
     var layer = document.createElement('div');
@@ -32,7 +30,7 @@
     document.body.appendChild(layer);
   }
 
-  // ---- Add ring decoration into .game__main ----
+  /* ---------- Decorative ring around .game__main ---------- */
   function addRing() {
     var main = document.querySelector('.game__main');
     if (!main || main.querySelector('.cosmic-ring')) return;
@@ -42,12 +40,21 @@
     main.insertBefore(r, main.firstChild);
   }
 
-  // ---- Tap burst (emoji + radial dots) ----
-  var POP_EMOJI = ['🎁', '🎊', '💰', '✨', '🌟', '🎀'];
+  /* ---------- Result-screen twinkle star field (Zeydoo-style) ---------- */
+  function addResultStars() {
+    var finalScreen = document.querySelector('.game-final-screen');
+    if (!finalScreen || finalScreen.querySelector('.cosmic-result-stars')) return;
+    var s = document.createElement('div');
+    s.className = 'cosmic-result-stars';
+    s.setAttribute('aria-hidden', 'true');
+    finalScreen.insertBefore(s, finalScreen.firstChild);
+  }
+
+  /* ---------- Tap burst (emoji + radial dots) ---------- */
+  var POP_EMOJI  = ['🎁', '🎊', '💰', '✨', '🌟', '🎀'];
   var POP_COLORS = ['#FF6EE7', '#FFD700', '#7B5EFF', '#FF4499', '#00DDFF', '#FFAA00', '#CC44FF'];
 
   function spawnBurst(x, y) {
-    // emoji
     var em = document.createElement('div');
     em.className = 'cosmic-pop-emoji';
     em.textContent = POP_EMOJI[Math.floor(Math.random() * POP_EMOJI.length)];
@@ -59,7 +66,6 @@
     document.body.appendChild(em);
     setTimeout(function () { em.remove(); }, 800);
 
-    // 8 radial dots
     for (var i = 0; i < 8; i++) {
       var dot = document.createElement('div');
       dot.className = 'cosmic-pop-dot';
@@ -77,8 +83,18 @@
     }
   }
 
+  /* ---------- Wiggle the gift box on tap (Zeydoo: .ctc-planet--tapped, 130ms) ---------- */
+  var WIGGLE_MS = 130;
+  function wiggleGift() {
+    var img = document.querySelector('.game .game__main__image');
+    if (!img) return;
+    img.classList.remove('tap-active');
+    void img.offsetWidth; // force reflow so the animation restarts
+    img.classList.add('tap-active');
+    setTimeout(function () { img.classList.remove('tap-active'); }, WIGGLE_MS);
+  }
+
   function onTap(e) {
-    // Only respond inside the tap-game phase, not the final screen or modal.
     if (!e.target.closest('.game') || e.target.closest('.game-final-screen') || e.target.closest('.modal')) return;
     var x, y;
     if (e.changedTouches && e.changedTouches[0]) {
@@ -91,13 +107,93 @@
       return;
     }
     spawnBurst(x, y);
+    wiggleGift();
+  }
+
+  /* ---------- Confetti on final-screen reveal ---------- */
+  var CONFETTI_COLORS = ['#FF6EE7', '#FFD700', '#7B5EFF', '#FF4499', '#00DDFF', '#FFAA00', '#CC44FF'];
+  function fireConfetti() {
+    var existing = document.getElementById('cosmic-confetti-canvas');
+    if (existing) existing.remove();
+    var canvas = document.createElement('canvas');
+    canvas.id = 'cosmic-confetti-canvas';
+    canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;';
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    var pieces = [];
+    for (var i = 0; i < 120; i++) {
+      pieces.push({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 100,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 10,
+        vy: -(4 + Math.random() * 8),
+        rot: Math.random() * 360,
+        rotV: (Math.random() - 0.5) * 12,
+        w: 8 + Math.random() * 12,
+        h: 5 + Math.random() * 8,
+        color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+        alpha: 1,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle'
+      });
+    }
+    function frame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(function (p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.2;
+        p.vx *= 0.99;
+        p.rot += p.rotV;
+        p.alpha -= 0.012;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.alpha);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        if (p.shape === 'rect') {
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      });
+      pieces = pieces.filter(function (p) { return p.alpha > 0; });
+      if (pieces.length > 0) {
+        requestAnimationFrame(frame);
+      } else {
+        canvas.remove();
+      }
+    }
+    frame();
+  }
+
+  function watchForFinalScreen() {
+    var finalScreen = document.querySelector('.game-final-screen');
+    if (!finalScreen) return;
+    var fired = false;
+    var mo = new MutationObserver(function () {
+      if (fired) return;
+      if (!finalScreen.classList.contains('hidden')) {
+        fired = true;
+        setTimeout(fireConfetti, 250);
+        mo.disconnect();
+      }
+    });
+    mo.observe(finalScreen, { attributes: true, attributeFilter: ['class'] });
   }
 
   function init() {
     initSparkles();
     addRing();
-    // passive listener — does NOT intercept the constructor's own handlers
-    document.addEventListener('click', onTap, { passive: true });
+    addResultStars();
+    watchForFinalScreen();
+    document.addEventListener('click',      onTap, { passive: true });
     document.addEventListener('touchstart', onTap, { passive: true });
   }
 
