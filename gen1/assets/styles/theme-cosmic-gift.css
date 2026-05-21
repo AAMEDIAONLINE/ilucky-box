@@ -83,8 +83,8 @@ body {
 }
 .game__main__image {
   /* gift-box.svg replaces treasure-chest.webp at the HTML level.
-     SVG has no intrinsic size, so we set it explicitly here. */
-  width:  clamp(220px, 60vw, 380px) !important;
+     Width matches Zeydoo's effective gift size (78% of a clamp(160px,36vw,280px) wrap). */
+  width:  clamp(140px, 30vw, 220px) !important;
   height: auto !important;
   aspect-ratio: 200 / 220;
   filter:
@@ -268,10 +268,20 @@ body {
   text-shadow: none;
 }
 
-/* Final-screen gift box: smaller per Zeydoo */
+/* Final-screen open gift box (Zeydoo .ctc-gift-result-box-svg, viewBox 200×180) */
 .game-final-screen .game__main__image {
-  transform: scale(1) !important;
-  width: clamp(170px, 45vw, 260px) !important;
+  transform: none !important;
+  width: min(200px, 52vw) !important;
+  height: auto !important;
+  max-width: 100% !important;
+  aspect-ratio: 200 / 180 !important;
+  margin: clamp(6px, 1.2vh, 12px) auto;
+  filter: drop-shadow(0 10px 25px rgba(255, 120, 220, 0.35)) !important;
+  animation: cosmic-gift-result-float 3s ease-in-out infinite !important;
+}
+@keyframes cosmic-gift-result-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
 }
 
 /* --- Tap-active wiggle on the gift box (Zeydoo: .ctc-planet--tapped + lid-shake combined) --- */

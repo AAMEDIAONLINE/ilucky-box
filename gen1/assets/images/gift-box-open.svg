@@ -1,0 +1,66 @@
+<svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <radialGradient id="ctcGiftResultGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff7a8" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#ffd76b" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ffd76b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ctcGiftResultBoxFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e957c9"/>
+      <stop offset="100%" stop-color="#9d2ea3"/>
+    </linearGradient>
+    <linearGradient id="ctcGiftResultBoxSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c93cb8"/>
+      <stop offset="100%" stop-color="#7d1f8a"/>
+    </linearGradient>
+    <linearGradient id="ctcGiftResultLid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff78dd"/>
+      <stop offset="100%" stop-color="#b83fc2"/>
+    </linearGradient>
+    <linearGradient id="ctcGiftResultRibbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffe14d"/>
+      <stop offset="100%" stop-color="#f5a623"/>
+    </linearGradient>
+    <radialGradient id="ctcGiftResultCoinFace" cx="35%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fff49a"/>
+      <stop offset="60%" stop-color="#ffcf3c"/>
+      <stop offset="100%" stop-color="#c68a18"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="100" cy="95" rx="95" ry="60" fill="url(#ctcGiftResultGlow)"/>
+  <g transform="translate(100 55) rotate(-18)">
+    <rect x="-55" y="-18" width="110" height="22" rx="3" fill="url(#ctcGiftResultLid)"/>
+    <rect x="-55" y="4" width="110" height="6" fill="#7d1f8a" opacity="0.6"/>
+    <rect x="-6" y="-18" width="12" height="28" fill="url(#ctcGiftResultRibbon)"/>
+    <ellipse cx="-12" cy="-18" rx="10" ry="7" fill="url(#ctcGiftResultRibbon)"/>
+    <ellipse cx="12" cy="-18" rx="10" ry="7" fill="url(#ctcGiftResultRibbon)"/>
+    <circle cx="0" cy="-18" r="5" fill="#ffcf3c"/>
+  </g>
+  <g>
+    <ellipse cx="85" cy="108" rx="14" ry="5" fill="#c68a18"/>
+    <ellipse cx="115" cy="108" rx="14" ry="5" fill="#c68a18"/>
+    <ellipse cx="100" cy="102" rx="14" ry="5" fill="url(#ctcGiftResultCoinFace)"/>
+    <ellipse cx="80" cy="98" rx="13" ry="5" fill="url(#ctcGiftResultCoinFace)"/>
+    <ellipse cx="120" cy="98" rx="13" ry="5" fill="url(#ctcGiftResultCoinFace)"/>
+    <ellipse cx="100" cy="92" rx="14" ry="5" fill="url(#ctcGiftResultCoinFace)"/>
+  </g>
+  <g>
+    <path d="M 40 95 L 160 95 L 158 165 L 42 165 Z" fill="url(#ctcGiftResultBoxFront)"/>
+    <path d="M 160 95 L 175 85 L 173 155 L 158 165 Z" fill="url(#ctcGiftResultBoxSide)"/>
+    <path d="M 40 95 L 55 85 L 175 85 L 160 95 Z" fill="#4a0f52"/>
+    <rect x="94" y="95" width="12" height="70" fill="url(#ctcGiftResultRibbon)"/>
+    <path d="M 160 120 L 175 110 L 173 122 L 158 132 Z" fill="url(#ctcGiftResultRibbon)"/>
+    <circle cx="62" cy="100" r="8" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+    <circle cx="140" cy="100" r="7" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+    <circle cx="100" cy="98" r="7" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+  </g>
+  <circle cx="35" cy="70" r="6" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+  <circle cx="170" cy="65" r="5" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+  <circle cx="25" cy="120" r="4" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+  <circle cx="178" cy="130" r="4" fill="url(#ctcGiftResultCoinFace)" stroke="#a66e10" stroke-width="0.5"/>
+  <g fill="#fff7a8">
+    <path d="M 50 50 l 2 5 l 5 2 l -5 2 l -2 5 l -2 -5 l -5 -2 l 5 -2 z"/>
+    <path d="M 155 42 l 1.5 4 l 4 1.5 l -4 1.5 l -1.5 4 l -1.5 -4 l -4 -1.5 l 4 -1.5 z"/>
+    <path d="M 100 35 l 1.5 4 l 4 1.5 l -4 1.5 l -1.5 4 l -1.5 -4 l -4 -1.5 l 4 -1.5 z"/>
+  </g>
+</svg>
