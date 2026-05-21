@@ -1,0 +1,249 @@
+/* ====================================================================
+   Cosmic Gift Theme — overrides for the clickbox base
+   Applied AFTER style.css so cascade wins. Keeps all base class names
+   intact so constructor JS (common.js, main.js, designs.js) keeps
+   working untouched.
+   ==================================================================== */
+
+/* --- Background: deep purple/magenta gradient + remove default clouds --- */
+html, body {
+  background: linear-gradient(160deg, #1a0030 0%, #2d0050 40%, #1a0030 100%) !important;
+}
+
+.background,
+.background__left,
+.background__right,
+.background__left__top,
+.background__left__bottom,
+.background__right__top,
+.background__right__bottom {
+  background: transparent !important;
+}
+
+.background__cloud,
+.background__stars,
+.background__star {
+  display: none !important;
+}
+
+/* --- Ambient sparkle layer (added by cosmic-effects.js) --- */
+.cosmic-sparkle-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.cosmic-sparkle {
+  position: absolute;
+  color: rgba(255, 200, 255, 0.6);
+  font-size: 18px;
+  animation: cosmic-sparkle-float linear infinite;
+}
+@keyframes cosmic-sparkle-float {
+  0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-10vh)  rotate(360deg); opacity: 0; }
+}
+
+/* --- Headings: white with pink neon shadow --- */
+.game__header__h1,
+.game__header__h3,
+.game__header__text {
+  color: #ffffff !important;
+  text-shadow: 0 0 20px rgba(255, 100, 200, 0.7), 0 0 40px rgba(255, 60, 180, 0.3) !important;
+  font-family: "Arial Black", Arial, sans-serif !important;
+  letter-spacing: 0.5px;
+}
+.game__header__h1 {
+  font-weight: 900 !important;
+}
+.game__header__h3 {
+  color: rgba(255, 200, 240, 0.85) !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+}
+
+/* --- Treasure chest area becomes the gift box with pulsing rings --- */
+.game__main {
+  position: relative;
+}
+.game__main__image {
+  /* gift-box.svg replaces treasure-chest.webp at the HTML level */
+  filter:
+    drop-shadow(0 10px 30px rgba(255, 80, 200, 0.55))
+    drop-shadow(0 0 60px rgba(200, 60, 255, 0.35)) !important;
+  animation: cosmic-gift-bounce 2s ease-in-out infinite;
+  position: relative;
+  z-index: 3;
+}
+@keyframes cosmic-gift-bounce {
+  0%, 100% { transform: translateY(0)    rotate(-2deg); }
+  30%      { transform: translateY(-12px) rotate( 2deg); }
+  60%      { transform: translateY(-6px)  rotate(-1deg); }
+}
+
+/* Three concentric pulsing rings behind the gift box */
+.game__main::before,
+.game__main::after,
+.game__main > .cosmic-ring {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(180px, 38vw, 300px);
+  height: clamp(180px, 38vw, 300px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 100, 220, 0.4);
+  animation: cosmic-ring-pop 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.game__main::after {
+  width: clamp(200px, 42vw, 330px);
+  height: clamp(200px, 42vw, 330px);
+  border-color: rgba(255, 100, 220, 0.2);
+  animation-delay: 0.5s;
+}
+.game__main > .cosmic-ring {
+  width: clamp(220px, 46vw, 360px);
+  height: clamp(220px, 46vw, 360px);
+  border-color: rgba(255, 100, 220, 0.1);
+  animation-delay: 1s;
+}
+@keyframes cosmic-ring-pop {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 1;   }
+  50%      { transform: translate(-50%, -50%) scale(1.06); opacity: 0.4; }
+}
+
+/* --- Hand cursor hint: white tint + softer pulse --- */
+.game__main__image-hand {
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 200, 255, 0.8));
+  z-index: 4;
+}
+
+/* --- Progress bar: dark pill with gold fill --- */
+.game__progress {
+  background: linear-gradient(180deg, rgba(42, 14, 72, 0.98) 0%, rgba(16, 4, 36, 0.99) 100%) !important;
+  border: 1px solid rgba(255, 110, 200, 0.4) !important;
+  border-radius: 999px !important;
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(255, 60, 160, 0.22),
+    inset 0 1px 0 rgba(255, 220, 255, 0.1) !important;
+}
+.game__progress__bar {
+  background: linear-gradient(90deg, #ff9500 0%, #ffcc00 38%, #fff0a0 100%) !important;
+  box-shadow:
+    0 0 16px rgba(255, 210, 80, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+  border-radius: 999px !important;
+}
+.game__progress__text,
+.game__progress__value {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 12px rgba(255, 60, 180, 0.55),
+    0 0 24px rgba(80, 20, 90, 0.9),
+    0 1px 3px rgba(0, 0, 0, 0.85) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* --- Final-screen CTA: magenta neon pill --- */
+.game__button {
+  background: linear-gradient(90deg, #b266ff 0%, #ff66c4 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 40px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 30px rgba(255, 100, 220, 0.55),
+    0 6px 14px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.game__button:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 36px rgba(255, 100, 220, 0.65),
+    0 8px 18px rgba(0, 0, 0, 0.35) !important;
+}
+.game__button:active {
+  transform: scale(0.98);
+}
+
+/* --- Start modal: blurred cosmic panel + gold start button --- */
+.modal {
+  background: rgba(8, 0, 24, 0.62) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.modal__window {
+  background: linear-gradient(165deg, rgba(55, 10, 70, 0.97) 0%, rgba(28, 0, 45, 0.98) 100%) !important;
+  border: 1px solid rgba(255, 110, 200, 0.4) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+.modal__window__title {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 22px rgba(255, 110, 200, 0.9),
+    0 0 44px rgba(255, 60, 160, 0.35) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.modal__window__text {
+  color: rgba(255, 210, 240, 0.88) !important;
+  font-weight: 700 !important;
+}
+.modal__window__button {
+  background: linear-gradient(135deg, #ffe566 0%, #ffcc00 45%, #ffb020 100%) !important;
+  color: #2a1500 !important;
+  border-radius: 999px !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none !important;
+  box-shadow:
+    0 8px 28px rgba(255, 200, 40, 0.45),
+    0 0 18px rgba(255, 180, 60, 0.35) !important;
+}
+.modal__window__button:hover {
+  box-shadow:
+    0 10px 36px rgba(255, 210, 60, 0.55),
+    0 0 22px rgba(255, 190, 80, 0.45) !important;
+}
+
+/* --- Tap burst effects (created by cosmic-effects.js) --- */
+.cosmic-pop-emoji {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  font-size: 30px;
+  animation: cosmic-pop-emoji-fly 0.8s ease-out forwards;
+}
+@keyframes cosmic-pop-emoji-fly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot)); }
+}
+.cosmic-pop-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  animation: cosmic-pop-dot-fly 0.55s ease-out forwards;
+}
+@keyframes cosmic-pop-dot-fly {
+  0%   { opacity: 1; transform: translate(0, 0); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+}

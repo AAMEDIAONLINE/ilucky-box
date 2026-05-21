@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Вземете своята оферта!",
+  "congratulations": "Поздравления!",
+  "you_have_only_some_seconds": "Имате само {seconds} секунди.",
+  "tap_to_start_earning": "Докоснете, за да получите монети!",
+  "start": "Старт",
+  "you_have_some_seconds": "ИМАТЕ {seconds} СЕКУНДИ",
+  "time_left": "Оставащо време:",
+  "offer_expires_in": "Офертата изтича след {final_seconds}",
+  "click_and_get_your_offer": "Натиснете бутона по-долу, за да го отключите!",
+  "get_special_offer": "Продължи"
+}
