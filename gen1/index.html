@@ -40,7 +40,7 @@
     -->
 </head>
 
-<body>
+<body class="ctc-landing ctc-landing--gift">
     <!-- Section Background -->
     <section class="background">
         <div class="background__left">
@@ -73,27 +73,33 @@
     </section>
 
     <!-- Section Game Clicker -->
-    <section class="game blur">
-        <header class="game__header">
-            <h1 class="game__header__h1" data-translate="tap_to_earn">
-                Tap to earn your bonus
-            </h1>
-            <h3 class="game__header__h3 game__progress__value-header" data-translate="you_have_10_seconds">
-                You have 10 seconds
-            </h3>
-        </header>
-        <main class="game__main">
-            <img aria-hidden="true" alt="Gift box" class="game__main__image" src="./assets/images/gift-box.svg" />
-            <img aria-hidden="true" alt="Hand" class="game__main__image-hand game__main__image-hand-animation-pulse" src="./assets/images/hand.webp" />
-            <div class="game__main__bonus-container"></div>
-        </main>
-        <div class="game__tap-hint" data-translate="tap_as_fast_as_you_can">
-            🎁 TAP AS FAST AS YOU CAN! 🎁
+    <section class="game blur ctc-gift-main-screen">
+        <div class="ctc-gift-main-inner">
+            <div class="ctc-gift-main-top-cluster">
+                <header class="game__header ctc-gift-main-heading-stack">
+                    <h1 class="game__header__h1 ctc-headline" data-translate="tap_to_earn">
+                        Tap to earn your bonus
+                    </h1>
+                    <h3 class="game__header__h3 game__progress__value-header ctc-sub" data-translate="you_have_10_seconds">
+                        You have 10 seconds
+                    </h3>
+                </header>
+            </div>
+            <main class="game__main ctc-planet-wrap ctc-gift-wrap">
+                <img aria-hidden="true" alt="Gift box" class="game__main__image" src="./assets/images/gift-box.svg" />
+                <img aria-hidden="true" alt="Hand" class="game__main__image-hand game__main__image-hand-animation-pulse" src="./assets/images/hand.webp" />
+                <div class="game__main__bonus-container"></div>
+            </main>
+            <div class="ctc-gift-main-bottom-cluster">
+                <div class="game__tap-hint ctc-tap-hint" data-translate="tap_as_fast_as_you_can">
+                    🎁 TAP AS FAST AS YOU CAN! 🎁
+                </div>
+            </div>
         </div>
-        <footer class="game__footer">
-            <div class="game__progress">
-                <div class="game__progress__bar"></div>
-                <div class="game__progress__text">
+        <footer class="game__footer ctc-gift-progress-wrap">
+            <div class="game__progress ctc-gift-progress">
+                <div class="game__progress__bar ctc-gift-progress-fill"></div>
+                <div class="game__progress__text ctc-gift-progress-text">
                     <span data-translate="time_left"> TIME: </span>
                     &nbsp;
                     <span class="game__progress__value"> 10 </span>
@@ -103,42 +109,48 @@
     </section>
 
     <!-- Section Game Clicker: Final Screen -->
-    <section class="game-final-screen hidden">
-        <header class="game__header">
-            <div class="game__header__emoji" aria-hidden="true">🎉</div>
-            <h1 class="game__header__h1" data-translate="congratulations">
-                Congratulations
-            </h1>
-            <h3 class="game__header__h3 game__header__h3--expires" data-translate="offer_expires_in">
-                Offer expires in
-            </h3>
-            <p class="game__header__text game__header__text--timer" data-translate="you_have_to_get_the_bonus">
-                00:01:30
-            </p>
-        </header>
-        <main class="game__main">
-            <img aria-hidden="true" alt="Gift box" class="game__main__image" src="./assets/images/gift-box.svg" />
-        </main>
-        <footer class="game__footer">
-            <p class="game-final-screen__subtext" data-translate="click_and_get_your_offer">
-                Tap the button below to unlock it!
-            </p>
-            <button class="game__button" data-translate="get_special_offer">
-                Continue
-            </button>
-        </footer>
+    <section class="game-final-screen hidden ctc-gift-result-screen">
+        <div class="ctc-gift-result-inner">
+            <div class="ctc-gift-result-top-cluster">
+                <header class="game__header">
+                    <h1 class="game__header__h1 ctc-gift-result-congrats" data-translate="congratulations">
+                        <span class="game__header__emoji ctc-gift-result-congrats-emoji" aria-hidden="true">🎉</span>
+                        Congratulations
+                    </h1>
+                    <div class="game__header__h3 game__header__h3--expires ctc-gift-result-timer-label" data-translate="offer_expires_in">
+                        Offer expires in
+                    </div>
+                    <div class="ctc-gift-result-timer">
+                        <p class="game__header__text game__header__text--timer ctc-gift-result-timer-value" data-translate="you_have_to_get_the_bonus">
+                            00:01:30
+                        </p>
+                    </div>
+                </header>
+            </div>
+            <main class="game__main">
+                <img aria-hidden="true" alt="Gift box" class="game__main__image ctc-gift-result-box-svg" src="./assets/images/gift-box.svg" />
+            </main>
+            <div class="ctc-gift-result-bottom-cluster">
+                <p class="game-final-screen__subtext ctc-gift-result-offer-text" data-translate="click_and_get_your_offer">
+                    Tap the button below to unlock it!
+                </p>
+                <button class="game__button ctc-gift-result-cta" data-translate="get_special_offer">
+                    Continue
+                </button>
+            </div>
+        </div>
     </section>
 
     <!-- Section Modal -->
-    <section class="modal">
-        <div class="modal__window">
-            <h3 class="modal__window__title" data-translate="congratulations">
+    <section class="modal ctc-start-modal ctc-start-modal--gift">
+        <div class="modal__window ctc-start-modal__panel">
+            <h3 class="modal__window__title ctc-start-modal__title" data-translate="congratulations">
                 Congratulations!
             </h3>
-            <p class="modal__window__text" data-translate="you_have_10_seconds_tap_to_earn">
+            <p class="modal__window__text ctc-start-modal__text" data-translate="you_have_10_seconds_tap_to_earn">
                 You have only 10 seconds. Tap to earn your bonus!
             </p>
-            <a class="modal__window__button" href="#" data-translate="start">
+            <a class="modal__window__button ctc-start-modal__button" href="#" data-translate="start">
                 Start
             </a>
         </div>
