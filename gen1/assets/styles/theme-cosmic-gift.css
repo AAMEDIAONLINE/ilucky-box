@@ -193,7 +193,7 @@ body {
   font-size: clamp(12px, 2.5vw, 17px);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin: 0 auto 1rem;
+  margin: clamp(40px, 9vh, 90px) auto 1rem;
   padding: 0 1rem;
   position: relative;
   z-index: 5;
