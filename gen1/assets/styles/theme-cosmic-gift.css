@@ -68,9 +68,16 @@ html, body {
 /* --- Treasure chest area becomes the gift box with pulsing rings --- */
 .game__main {
   position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 .game__main__image {
-  /* gift-box.svg replaces treasure-chest.webp at the HTML level */
+  /* gift-box.svg replaces treasure-chest.webp at the HTML level.
+     SVG has no intrinsic size, so we set it explicitly here. */
+  width:  clamp(220px, 60vw, 380px) !important;
+  height: auto !important;
+  aspect-ratio: 200 / 220;
   filter:
     drop-shadow(0 10px 30px rgba(255, 80, 200, 0.55))
     drop-shadow(0 0 60px rgba(200, 60, 255, 0.35)) !important;
@@ -118,8 +125,16 @@ html, body {
   50%      { transform: translate(-50%, -50%) scale(1.06); opacity: 0.4; }
 }
 
-/* --- Hand cursor hint: white tint + softer pulse --- */
+/* --- Hand cursor hint: white tint + repositioned for gift-box layout --- */
 .game__main__image-hand {
+  /* override base's bottom: 5.5rem; right: 7rem which targeted treasure-chest */
+  position: absolute !important;
+  top: auto !important;
+  left: auto !important;
+  right: clamp(20px, 12vw, 70px) !important;
+  bottom: clamp(40px, 8vh, 80px) !important;
+  width: clamp(52px, 14vw, 80px) !important;
+  height: clamp(52px, 14vw, 80px) !important;
   filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 200, 255, 0.8));
   z-index: 4;
 }
