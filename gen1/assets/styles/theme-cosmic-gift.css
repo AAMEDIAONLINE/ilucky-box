@@ -93,6 +93,10 @@ body {
   animation: cosmic-gift-bounce 2s ease-in-out infinite;
   position: relative;
   z-index: 3;
+  /* GPU-promote so the wiggle + bounce don't trigger CPU repaints on iOS */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 @keyframes cosmic-gift-bounce {
   0%, 100% { transform: translateY(0)    rotate(-2deg); }
@@ -462,6 +466,12 @@ body {
 @keyframes cosmic-pop-emoji-fly {
   0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
   100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot)); }
+}
+.cosmic-pop-emoji,
+.cosmic-pop-dot {
+  /* GPU-promote so iOS Safari can composite without per-frame layout */
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 .cosmic-pop-dot {
   position: fixed;

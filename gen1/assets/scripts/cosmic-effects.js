@@ -66,12 +66,14 @@
     document.body.appendChild(em);
     setTimeout(function () { em.remove(); }, 800);
 
-    for (var i = 0; i < 8; i++) {
+    /* 4 radial dots (down from 8) — iPhone Safari handles half the DOM work */
+    var DOT_COUNT = 4;
+    for (var i = 0; i < DOT_COUNT; i++) {
       var dot = document.createElement('div');
       dot.className = 'cosmic-pop-dot';
       dot.style.left = x + 'px';
       dot.style.top  = y + 'px';
-      var angle = (Math.PI * 2 / 8) * i + Math.random() * 0.4;
+      var angle = (Math.PI * 2 / DOT_COUNT) * i + Math.random() * 0.4;
       var dist = 25 + Math.random() * 50;
       dot.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
       dot.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
@@ -84,14 +86,19 @@
   }
 
   /* ---------- Wiggle the gift box on tap (Zeydoo: .ctc-planet--tapped, 130ms) ---------- */
+  /* iPhone-safe: skip if a wiggle is already mid-flight (no forced reflow per tap). */
   var WIGGLE_MS = 130;
+  var wiggleInFlight = false;
   function wiggleGift() {
+    if (wiggleInFlight) return;
     var img = document.querySelector('.game .game__main__image');
     if (!img) return;
-    img.classList.remove('tap-active');
-    void img.offsetWidth; // force reflow so the animation restarts
+    wiggleInFlight = true;
     img.classList.add('tap-active');
-    setTimeout(function () { img.classList.remove('tap-active'); }, WIGGLE_MS);
+    setTimeout(function () {
+      img.classList.remove('tap-active');
+      wiggleInFlight = false;
+    }, WIGGLE_MS);
   }
 
   function onTap(e) {
@@ -117,15 +124,20 @@
     if (existing) existing.remove();
     var canvas = document.createElement('canvas');
     canvas.id = 'cosmic-confetti-canvas';
-    canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;';
+    /* will-change + translateZ promotes the canvas to a GPU layer on iOS Safari */
+    canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9998;will-change:transform;transform:translateZ(0);';
     document.body.appendChild(canvas);
-    var ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
+    /* Cap canvas internal bitmap at 1× CSS pixels — iPhone DPR is 2-3 which 4-9×s
+       the per-frame fill work for no visual benefit on fast-moving confetti. */
     function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     resize();
     window.addEventListener('resize', resize);
     var pieces = [];
-    for (var i = 0; i < 120; i++) {
+    /* 50 pieces (down from 120) — keeps the visual but ~2.4× less per-frame work */
+    var PIECE_COUNT = 50;
+    for (var i = 0; i < PIECE_COUNT; i++) {
       pieces.push({
         x: canvas.width / 2 + (Math.random() - 0.5) * 100,
         y: canvas.height / 2,
