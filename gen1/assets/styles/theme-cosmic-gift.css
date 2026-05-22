@@ -82,14 +82,16 @@ body {
 }
 
 /* Constructor adds .game__main__image-rotate-1 / -rotate-2 on tap.
-   Override base's 1s transition to feel like Zeydoo's lid-shake (snappier
-   + slight scale down). Constructor controls when the class is applied. */
-.game__main__image-rotate-1,
-.game__main__image-rotate-2 {
-  transition: transform 0.13s ease-in-out !important;
+   Critical: must KILL the bounce animation while a rotate class is on,
+   otherwise the keyframe animation stomps the transform and you can't see
+   the wiggle. Then a fast transition does the snap. */
+.game__main__image.game__main__image-rotate-1,
+.game__main__image.game__main__image-rotate-2 {
+  animation: none !important;
+  transition: transform 0.08s ease-out !important;
 }
-.game__main__image-rotate-1 { transform: rotate(-6deg) scale(0.92) !important; }
-.game__main__image-rotate-2 { transform: rotate( 6deg) scale(0.92) !important; }
+.game__main__image.game__main__image-rotate-1 { transform: rotate(-7deg) scale(0.9) !important; }
+.game__main__image.game__main__image-rotate-2 { transform: rotate( 7deg) scale(0.9) !important; }
 
 /* Two pulsing rings — TAP-GAME gift only, not the final-screen one */
 .game:not(.game-final-screen) .game__main::before,
@@ -252,16 +254,27 @@ body {
     97vw 72vh 0 0 rgba(255,255,255,0.5);
 }
 
-/* Lift the actual content above the star field + center footer items */
+/* Lift the actual content above the star field */
 .game-final-screen .game__header,
 .game-final-screen .game__main,
 .game-final-screen .game__footer { position: relative; z-index: 1; }
+/* Footer = block + text-align center so subtext AND button (block element
+   with margin: 0 auto) both center against the SAME midline. */
 .game-final-screen .game__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
   text-align: center;
   width: 100%;
+  padding: 0;
+}
+.game-final-screen__subtext {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.game-final-screen .game__button {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 /* Party-popper emoji */
