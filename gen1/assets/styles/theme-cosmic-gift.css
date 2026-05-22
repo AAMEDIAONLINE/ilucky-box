@@ -269,19 +269,16 @@ body {
 .game-final-screen .game__header,
 .game-final-screen .game__main { position: relative; z-index: 1; }
 
-/* Final-screen footer: grid with place-items:center is the most reliable
-   way to center mixed-width children (subtext vs button) against the
-   viewport. Force align-self:stretch so the footer spans full width of the
-   parent flex column instead of shrink-fitting to its widest child. */
+/* Final-screen footer: keep base's position:absolute + symmetric
+   left/right:2.8rem anchoring (do NOT change position — overriding to
+   relative converts those into a 28px right-shift). Just add grid
+   centering for children and lift above the star field via z-index. */
 .game-final-screen .game__footer {
-  position: relative;
   z-index: 1;
   display: grid !important;
   place-items: center !important;
   grid-auto-flow: row;
   row-gap: 1rem;
-  align-self: stretch !important;
-  width: 100% !important;
   padding: 0 !important;
   text-align: center !important;
 }
