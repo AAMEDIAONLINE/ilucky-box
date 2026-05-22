@@ -91,9 +91,9 @@ body {
 .game__main__image-rotate-1 { transform: rotate(-6deg) scale(0.92) !important; }
 .game__main__image-rotate-2 { transform: rotate( 6deg) scale(0.92) !important; }
 
-/* Two pulsing rings behind the gift box (no JS-spawned third ring) */
-.game__main::before,
-.game__main::after {
+/* Two pulsing rings — TAP-GAME gift only, not the final-screen one */
+.game:not(.game-final-screen) .game__main::before,
+.game:not(.game-final-screen) .game__main::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -107,7 +107,7 @@ body {
   pointer-events: none;
   z-index: 1;
 }
-.game__main::after {
+.game:not(.game-final-screen) .game__main::after {
   width: clamp(200px, 42vw, 330px);
   height: clamp(200px, 42vw, 330px);
   border-color: rgba(255, 100, 220, 0.2);
@@ -252,10 +252,17 @@ body {
     97vw 72vh 0 0 rgba(255,255,255,0.5);
 }
 
-/* Lift the actual content above the star field */
+/* Lift the actual content above the star field + center footer items */
 .game-final-screen .game__header,
 .game-final-screen .game__main,
 .game-final-screen .game__footer { position: relative; z-index: 1; }
+.game-final-screen .game__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
 
 /* Party-popper emoji */
 .game__header__emoji {
