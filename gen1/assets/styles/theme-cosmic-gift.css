@@ -265,26 +265,35 @@ body {
     97vw 72vh 0 0 rgba(255,255,255,0.5);
 }
 
-/* Lift content above star field + force full-width footer + share centerline */
+/* Lift content above star field */
 .game-final-screen .game__header,
 .game-final-screen .game__main { position: relative; z-index: 1; }
+
+/* Final-screen footer: grid with place-items:center is the most reliable
+   way to center mixed-width children (subtext vs button) against the
+   viewport. Force align-self:stretch so the footer spans full width of the
+   parent flex column instead of shrink-fitting to its widest child. */
 .game-final-screen .game__footer {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* CRITICAL: parent .game-final-screen is flex column align-items:center
-     which shrinks the footer to content-width. Force it back to full width
-     so both children center against the viewport, not against each other. */
+  display: grid !important;
+  place-items: center !important;
+  grid-auto-flow: row;
+  row-gap: 1rem;
   align-self: stretch !important;
   width: 100% !important;
   padding: 0 !important;
-  text-align: center;
+  text-align: center !important;
 }
-.game-final-screen__subtext { margin: 0 auto 1rem !important; }
-.game-final-screen .game__button { margin: 0 auto !important; }
+.game-final-screen__subtext {
+  margin: 0 !important;
+  text-align: center !important;
+  display: block;
+}
+.game-final-screen .game__button {
+  margin: 0 !important;
+  display: block;
+}
 
 /* Party-popper emoji */
 .game__header__emoji {
