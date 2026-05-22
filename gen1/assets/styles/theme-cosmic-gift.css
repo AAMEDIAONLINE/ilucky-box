@@ -81,17 +81,28 @@ body {
   60%      { transform: translateY(-6px)  rotate(-1deg); }
 }
 
-/* Constructor adds .game__main__image-rotate-1 / -rotate-2 on tap.
-   Critical: must KILL the bounce animation while a rotate class is on,
-   otherwise the keyframe animation stomps the transform and you can't see
-   the wiggle. Then a fast transition does the snap. */
-.game__main__image.game__main__image-rotate-1,
-.game__main__image.game__main__image-rotate-2 {
-  animation: none !important;
-  transition: transform 0.08s ease-out !important;
+/* Constructor adds .game__main__image-rotate-1 or -rotate-2 on each tap
+   (alternating). Each class-add fires its OWN multi-step shake animation
+   that returns to neutral — gives a real wiggle, not a single-direction
+   slide. Animation overrides the idle bounce for its short duration. */
+.game__main__image.game__main__image-rotate-1 {
+  animation: cosmic-tap-shake-left 0.18s ease-in-out !important;
 }
-.game__main__image.game__main__image-rotate-1 { transform: rotate(-7deg) scale(0.9) !important; }
-.game__main__image.game__main__image-rotate-2 { transform: rotate( 7deg) scale(0.9) !important; }
+.game__main__image.game__main__image-rotate-2 {
+  animation: cosmic-tap-shake-right 0.18s ease-in-out !important;
+}
+@keyframes cosmic-tap-shake-left {
+  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
+  40%  { transform: translateY(-8px) rotate(-7deg) scale(0.9);  }
+  70%  { transform: translateY(-4px) rotate(2deg)  scale(0.94); }
+  100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
+}
+@keyframes cosmic-tap-shake-right {
+  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
+  40%  { transform: translateY(-8px) rotate(7deg)  scale(0.9);  }
+  70%  { transform: translateY(-4px) rotate(-2deg) scale(0.94); }
+  100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
+}
 
 /* Two pulsing rings — TAP-GAME gift only, not the final-screen one */
 .game:not(.game-final-screen) .game__main::before,
@@ -254,28 +265,26 @@ body {
     97vw 72vh 0 0 rgba(255,255,255,0.5);
 }
 
-/* Lift the actual content above the star field */
+/* Lift content above star field + force full-width footer + share centerline */
 .game-final-screen .game__header,
-.game-final-screen .game__main,
-.game-final-screen .game__footer { position: relative; z-index: 1; }
-/* Footer = block + text-align center so subtext AND button (block element
-   with margin: 0 auto) both center against the SAME midline. */
+.game-final-screen .game__main { position: relative; z-index: 1; }
 .game-final-screen .game__footer {
-  display: block;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* CRITICAL: parent .game-final-screen is flex column align-items:center
+     which shrinks the footer to content-width. Force it back to full width
+     so both children center against the viewport, not against each other. */
+  align-self: stretch !important;
+  width: 100% !important;
+  padding: 0 !important;
   text-align: center;
-  width: 100%;
-  padding: 0;
 }
-.game-final-screen__subtext {
-  display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-.game-final-screen .game__button {
-  display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
+.game-final-screen__subtext { margin: 0 auto 1rem !important; }
+.game-final-screen .game__button { margin: 0 auto !important; }
 
 /* Party-popper emoji */
 .game__header__emoji {
