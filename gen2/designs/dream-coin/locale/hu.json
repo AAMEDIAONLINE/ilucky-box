@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Szerezd meg az ajánlatodat!",
+  "congratulations": "Gratulálunk!",
+  "you_have_only_some_seconds": "Csak {seconds} másodperced van.",
+  "tap_to_start_earning": "Koppints az érmékért!",
+  "start": "Start",
+  "you_have_some_seconds": "{seconds} MÁSODPERCED VAN",
+  "time_left": "Hátralévő idő:",
+  "offer_expires_in": "Az ajánlat lejár {final_seconds} múlva",
+  "click_and_get_your_offer": "Koppints az alábbi gombra a feloldáshoz!",
+  "get_special_offer": "Folytatás"
+}

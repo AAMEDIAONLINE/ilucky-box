@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="ctcGemPlanet" cx="38%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#d0c0ff"/>
+      <stop offset="20%" stop-color="#8060e0"/>
+      <stop offset="45%" stop-color="#5030c0"/>
+      <stop offset="75%" stop-color="#200060"/>
+      <stop offset="100%" stop-color="#0a0030"/>
+    </radialGradient>
+    <radialGradient id="ctcGemPlanetHighlight" cx="30%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.5)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="ctcGemPlanetCrater" cx="60%" cy="65%" r="60%">
+      <stop offset="0%" stop-color="rgba(80, 0, 120, 0.45)"/>
+      <stop offset="100%" stop-color="rgba(80, 0, 120, 0)"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="95" fill="url(#ctcGemPlanet)"/>
+  <circle cx="100" cy="100" r="95" fill="url(#ctcGemPlanetHighlight)"/>
+  <circle cx="100" cy="100" r="95" fill="url(#ctcGemPlanetCrater)"/>
+  <ellipse cx="60" cy="78" rx="38" ry="13" fill="rgba(255,255,255,0.12)"/>
+  <ellipse cx="125" cy="135" rx="48" ry="10" fill="rgba(80, 0, 120, 0.35)"/>
+  <text x="100" y="135" font-size="92" text-anchor="middle" dominant-baseline="middle" style="filter: drop-shadow(0 0 12px rgba(200, 160, 255, 0.9));">💎</text>
+</svg>

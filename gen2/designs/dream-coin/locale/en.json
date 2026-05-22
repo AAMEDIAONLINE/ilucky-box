@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Get Your Offer!",
+  "congratulations": "Congratulations!",
+  "you_have_only_some_seconds": "You have only {seconds} seconds.",
+  "tap_to_start_earning": "Tap to get coins!",
+  "start": "Start",
+  "you_have_some_seconds": "YOU HAVE {seconds} SECONDS",
+  "time_left": "Time left:",
+  "offer_expires_in": "Offer expires in {final_seconds}",
+  "click_and_get_your_offer": "Tap the button below to unlock it!",
+  "get_special_offer": "Continue"
+}
