@@ -149,7 +149,6 @@
 Build hash:   ${g}
 Runtime hash: ${m}`)}),console.groupEnd();let b=Object.values(H),T=Object.values(p).some(c=>c.equal===!1);window.templateHashes=Object.fromEntries(Object.entries(p).sort(([c],[m])=>{let d=b.indexOf(c),g=b.indexOf(m);return d!==-1&&g!==-1?d-g:d!==-1?-1:g!==-1?1:c.localeCompare(m)}));let N=4096,I=150,y=10,f={scripts:[],styles:[]};x.querySelectorAll("style").forEach(c=>{if(c.getAttribute(E.key)===E.value||f.styles.length>=y)return;let m=(c.textContent||"").replace(/\s+/g," ").trim();if(m){let g=m.slice(0,I).replace(/</g,"\\u003C");f.styles.push(g)}}),x.querySelectorAll("script:not([src])").forEach(c=>{var d;if(c.getAttribute(E.key)===E.value||(d=c.textContent)!=null&&d.match(P)||f.scripts.length>=y)return;let m=(c.textContent||"").replace(/\s+/g," ").trim();if(m){let C=m.slice(0,I).replace(/</g,"\\u003C");f.scripts.push(C)}});let _={...window.templateHashes};if(T){_.inlineSources=f,_.resources=l;let c=J(x);c&&h&&(_.diffHints=j(h,c)),JSON.stringify(_).length>N&&(_.inlineSources={scripts:f.scripts.slice(0,3),styles:f.styles.slice(0,3)})}window.templateHashes=_,(e=window.syncMetric)==null||e.call(window,{event:"template_hashes_ready"})}catch(r){console.error("Error computing runtime template hash:",r),r instanceof Error&&((t=window.syncMetric)==null||t.call(window,{event:"error",errorMessage:r.message,errorType:"TemplateHashes"}))}});})();
 </script>
-        <script defer src="./assets/scripts/cosmic-effects.js"></script>
 </body>
 
 </html>

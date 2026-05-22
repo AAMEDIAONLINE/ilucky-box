@@ -1,56 +1,39 @@
 /* ====================================================================
-   Cosmic Gift Theme — overrides for the clickbox base
-   Applied AFTER style.css so cascade wins. Keeps all base class names
-   intact so constructor JS (common.js, main.js, designs.js) keeps
-   working untouched.
+   Cosmic Gift Theme — pure CSS, Zeydoo-visual on Propush constructor.
+   Loaded AFTER style.css so equal-specificity selectors win via order.
+
+   Constructor JS handles ALL tap effects natively:
+     • .game__main__image-rotate-1 / -rotate-2  → tap wiggle
+     • .game__main__bonus-value (in bonus-container) → per-tap "+N"
+     • .game__main__image-hand-animation-pulse → hand pulse
+   We just theme those classes to look like Zeydoo's effects.
+
+   No JS layer — no double-firing, no perf cliffs.
    ==================================================================== */
 
-/* --- Background: deep purple/magenta gradient + remove default clouds --- */
+/* ---------- Page background + base purge ---------- */
 html, body {
   background: linear-gradient(160deg, #1a0030 0%, #2d0050 40%, #1a0030 100%) !important;
 }
 body {
-  /* Zeydoo: font-family inherited from .ctc-landing--gift root. We apply
-     here so every text element below inherits without per-element repeat. */
   font-family: "Arial Black", Arial, sans-serif;
 }
 
 .background,
-.background__left,
-.background__right,
-.background__left__top,
-.background__left__bottom,
-.background__right__top,
-.background__right__bottom {
+.background__left, .background__right,
+.background__left__top, .background__left__bottom,
+.background__right__top, .background__right__bottom {
   background: transparent !important;
 }
-
 .background__cloud,
 .background__stars,
 .background__star {
   display: none !important;
 }
 
-/* --- Ambient sparkle layer (added by cosmic-effects.js) --- */
-.cosmic-sparkle-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.cosmic-sparkle {
-  position: absolute;
-  color: rgba(255, 200, 255, 0.6);
-  font-size: 18px;
-  animation: cosmic-sparkle-float linear infinite;
-}
-@keyframes cosmic-sparkle-float {
-  0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { transform: translateY(-10vh)  rotate(360deg); opacity: 0; }
-}
+/* ====================================================================
+   Tap-game screen
+   ==================================================================== */
 
 /* --- Tap-game title (Zeydoo .ctc-headline) --- */
 .game__header__h1 {
@@ -63,7 +46,7 @@ body {
   text-shadow: 0 0 20px rgba(255, 100, 200, 0.7);
   margin-bottom: 10px;
 }
-/* --- Tap-game subtitle "YOU HAVE ONLY 10 SECONDS" (Zeydoo .ctc-sub) --- */
+/* --- Tap-game subtitle (Zeydoo .ctc-sub) --- */
 .game__header__h3 {
   font-size: clamp(12px, 2.5vw, 17px) !important;
   color: rgba(255, 200, 240, 0.7) !important;
@@ -74,7 +57,7 @@ body {
   margin-bottom: 30px;
 }
 
-/* --- Treasure chest area becomes the gift box with pulsing rings --- */
+/* --- Gift box wrap with 2 pulsing rings (pure CSS, no JS-spawned ring) --- */
 .game__main {
   position: relative;
   display: flex !important;
@@ -82,8 +65,6 @@ body {
   justify-content: center !important;
 }
 .game__main__image {
-  /* gift-box.svg replaces treasure-chest.webp at the HTML level.
-     Width matches Zeydoo's effective gift size (78% of a clamp(160px,36vw,280px) wrap). */
   width:  clamp(140px, 30vw, 220px) !important;
   height: auto !important;
   aspect-ratio: 200 / 220;
@@ -93,10 +74,6 @@ body {
   animation: cosmic-gift-bounce 2s ease-in-out infinite;
   position: relative;
   z-index: 3;
-  /* GPU-promote so the wiggle + bounce don't trigger CPU repaints on iOS */
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 @keyframes cosmic-gift-bounce {
   0%, 100% { transform: translateY(0)    rotate(-2deg); }
@@ -104,10 +81,19 @@ body {
   60%      { transform: translateY(-6px)  rotate(-1deg); }
 }
 
-/* Three concentric pulsing rings behind the gift box */
+/* Constructor adds .game__main__image-rotate-1 / -rotate-2 on tap.
+   Override base's 1s transition to feel like Zeydoo's lid-shake (snappier
+   + slight scale down). Constructor controls when the class is applied. */
+.game__main__image-rotate-1,
+.game__main__image-rotate-2 {
+  transition: transform 0.13s ease-in-out !important;
+}
+.game__main__image-rotate-1 { transform: rotate(-6deg) scale(0.92) !important; }
+.game__main__image-rotate-2 { transform: rotate( 6deg) scale(0.92) !important; }
+
+/* Two pulsing rings behind the gift box (no JS-spawned third ring) */
 .game__main::before,
-.game__main::after,
-.game__main > .cosmic-ring {
+.game__main::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -127,20 +113,13 @@ body {
   border-color: rgba(255, 100, 220, 0.2);
   animation-delay: 0.5s;
 }
-.game__main > .cosmic-ring {
-  width: clamp(220px, 46vw, 360px);
-  height: clamp(220px, 46vw, 360px);
-  border-color: rgba(255, 100, 220, 0.1);
-  animation-delay: 1s;
-}
 @keyframes cosmic-ring-pop {
   0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 1;   }
   50%      { transform: translate(-50%, -50%) scale(1.06); opacity: 0.4; }
 }
 
-/* --- Hand cursor hint: white tint + repositioned for gift-box layout --- */
+/* --- Hand cursor: white tint, repositioned for the smaller gift --- */
 .game__main__image-hand {
-  /* override base's bottom: 5.5rem; right: 7rem which targeted treasure-chest */
   position: absolute !important;
   top: auto !important;
   left: auto !important;
@@ -152,7 +131,22 @@ body {
   z-index: 4;
 }
 
-/* --- Progress bar: dark pill with gold fill --- */
+/* --- Per-tap "+N" numbers spawned by constructor into .bonus-container ---
+   Constructor creates .game__main__bonus-value elements on each tap. Theme
+   them to look like Zeydoo's tap-burst numbers (pink/gold glow, bigger). */
+.game__main__bonus-value {
+  font-family: "Arial Black", Arial, sans-serif !important;
+  font-size: clamp(20px, 5vw, 32px) !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+  text-shadow:
+    0 0 12px rgba(255, 110, 200, 0.95),
+    0 0 24px rgba(255, 60, 180, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.65) !important;
+  z-index: 99;
+}
+
+/* --- Progress pill --- */
 .game__progress {
   background: linear-gradient(180deg, rgba(42, 14, 72, 0.98) 0%, rgba(16, 4, 36, 0.99) 100%) !important;
   border: 1px solid rgba(255, 110, 200, 0.4) !important;
@@ -169,7 +163,6 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
   border-radius: 999px !important;
 }
-/* Progress pill text "TIME: 10" (Zeydoo .ctc-gift-progress-text) */
 .game__progress__text {
   color: #ffffff !important;
   text-shadow:
@@ -181,15 +174,13 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-
-/* Numeric countdown is visible (Zeydoo-style "TIME: 10" pill). */
 .game__progress__value {
   display: inline !important;
   color: #ffffff !important;
   font-weight: 900 !important;
 }
 
-/* --- Tap-game mid-screen hint (Zeydoo .ctc-tap-hint) --- */
+/* --- Tap-game mid-screen hint --- */
 .game__tap-hint {
   text-align: center;
   color: rgba(255, 200, 240, 0.8);
@@ -201,17 +192,72 @@ body {
   padding: 0 1rem;
   position: relative;
   z-index: 5;
+  animation: cosmic-tap-hint-blink 0.9s ease-in-out infinite;
+}
+@keyframes cosmic-tap-hint-blink {
+  0%, 100% { opacity: 1;   }
+  50%      { opacity: 0.2; }
 }
 
-/* --- Final screen: dark cosmic background (override base orange gradient) --- */
+/* ====================================================================
+   Final/result screen
+   ==================================================================== */
+
+/* Deep radial cosmic background — override base orange */
 .game-final-screen {
-  background-image: linear-gradient(160deg, #1a0030 0%, #2d0050 40%, #1a0030 100%) !important;
-}
-.game-final-screen .game__header__h3 {
-  color: rgba(255, 200, 240, 0.85) !important;
+  background-image: radial-gradient(ellipse 120% 90% at 50% 0%, #3a1a5c 0%, #1a0a2e 55%, #12051f 100%) !important;
+  overflow: hidden;
+  position: absolute;
 }
 
-/* Party-popper emoji at top of final screen */
+/* Twinkly star field via pseudo-elements on the section itself (no JS, no extra DOM) */
+.game-final-screen::before,
+.game-final-screen::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+  box-shadow:
+    3vw 6vh 0 0 rgba(255,255,255,0.85), 18vw 4vh 0 0 rgba(255,255,255,0.5),
+    42vw 11vh 0 0 #e9a6ff,              71vw 7vh 0 0 rgba(255,255,255,0.7),
+    96vw 14vh 0 0 #ffd16b,              8vw 22vh 0 0 rgba(255,255,255,0.55),
+    55vw 19vh 0 0 rgba(255,255,255,0.45), 88vw 24vh 0 0 #e9a6ff,
+    1vw 38vh 0 0 rgba(255,255,255,0.6),   28vw 35vh 0 0 #ffd16b,
+    63vw 41vh 0 0 rgba(255,255,255,0.75), 92vw 36vh 0 0 rgba(255,255,255,0.4),
+    14vw 52vh 0 0 #e9a6ff,                48vw 58vh 0 0 rgba(255,255,255,0.8),
+    77vw 54vh 0 0 rgba(255,255,255,0.5),  99vw 49vh 0 0 #ffd16b,
+    6vw 68vh 0 0 rgba(255,255,255,0.55),  35vw 72vh 0 0 rgba(255,255,255,0.45),
+    58vw 66vh 0 0 #e9a6ff,                84vw 71vh 0 0 rgba(255,255,255,0.7),
+    22vw 86vh 0 0 #ffd16b,                50vw 91vh 0 0 rgba(255,255,255,0.65),
+    73vw 88vh 0 0 rgba(255,255,255,0.5),  95vw 94vh 0 0 #e9a6ff;
+}
+.game-final-screen::after {
+  opacity: 0.5;
+  box-shadow:
+    11vw 9vh 0 0 rgba(255,255,255,0.55), 33vw 2vh 0 0 #e9a6ff,
+    61vw 16vh 0 0 rgba(255,255,255,0.7), 82vw 3vh 0 0 #ffd16b,
+    5vw 28vh 0 0 rgba(255,255,255,0.45), 44vw 26vh 0 0 rgba(255,255,255,0.6),
+    94vw 31vh 0 0 #e9a6ff,               19vw 46vh 0 0 #ffd16b,
+    66vw 48vh 0 0 rgba(255,255,255,0.75), 91vw 44vh 0 0 rgba(255,255,255,0.4),
+    2vw 61vh 0 0 rgba(255,255,255,0.5),   38vw 63vh 0 0 #e9a6ff,
+    52vw 59vh 0 0 rgba(255,255,255,0.65), 79vw 62vh 0 0 #ffd16b,
+    12vw 78vh 0 0 rgba(255,255,255,0.55), 41vw 82vh 0 0 rgba(255,255,255,0.45),
+    69vw 77vh 0 0 #e9a6ff,                87vw 83vh 0 0 rgba(255,255,255,0.7),
+    26vw 96vh 0 0 #ffd16b,                59vw 97vh 0 0 rgba(255,255,255,0.6),
+    97vw 72vh 0 0 rgba(255,255,255,0.5);
+}
+
+/* Lift the actual content above the star field */
+.game-final-screen .game__header,
+.game-final-screen .game__main,
+.game-final-screen .game__footer { position: relative; z-index: 1; }
+
+/* Party-popper emoji */
 .game__header__emoji {
   font-size: clamp(2.4rem, 9vw, 3.4rem);
   text-align: center;
@@ -219,7 +265,7 @@ body {
   filter: drop-shadow(0 0 14px rgba(255, 180, 220, 0.6));
 }
 
-/* Final-screen "Congratulations" (Zeydoo .ctc-gift-result-congrats) */
+/* "Congratulations" */
 .game-final-screen .game__header__h1 {
   font-size: clamp(26px, 8.2vw, 42px) !important;
   font-weight: 800 !important;
@@ -231,7 +277,7 @@ body {
   text-transform: none;
 }
 
-/* "OFFER EXPIRES IN" subtitle (Zeydoo .ctc-gift-result-timer-label) */
+/* "OFFER EXPIRES IN" */
 .game__header__h3--expires {
   font-size: clamp(12px, 3.2vw, 16px) !important;
   color: #c9a3e8 !important;
@@ -242,7 +288,7 @@ body {
   margin: 0.4rem 0 0.6rem;
 }
 
-/* Big countdown timer "00:01:30" (Zeydoo .ctc-gift-result-timer-value) */
+/* Big timer */
 .game__header__text--timer {
   font-weight: 800 !important;
   font-size: clamp(26px, 8vw, 40px) !important;
@@ -260,7 +306,7 @@ body {
   display: inline-block;
 }
 
-/* Final-screen sub-text "Tap the button below..." (Zeydoo .ctc-gift-result-offer-text) */
+/* Sub-text under the gift */
 .game-final-screen__subtext {
   text-align: center;
   color: #e0c8f5;
@@ -272,7 +318,7 @@ body {
   text-shadow: none;
 }
 
-/* Final-screen open gift box (Zeydoo .ctc-gift-result-box-svg, viewBox 200×180) */
+/* Open-gift SVG on final screen */
 .game-final-screen .game__main__image {
   transform: none !important;
   width: min(200px, 52vw) !important;
@@ -288,81 +334,7 @@ body {
   50%      { transform: translateY(-6px); }
 }
 
-/* --- Tap-active wiggle on the gift box (Zeydoo: .ctc-planet--tapped + lid-shake combined) --- */
-.game .game__main__image.tap-active {
-  animation: cosmic-gift-tap-shake 0.13s ease-in-out !important;
-}
-@keyframes cosmic-gift-tap-shake {
-  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
-  33%  { transform: translateY(-6px) rotate(-6deg) scale(0.92); }
-  66%  { transform: translateY(-9px) rotate(6deg)  scale(0.88); }
-  100% { transform: translateY(0)    rotate(0deg)  scale(0.85); }
-}
-
-/* --- Tap-hint blink (Zeydoo: ctc-hint-blink 0.9s) --- */
-.game__tap-hint {
-  animation: cosmic-tap-hint-blink 0.9s ease-in-out infinite;
-}
-@keyframes cosmic-tap-hint-blink {
-  0%, 100% { opacity: 1;   }
-  50%      { opacity: 0.2; }
-}
-
-/* --- Final-screen twinkle star field (Zeydoo: .ctc-gift-result-stars ::before/::after) --- */
-.cosmic-result-stars {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  min-height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-.cosmic-result-stars::before,
-.cosmic-result-stars::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background: transparent;
-  opacity: 0.65;
-  box-shadow:
-    3vw 6vh 0 0 rgba(255,255,255,0.85), 18vw 4vh 0 0 rgba(255,255,255,0.5),
-    42vw 11vh 0 0 #e9a6ff, 71vw 7vh 0 0 rgba(255,255,255,0.7),
-    96vw 14vh 0 0 #ffd16b, 8vw 22vh 0 0 rgba(255,255,255,0.55),
-    55vw 19vh 0 0 rgba(255,255,255,0.45), 88vw 24vh 0 0 #e9a6ff,
-    1vw 38vh 0 0 rgba(255,255,255,0.6), 28vw 35vh 0 0 #ffd16b,
-    63vw 41vh 0 0 rgba(255,255,255,0.75), 92vw 36vh 0 0 rgba(255,255,255,0.4),
-    14vw 52vh 0 0 #e9a6ff, 48vw 58vh 0 0 rgba(255,255,255,0.8),
-    77vw 54vh 0 0 rgba(255,255,255,0.5), 99vw 49vh 0 0 #ffd16b,
-    6vw 68vh 0 0 rgba(255,255,255,0.55), 35vw 72vh 0 0 rgba(255,255,255,0.45),
-    58vw 66vh 0 0 #e9a6ff, 84vw 71vh 0 0 rgba(255,255,255,0.7),
-    22vw 86vh 0 0 #ffd16b, 50vw 91vh 0 0 rgba(255,255,255,0.65),
-    73vw 88vh 0 0 rgba(255,255,255,0.5), 95vw 94vh 0 0 #e9a6ff;
-}
-.cosmic-result-stars::after {
-  opacity: 0.5;
-  box-shadow:
-    11vw 9vh 0 0 rgba(255,255,255,0.55), 33vw 2vh 0 0 #e9a6ff,
-    61vw 16vh 0 0 rgba(255,255,255,0.7), 82vw 3vh 0 0 #ffd16b,
-    5vw 28vh 0 0 rgba(255,255,255,0.45), 44vw 26vh 0 0 rgba(255,255,255,0.6),
-    94vw 31vh 0 0 #e9a6ff, 19vw 46vh 0 0 #ffd16b,
-    66vw 48vh 0 0 rgba(255,255,255,0.75), 91vw 44vh 0 0 rgba(255,255,255,0.4),
-    2vw 61vh 0 0 rgba(255,255,255,0.5), 38vw 63vh 0 0 #e9a6ff,
-    52vw 59vh 0 0 rgba(255,255,255,0.65), 79vw 62vh 0 0 #ffd16b,
-    12vw 78vh 0 0 rgba(255,255,255,0.55), 41vw 82vh 0 0 rgba(255,255,255,0.45),
-    69vw 77vh 0 0 #e9a6ff, 87vw 83vh 0 0 rgba(255,255,255,0.7),
-    26vw 96vh 0 0 #ffd16b, 59vw 97vh 0 0 rgba(255,255,255,0.6),
-    97vw 72vh 0 0 rgba(255,255,255,0.5);
-}
-/* Use the deeper radial bg on the final screen (Zeydoo result-screen tone) */
-.game-final-screen {
-  background-image: radial-gradient(ellipse 120% 90% at 50% 0%, #3a1a5c 0%, #1a0a2e 55%, #12051f 100%) !important;
-}
-
-/* --- Final-screen CTA "Continue" (Zeydoo .ctc-gift-result-cta) --- */
+/* Continue CTA */
 .game__button {
   background: linear-gradient(90deg, #b266ff 0%, #ff66c4 100%) !important;
   color: #ffffff !important;
@@ -387,15 +359,14 @@ body {
     0 0 36px rgba(255, 100, 220, 0.65),
     0 8px 18px rgba(0, 0, 0, 0.35) !important;
 }
-.game__button:active {
-  transform: scale(0.98);
-}
+.game__button:active { transform: scale(0.98); }
 
-/* --- Start modal: blurred cosmic panel + gold start button --- */
+/* ====================================================================
+   Start modal
+   ==================================================================== */
 .modal {
   background: rgba(8, 0, 24, 0.62) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* backdrop-filter blur removed — known iOS Safari perf cliff. */
 }
 .modal__window {
   background: linear-gradient(165deg, rgba(55, 10, 70, 0.97) 0%, rgba(28, 0, 45, 0.98) 100%) !important;
@@ -405,7 +376,6 @@ body {
     0 16px 48px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
 }
-/* Modal title (Zeydoo .ctc-start-modal__title) */
 .modal__window__title {
   color: #ffffff !important;
   text-shadow:
@@ -422,7 +392,6 @@ body {
 @media (min-width: 768px) {
   .modal__window__title { font-size: 22px !important; }
 }
-/* Modal subtitle text (Zeydoo .ctc-start-modal__text) */
 .modal__window__text {
   color: rgba(255, 210, 240, 0.88) !important;
   font-size: clamp(14px, 3.3vw, 16px) !important;
@@ -431,7 +400,6 @@ body {
   letter-spacing: 0.35px !important;
   margin: 0 0 22px !important;
 }
-/* Modal start button (Zeydoo .ctc-start-modal__button) */
 .modal__window__button {
   background: linear-gradient(135deg, #ffe566 0%, #ffcc00 45%, #ffb020 100%) !important;
   color: #2a1500 !important;
@@ -453,36 +421,6 @@ body {
   box-shadow:
     0 10px 36px rgba(255, 210, 60, 0.55),
     0 0 22px rgba(255, 190, 80, 0.45) !important;
+  transform: scale(1.03);
 }
-
-/* --- Tap burst effects (created by cosmic-effects.js) --- */
-.cosmic-pop-emoji {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99;
-  font-size: 30px;
-  animation: cosmic-pop-emoji-fly 0.8s ease-out forwards;
-}
-@keyframes cosmic-pop-emoji-fly {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3) rotate(var(--rot)); }
-}
-.cosmic-pop-emoji,
-.cosmic-pop-dot {
-  /* GPU-promote so iOS Safari can composite without per-frame layout */
-  will-change: transform, opacity;
-  transform: translateZ(0);
-}
-.cosmic-pop-dot {
-  position: fixed;
-  pointer-events: none;
-  z-index: 99;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  animation: cosmic-pop-dot-fly 0.55s ease-out forwards;
-}
-@keyframes cosmic-pop-dot-fly {
-  0%   { opacity: 1; transform: translate(0, 0); }
-  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
-}
+.modal__window__button:active { transform: scale(0.97); }
