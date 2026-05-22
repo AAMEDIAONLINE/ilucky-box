@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Hanki tarjouksesi!",
+  "congratulations": "Onnittelut!",
+  "you_have_only_some_seconds": "Sinulla on vain {seconds} sekuntia.",
+  "tap_to_start_earning": "Napauta saadaksesi kolikoita!",
+  "start": "Aloita",
+  "you_have_some_seconds": "SINULLA ON {seconds} SEKUNTIA",
+  "time_left": "Aikaa jäljellä:",
+  "offer_expires_in": "Tarjous vanhenee {final_seconds} kuluttua",
+  "click_and_get_your_offer": "Napauta alla olevaa painiketta avataksesi sen!",
+  "get_special_offer": "Jatka"
+}

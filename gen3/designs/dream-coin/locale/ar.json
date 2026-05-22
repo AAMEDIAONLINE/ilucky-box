@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "احصل على عرضك!",
+  "congratulations": "تهانينا!",
+  "you_have_only_some_seconds": "لديك فقط {seconds} ثوانٍ.",
+  "tap_to_start_earning": "اضغط للحصول على العملات!",
+  "start": "ابدأ",
+  "you_have_some_seconds": "لديك {seconds} ثوانٍ",
+  "time_left": "الوقت المتبقي:",
+  "offer_expires_in": "ينتهي العرض خلال {final_seconds}",
+  "click_and_get_your_offer": "اضغط على الزر أدناه لفتحه!",
+  "get_special_offer": "متابعة"
+}

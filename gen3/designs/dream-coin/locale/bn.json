@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "আপনার অফারটি নিন!",
+  "congratulations": "অভিনন্দন!",
+  "you_have_only_some_seconds": "আপনার মাত্র {seconds} সেকেন্ড আছে।",
+  "tap_to_start_earning": "মুদ্রা পেতে ট্যাপ করুন!",
+  "start": "স্টার্ট",
+  "you_have_some_seconds": "আপনার কাছে আছে {seconds} সেকেন্ড",
+  "time_left": "বাকি সময়:",
+  "offer_expires_in": "অফার শেষ হবে {final_seconds} পরে",
+  "click_and_get_your_offer": "আনলক করতে নীচের বোতামটি ট্যাপ করুন!",
+  "get_special_offer": "চালিয়ে যান"
+}

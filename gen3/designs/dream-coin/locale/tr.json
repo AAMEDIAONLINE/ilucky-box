@@ -1,0 +1,12 @@
+{
+  "get_your_offer": "Teklifinizi alın!",
+  "congratulations": "Tebrikler!",
+  "you_have_only_some_seconds": "Yalnızca {seconds} saniyeniz var.",
+  "tap_to_start_earning": "Jeton almak için dokunun!",
+  "start": "Başla",
+  "you_have_some_seconds": "{seconds} SANİYENİZ VAR",
+  "time_left": "Kalan süre:",
+  "offer_expires_in": "Teklif {final_seconds} içinde sona eriyor",
+  "click_and_get_your_offer": "Kilidi açmak için aşağıdaki düğmeye dokunun!",
+  "get_special_offer": "Devam et"
+}

@@ -1,0 +1,432 @@
+/* ====================================================================
+   Treasure Theme (gen3) — Zeydoo "clicker" Astro design ported onto
+   Propush clickbox constructor. Dark purple bg, gold accents, green
+   gradient CTA, treasure chest centerpiece (uses base treasure-chest.webp).
+   Pure CSS theming. Constructor handles taps natively.
+   ==================================================================== */
+
+/* ---------- Page background + base purge ---------- */
+html, body {
+  background: linear-gradient(180deg, #120A29 0%, #3B1752 100%) !important;
+}
+body {
+  font-family: "Arial Black", Arial, sans-serif;
+}
+
+.background,
+.background__left, .background__right,
+.background__left__top, .background__left__bottom,
+.background__right__top, .background__right__bottom {
+  background: transparent !important;
+}
+.background__cloud,
+.background__stars,
+.background__star {
+  display: none !important;
+}
+
+/* ====================================================================
+   Tap-game screen
+   ==================================================================== */
+
+/* Tap-game title — white with gold glow (Zeydoo .text-zinc-300 uppercase + gold strong accent) */
+.game__header__h1 {
+  font-size: clamp(20px, 5vw, 32px) !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+  text-align: center;
+  line-height: 1.2 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 24px rgba(253, 196, 82, 0.8),
+    0 0 48px rgba(238, 160, 35, 0.4);
+  margin-bottom: 6px;
+}
+/* Tap-game subtitle — gold accent (Zeydoo .text-[#FDC452]) */
+.game__header__h3 {
+  font-size: clamp(13px, 3.2vw, 18px) !important;
+  color: #FDC452 !important;
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+  text-shadow: 0 0 12px rgba(253, 196, 82, 0.5);
+}
+
+/* --- Treasure chest --- */
+.game__main {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.game__main__image {
+  width:  clamp(140px, 36vw, 220px) !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(253, 196, 82, 0.25)) !important;
+  animation: chest-pulse 1.5s ease-in-out infinite, chest-shake 0.6s ease-in-out infinite;
+  position: relative;
+  z-index: 3;
+  transform-origin: center center;
+}
+@keyframes chest-pulse {
+  0%, 100% { transform: scale(1)    rotate(0deg); }
+  50%      { transform: scale(1.05) rotate(0deg); }
+}
+@keyframes chest-shake {
+  0%, 100% { transform: translateX(0)    rotate(0deg); }
+  25%      { transform: translateX(-2px) rotate(-1.5deg); }
+  75%      { transform: translateX(2px)  rotate(1.5deg); }
+}
+
+/* Native tap wiggle (constructor rotate-1 / -2). Shake-then-settle. */
+.game__main__image.game__main__image-rotate-1 {
+  animation: treasure-tap-shake-left 0.18s ease-in-out !important;
+}
+.game__main__image.game__main__image-rotate-2 {
+  animation: treasure-tap-shake-right 0.18s ease-in-out !important;
+}
+@keyframes treasure-tap-shake-left {
+  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
+  40%  { transform: translateY(-5px) rotate(-6deg) scale(0.92); }
+  70%  { transform: translateY(-2px) rotate(2deg)  scale(0.95); }
+  100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
+}
+@keyframes treasure-tap-shake-right {
+  0%   { transform: translateY(0)    rotate(0deg)  scale(1);    }
+  40%  { transform: translateY(-5px) rotate(6deg)  scale(0.92); }
+  70%  { transform: translateY(-2px) rotate(-2deg) scale(0.95); }
+  100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
+}
+
+/* --- Hand cursor --- gold-tinted, repositioned for chest */
+.game__main__image-hand {
+  position: absolute !important;
+  top: auto !important;
+  left: auto !important;
+  right: clamp(15px, 8vw, 50px) !important;
+  bottom: clamp(35px, 7vh, 70px) !important;
+  width: clamp(48px, 12vw, 70px) !important;
+  height: clamp(48px, 12vw, 70px) !important;
+  filter: brightness(0) saturate(100%) invert(80%) sepia(70%) saturate(900%) hue-rotate(0deg) brightness(105%) drop-shadow(0 0 8px rgba(253, 196, 82, 0.8));
+  z-index: 4;
+}
+
+/* --- Per-tap "+N" numbers (Zeydoo gold) --- */
+.game__main__bonus-value {
+  font-family: "Arial Black", Arial, sans-serif !important;
+  font-size: clamp(20px, 4.5vw, 32px) !important;
+  font-weight: 900 !important;
+  color: #FDC452 !important;
+  text-shadow:
+    0 0 12px rgba(255, 228, 72, 0.95),
+    0 0 24px rgba(238, 160, 35, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.75) !important;
+  z-index: 99;
+}
+
+/* --- Progress pill (green base + yellow fill, Zeydoo style) --- */
+.game__progress {
+  background: linear-gradient(180deg, #39E7AC 0%, #21B875 50%, #0EA070 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 999px !important;
+  box-shadow:
+    0 6px 22px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(57, 231, 172, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+.game__progress__bar {
+  background: #FEBD2A !important;
+  box-shadow:
+    0 0 14px rgba(254, 189, 42, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  border-radius: 999px !important;
+}
+.game__progress__text {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.6),
+    0 1px 3px rgba(0, 0, 0, 0.85) !important;
+  font-size: clamp(14px, 3.4vw, 20px);
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.game__progress__value {
+  display: inline !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+/* --- Tap-game mid-screen hint (gold) --- */
+.game__tap-hint {
+  text-align: center;
+  color: #FDC452;
+  font-weight: 700;
+  font-size: clamp(12px, 2.7vw, 17px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: clamp(40px, 9vh, 90px) auto 1rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 5;
+  animation: treasure-hint-blink 0.9s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(253, 196, 82, 0.5);
+}
+@keyframes treasure-hint-blink {
+  0%, 100% { opacity: 1;   }
+  50%      { opacity: 0.3; }
+}
+
+/* ====================================================================
+   Final/result screen
+   ==================================================================== */
+
+/* Dark overlay over deeper purple bg */
+.game-final-screen {
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.7) 100%), linear-gradient(180deg, #120A29 0%, #3B1752 100%) !important;
+  overflow: hidden;
+  position: absolute;
+}
+
+/* Subtle gold sparkle field on final screen */
+.game-final-screen::before,
+.game-final-screen::after {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 1px;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+  box-shadow:
+    3vw 6vh 0 0 rgba(253,196,82,0.6), 18vw 4vh 0 0 rgba(255,255,255,0.5),
+    42vw 11vh 0 0 #FDC452,             71vw 7vh 0 0 rgba(255,255,255,0.6),
+    96vw 14vh 0 0 #FFE448,             8vw 22vh 0 0 rgba(255,255,255,0.45),
+    55vw 19vh 0 0 rgba(253,196,82,0.4), 88vw 24vh 0 0 #FFDD7F,
+    1vw 38vh 0 0 rgba(255,255,255,0.5), 28vw 35vh 0 0 #FDC452,
+    63vw 41vh 0 0 rgba(255,255,255,0.6), 92vw 36vh 0 0 rgba(253,196,82,0.4),
+    14vw 52vh 0 0 #FFE448,              48vw 58vh 0 0 rgba(255,255,255,0.7),
+    77vw 54vh 0 0 rgba(253,196,82,0.5), 99vw 49vh 0 0 #FDC452,
+    6vw 68vh 0 0 rgba(255,255,255,0.5), 35vw 72vh 0 0 rgba(253,196,82,0.45),
+    58vw 66vh 0 0 #FFE448,              84vw 71vh 0 0 rgba(255,255,255,0.6),
+    22vw 86vh 0 0 #FDC452,              50vw 91vh 0 0 rgba(255,255,255,0.55),
+    73vw 88vh 0 0 rgba(253,196,82,0.5), 95vw 94vh 0 0 #FFDD7F;
+}
+.game-final-screen::after {
+  opacity: 0.4;
+  box-shadow:
+    11vw 9vh 0 0 rgba(255,255,255,0.5), 33vw 2vh 0 0 #FDC452,
+    61vw 16vh 0 0 rgba(255,255,255,0.6), 82vw 3vh 0 0 #FFE448,
+    5vw 28vh 0 0 rgba(253,196,82,0.4), 44vw 26vh 0 0 rgba(255,255,255,0.5),
+    94vw 31vh 0 0 #FDC452,              19vw 46vh 0 0 #FFE448,
+    66vw 48vh 0 0 rgba(255,255,255,0.7), 91vw 44vh 0 0 rgba(253,196,82,0.4),
+    2vw 61vh 0 0 rgba(253,196,82,0.45), 38vw 63vh 0 0 #FDC452,
+    52vw 59vh 0 0 rgba(255,255,255,0.55), 79vw 62vh 0 0 #FFE448,
+    12vw 78vh 0 0 rgba(255,255,255,0.5),  41vw 82vh 0 0 rgba(253,196,82,0.45),
+    69vw 77vh 0 0 #FDC452,                87vw 83vh 0 0 rgba(255,255,255,0.6),
+    26vw 96vh 0 0 #FFE448,                59vw 97vh 0 0 rgba(255,255,255,0.5),
+    97vw 72vh 0 0 rgba(253,196,82,0.45);
+}
+
+/* Lift content above sparkle field */
+.game-final-screen .game__header,
+.game-final-screen .game__main { position: relative; z-index: 1; }
+.game-final-screen .game__footer {
+  z-index: 1;
+  display: grid !important;
+  place-items: center !important;
+  grid-auto-flow: row;
+  row-gap: 1rem;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+/* Party-popper emoji at top */
+.game__header__emoji {
+  font-size: clamp(2.4rem, 9vw, 3.4rem);
+  text-align: center;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 14px rgba(253, 196, 82, 0.65));
+}
+
+/* "Congratulations" — gold gradient text (Zeydoo .text-[#FDC452]) */
+.game-final-screen .game__header__h1 {
+  font-size: clamp(28px, 7vw, 44px) !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFE448 0%, #FDC452 50%, #EEA023 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent !important;
+  text-shadow: none !important;
+  line-height: 1.15 !important;
+  margin: 0;
+}
+
+/* "OFFER EXPIRES IN" — white-ish gold */
+.game__header__h3--expires {
+  font-size: clamp(13px, 3.2vw, 18px) !important;
+  color: #fdfdfdba !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  margin: 0.4rem 0 0.6rem;
+}
+
+/* Big timer — gold (Zeydoo style) */
+.game__header__text--timer {
+  font-weight: 900 !important;
+  font-size: clamp(28px, 8vw, 44px) !important;
+  text-align: center;
+  letter-spacing: 0.1em !important;
+  font-variant-numeric: tabular-nums;
+  color: #FDC452 !important;
+  text-shadow:
+    0 0 18px rgba(253, 196, 82, 0.55),
+    0 0 36px rgba(238, 160, 35, 0.3) !important;
+  margin: 0 0 0.6rem;
+  line-height: 1.15 !important;
+  display: inline-block;
+}
+
+/* Sub-text */
+.game-final-screen__subtext {
+  text-align: center;
+  color: #fdfdfdba;
+  font-weight: 700;
+  font-size: clamp(14px, 3.5vw, 18px);
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  margin: 0;
+  max-width: 360px;
+  text-shadow: none;
+}
+
+/* Final-screen chest (smaller, no shake animation here) */
+.game-final-screen .game__main__image {
+  transform: none !important;
+  width: clamp(140px, 38vw, 220px) !important;
+  height: auto !important;
+  max-width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  margin: clamp(6px, 1.2vh, 12px) auto;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 28px rgba(253, 196, 82, 0.35)) !important;
+  animation: treasure-chest-float 3s ease-in-out infinite !important;
+}
+@keyframes treasure-chest-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-8px) scale(1.03); }
+}
+
+/* CTA "Continue" — animated gradient sweep (Zeydoo green sweep button) */
+.game__button {
+  background: linear-gradient(90deg, #39E7AC 0%, #21B875 35%, #0EA070 65%, #39E7AC 100%) !important;
+  background-size: 200% 100% !important;
+  animation: treasure-button-sweep 2s ease-in-out infinite !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: clamp(16px, 4vw, 22px) !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+  padding: clamp(14px, 4vw, 18px) clamp(20px, 5vw, 28px) !important;
+  width: min(310px, 82%);
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow:
+    0 8px 24px rgba(33, 184, 117, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+@keyframes treasure-button-sweep {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+.game__button:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 10px 30px rgba(33, 184, 117, 0.55),
+    0 6px 16px rgba(0, 0, 0, 0.35) !important;
+}
+.game__button:active { transform: scale(0.97); }
+
+/* ====================================================================
+   Start modal (Zeydoo gold gradient title + green start button)
+   ==================================================================== */
+.modal {
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.48) 50%, rgba(0,0,0,0.9) 100%) !important;
+}
+.modal__window {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+.modal__window__title {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em !important;
+  white-space: nowrap;
+  margin: 0 auto 14px !important;
+  background: linear-gradient(180deg, #FFE448 0%, #FDC452 50%, #EEA023 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent !important;
+  text-shadow: none !important;
+}
+@media (min-width: 768px) {
+  .modal__window__title { font-size: 26px !important; }
+}
+.modal__window__text {
+  color: #ffffff !important;
+  font-size: clamp(15px, 3.5vw, 18px) !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0.35px !important;
+  margin: 0 0 22px !important;
+}
+.modal__window__button {
+  background: linear-gradient(180deg, #39E7AC 0%, #21B875 50%, #0EA070 100%) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  font-size: clamp(16px, 4vw, 20px) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px !important;
+  padding: 14px 28px !important;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  border: none !important;
+  box-shadow:
+    0 8px 28px rgba(33, 184, 117, 0.5),
+    0 0 18px rgba(57, 231, 172, 0.3) !important;
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.modal__window__button:hover {
+  box-shadow:
+    0 10px 36px rgba(33, 184, 117, 0.6),
+    0 0 24px rgba(57, 231, 172, 0.4) !important;
+  transform: scale(1.03);
+}
+.modal__window__button:active { transform: scale(0.97); }
