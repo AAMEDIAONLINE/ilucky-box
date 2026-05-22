@@ -256,11 +256,14 @@ body {
   filter: drop-shadow(0 0 14px rgba(253, 196, 82, 0.65));
 }
 
-/* "Congratulations" — gold gradient text (Zeydoo .text-[#FDC452]) */
+/* "Congratulations" — gold gradient text (Zeydoo .text-[#FDC452]).
+   NOTE: background-clip:text + uppercase + letter-spacing can clip the
+   trailing glyph on iOS WebKit. Fix = zero letter-spacing + right padding
+   + smaller clamp so it always fits one line, no clipping. */
 .game-final-screen .game__header__h1 {
-  font-size: clamp(28px, 7vw, 44px) !important;
+  font-size: clamp(24px, 6.2vw, 38px) !important;
   font-weight: 900 !important;
-  letter-spacing: 1px !important;
+  letter-spacing: 0 !important;
   text-transform: uppercase;
   background: linear-gradient(180deg, #FFE448 0%, #FDC452 50%, #EEA023 100%);
   -webkit-background-clip: text;
@@ -270,6 +273,9 @@ body {
   text-shadow: none !important;
   line-height: 1.15 !important;
   margin: 0;
+  padding: 0 6px !important;
+  display: inline-block;
+  max-width: 100%;
 }
 
 /* "OFFER EXPIRES IN" — white-ish gold */
