@@ -339,17 +339,18 @@ body {
   text-shadow: none;
 }
 
-/* Final-screen glowing gem */
+/* Final-screen glowing gem — glow is baked INTO the SVG via feGaussianBlur
+   so no CSS filter (drop-shadow on iOS WebKit can render visible bbox
+   halos). Pure transparent SVG container, only the gem + its blur shows. */
 .game-final-screen .game__main__image {
   transform: none !important;
-  width: min(220px, 56vw) !important;
+  width: min(240px, 60vw) !important;
   height: auto !important;
   max-width: 100% !important;
   aspect-ratio: 1 / 1 !important;
   margin: clamp(6px, 1.2vh, 12px) auto;
-  filter:
-    drop-shadow(0 0 20px rgba(167, 139, 255, 0.9))
-    drop-shadow(0 0 50px rgba(90, 232, 255, 0.5)) !important;
+  filter: none !important;
+  background: transparent !important;
   animation: cosmic-gem-result-float 3s ease-in-out infinite !important;
   border-radius: 0 !important;
 }
