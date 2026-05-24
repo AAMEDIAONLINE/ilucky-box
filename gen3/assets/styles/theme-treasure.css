@@ -68,19 +68,13 @@ body {
   aspect-ratio: 1 / 1;
   object-fit: contain;
   filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 24px rgba(253, 196, 82, 0.25)) !important;
-  animation: chest-pulse 1.5s ease-in-out infinite, chest-shake 0.6s ease-in-out infinite;
+  /* idle pulse + shake removed for perf — running TWO infinite animations
+     on the same element was eating compositor budget on weak Android,
+     causing dropped tap inputs. Tap-active wiggle handles per-tap motion. */
   position: relative;
   z-index: 3;
   transform-origin: center center;
-}
-@keyframes chest-pulse {
-  0%, 100% { transform: scale(1)    rotate(0deg); }
-  50%      { transform: scale(1.05) rotate(0deg); }
-}
-@keyframes chest-shake {
-  0%, 100% { transform: translateX(0)    rotate(0deg); }
-  25%      { transform: translateX(-2px) rotate(-1.5deg); }
-  75%      { transform: translateX(2px)  rotate(1.5deg); }
+  will-change: transform;
 }
 
 /* Native tap wiggle (constructor rotate-1 / -2). Shake-then-settle. */
@@ -174,7 +168,7 @@ body {
   padding: 0 1rem;
   position: relative;
   z-index: 5;
-  animation: treasure-hint-blink 0.9s ease-in-out infinite;
+  animation: treasure-hint-blink 1.8s ease-in-out infinite;
   text-shadow: 0 0 12px rgba(253, 196, 82, 0.5);
 }
 @keyframes treasure-hint-blink {

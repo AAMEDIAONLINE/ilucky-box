@@ -70,14 +70,13 @@ body {
     drop-shadow(0 0 30px rgba(100, 60, 255, 0.7))
     drop-shadow(0 0 60px rgba(80, 40, 200, 0.4))
     drop-shadow(0 0 100px rgba(60, 20, 150, 0.2)) !important;
-  animation: cosmic-gem-planet-float 3s ease-in-out infinite;
+  /* idle float removed for perf — was eating compositor budget on weak
+     Android, causing dropped tap inputs. Tap-active wiggle below handles
+     per-tap motion. */
   position: relative;
   z-index: 3;
   border-radius: 50%;
-}
-@keyframes cosmic-gem-planet-float {
-  0%, 100% { transform: translateY(0)   rotate(-2deg); }
-  50%      { transform: translateY(-12px) rotate(2deg); }
+  will-change: transform;
 }
 
 /* Native tap wiggle (constructor adds rotate-1 / -2). Multi-keyframe
@@ -101,33 +100,8 @@ body {
   100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
 }
 
-/* Two orbiting rings around the gem — Zeydoo .ctc-orbit */
-.game:not(.game-final-screen) .game__main::before,
-.game:not(.game-final-screen) .game__main::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(170px, 37vw, 290px);
-  height: clamp(170px, 37vw, 290px);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px solid rgba(120, 80, 255, 0.3);
-  animation: cosmic-gem-orbit-spin 4s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-.game:not(.game-final-screen) .game__main::after {
-  width: clamp(190px, 41vw, 320px);
-  height: clamp(190px, 41vw, 320px);
-  border-color: rgba(80, 160, 255, 0.2);
-  animation-duration: 7s;
-  animation-direction: reverse;
-}
-@keyframes cosmic-gem-orbit-spin {
-  0%   { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
+/* Orbital rings removed for perf — 2 infinite rotate animations × 2
+   pseudo-elements = compositor stress on weak Android. */
 
 /* --- Hand cursor: cosmic-purple tint, repositioned for the gem --- */
 .game__main__image-hand {
@@ -201,7 +175,7 @@ body {
   padding: 0 1rem;
   position: relative;
   z-index: 5;
-  animation: cosmic-gem-hint-blink 0.9s ease-in-out infinite;
+  animation: cosmic-gem-hint-blink 1.8s ease-in-out infinite;
 }
 @keyframes cosmic-gem-hint-blink {
   0%, 100% { opacity: 1;   }

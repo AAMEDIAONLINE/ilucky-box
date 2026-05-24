@@ -71,14 +71,11 @@ body {
   filter:
     drop-shadow(0 10px 30px rgba(255, 80, 200, 0.55))
     drop-shadow(0 0 60px rgba(200, 60, 255, 0.35)) !important;
-  animation: cosmic-gift-bounce 2s ease-in-out infinite;
+  /* idle bounce removed for perf — was eating compositor budget on weak Android,
+     causing dropped tap inputs. Tap-active wiggle below handles per-tap motion. */
   position: relative;
   z-index: 3;
-}
-@keyframes cosmic-gift-bounce {
-  0%, 100% { transform: translateY(0)    rotate(-2deg); }
-  30%      { transform: translateY(-12px) rotate( 2deg); }
-  60%      { transform: translateY(-6px)  rotate(-1deg); }
+  will-change: transform;
 }
 
 /* Constructor adds .game__main__image-rotate-1 or -rotate-2 on each tap
@@ -104,32 +101,9 @@ body {
   100% { transform: translateY(0)    rotate(0deg)  scale(1);    }
 }
 
-/* Two pulsing rings — TAP-GAME gift only, not the final-screen one */
-.game:not(.game-final-screen) .game__main::before,
-.game:not(.game-final-screen) .game__main::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(180px, 38vw, 300px);
-  height: clamp(180px, 38vw, 300px);
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 2px solid rgba(255, 100, 220, 0.4);
-  animation: cosmic-ring-pop 2s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-.game:not(.game-final-screen) .game__main::after {
-  width: clamp(200px, 42vw, 330px);
-  height: clamp(200px, 42vw, 330px);
-  border-color: rgba(255, 100, 220, 0.2);
-  animation-delay: 0.5s;
-}
-@keyframes cosmic-ring-pop {
-  0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 1;   }
-  50%      { transform: translate(-50%, -50%) scale(1.06); opacity: 0.4; }
-}
+/* Pulsing rings removed for perf — 2 infinite animations × 2 properties each
+   = compositor stress on weak Android, dropped tap inputs. Static gift box is
+   enough; tap-active wiggle handles motion feedback. */
 
 /* --- Hand cursor: white tint, repositioned for the smaller gift --- */
 .game__main__image-hand {
@@ -205,7 +179,7 @@ body {
   padding: 0 1rem;
   position: relative;
   z-index: 5;
-  animation: cosmic-tap-hint-blink 0.9s ease-in-out infinite;
+  animation: cosmic-tap-hint-blink 1.8s ease-in-out infinite;
 }
 @keyframes cosmic-tap-hint-blink {
   0%, 100% { opacity: 1;   }
