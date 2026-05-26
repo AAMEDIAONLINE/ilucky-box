@@ -170,23 +170,46 @@ Runtime hash: ${m}`)}),console.groupEnd();let b=Object.values(H),T=Object.values
         <script>
         (function(){
             var amount = new URL(window.location.href).searchParams.get('amount') || 'a special prize';
-            function replaceAmount(){
-                document.querySelectorAll('[data-translate]').forEach(function(el){
-                    if (el.textContent && el.textContent.indexOf('{amount}') !== -1){
-                        el.textContent = el.textContent.replace('{amount}', amount);
-                    }
+            // Hide the entry modal subtext until amount is injected (prevents {amount} flash)
+            var style = document.createElement('style');
+            style.textContent = '.modal__window__text{visibility:hidden}';
+            document.head.appendChild(style);
+
+            function replaceIn(el){
+                if (!el) return false;
+                if (el.textContent && el.textContent.indexOf('{amount}') !== -1){
+                    el.textContent = el.textContent.replace('{amount}', amount);
+                    el.style.visibility = 'visible';
+                    return true;
+                }
+                return false;
+            }
+            function tryAll(){
+                document.querySelectorAll('[data-translate]').forEach(replaceIn);
+                // Reveal any subtext that doesn't contain {amount} (already translated to a non-token language)
+                document.querySelectorAll('.modal__window__text').forEach(function(el){
+                    el.style.visibility = 'visible';
                 });
             }
-            if (document.readyState === 'complete' || document.readyState === 'interactive'){
-                setTimeout(replaceAmount, 0);
-                setTimeout(replaceAmount, 250);
-                setTimeout(replaceAmount, 1000);
-            } else {
-                document.addEventListener('DOMContentLoaded', function(){
-                    setTimeout(replaceAmount, 0);
-                    setTimeout(replaceAmount, 250);
-                    setTimeout(replaceAmount, 1000);
+
+            // Watch DOM for translation writes
+            var observer = new MutationObserver(function(muts){
+                muts.forEach(function(m){
+                    var t = m.target;
+                    if (t.nodeType === 3) t = t.parentElement;
+                    if (t && t.hasAttribute && t.hasAttribute('data-translate')) replaceIn(t);
                 });
+            });
+            function start(){
+                observer.observe(document.body, {childList:true, subtree:true, characterData:true});
+                tryAll();
+                // Stop observing after 3s + final sweep
+                setTimeout(function(){ tryAll(); observer.disconnect(); }, 3000);
+            }
+            if (document.readyState === 'loading'){
+                document.addEventListener('DOMContentLoaded', start);
+            } else {
+                start();
             }
         })();
         </script>
