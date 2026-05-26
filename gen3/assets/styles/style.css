@@ -475,3 +475,20 @@ p {
 html[dir=rtl] .background__cloud {
   transform: scaleX(-1);
 }
+
+/* Modal readability override — darker bg + stronger text contrast */
+.modal__window {
+  background-color: rgba(0, 0, 0, 0.78) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.modal__window__title {
+  color: #ffc107 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+.modal__window__text {
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
