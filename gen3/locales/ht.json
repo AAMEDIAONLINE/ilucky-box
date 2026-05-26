@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Reklame Òf Espesyal Ou!",
   "congratulations": "Felisitasyon!",
-  "you_have_10_seconds_tap_to_earn": "Ou gen sèlman 10 segonn. Klike pou genyen bonis ou!",
+  "you_have_10_seconds_tap_to_earn": "Chans ou pou genyen {amount}. Klike pou jwenn bonis ou!",
   "start": "Kòmanse",
   "tap_to_earn": "Klike pou genyen bonis ou!",
   "you_have_10_seconds": "Ou gen 10 segonn",

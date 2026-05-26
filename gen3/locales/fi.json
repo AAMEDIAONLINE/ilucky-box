@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Hanki tarjouksesi!",
   "congratulations": "Onnittelut!",
-  "you_have_10_seconds_tap_to_earn": "Sinulla on vain 10 sekuntia. Napauta saadaksesi bonuksen!",
+  "you_have_10_seconds_tap_to_earn": "Mahdollisuutesi voittaa {amount}. Napauta saadaksesi bonuksesi!",
   "start": "Aloita",
   "tap_to_earn": "Napauta saadaksesi bonuksesi",
   "you_have_10_seconds": "Sinulla on 10 sekuntia",

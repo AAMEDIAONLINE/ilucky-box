@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Hent tilbudet ditt!",
   "congratulations": "Gratulerer!",
-  "you_have_10_seconds_tap_to_earn": "Du har bare 10 sekunder. Trykk for å tjene bonusen din!",
+  "you_have_10_seconds_tap_to_earn": "Sjansen din til å vinne {amount}. Trykk for å få bonusen din!",
   "start": "Start",
   "tap_to_earn": "Trykk for å tjene bonusen din",
   "you_have_10_seconds": "Du har 10 sekunder",

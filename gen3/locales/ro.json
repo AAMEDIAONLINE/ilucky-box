@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Obțineți oferta dvs.!",
   "congratulations": "Felicitări!",
-  "you_have_10_seconds_tap_to_earn": "Ai doar 10 secunde. Apasă pentru a câștiga bonusul!",
+  "you_have_10_seconds_tap_to_earn": "Șansa ta de a câștiga {amount}. Atinge pentru a primi bonusul!",
   "start": "Începe",
   "tap_to_earn": "Apasă pentru a câștiga bonusul tău",
   "you_have_10_seconds": "Ai 10 secunde",

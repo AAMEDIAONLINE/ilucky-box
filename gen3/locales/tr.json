@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Teklifinizi alın!",
   "congratulations": "Tebrikler!",
-  "you_have_10_seconds_tap_to_earn": "Yalnızca 10 saniyeniz var. Bonusu kazanmak için dokunun!",
+  "you_have_10_seconds_tap_to_earn": "{amount} kazanma şansın. Bonusunu almak için dokun!",
   "start": "Başla",
   "tap_to_earn": "Dokun ve bonusu kazan",
   "you_have_10_seconds": "10 saniyeniz var",

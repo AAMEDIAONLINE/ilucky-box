@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Získejte svou nabídku!",
   "congratulations": "Gratulujeme!",
-  "you_have_10_seconds_tap_to_earn": "Máte jen 10 sekund. Klepněte pro získání bonusu!",
+  "you_have_10_seconds_tap_to_earn": "Vaše šance vyhrát {amount}. Klepněte a získejte bonus!",
   "start": "Start",
   "tap_to_earn": "Klepněte pro získání bonusu",
   "you_have_10_seconds": "Máte 10 sekund",

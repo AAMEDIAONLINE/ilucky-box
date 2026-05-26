@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Kunin ang iyong alok!",
   "congratulations": "Binabati kita!",
-  "you_have_10_seconds_tap_to_earn": "Mayroon ka lamang 10 segundo. Tapikin upang makuha ang iyong bonus!",
+  "you_have_10_seconds_tap_to_earn": "Pagkakataon mong manalo ng {amount}. I-tap para makuha ang bonus mo!",
   "start": "Simulan",
   "tap_to_earn": "Tapikin upang makuha ang iyong bonus",
   "you_have_10_seconds": "Mayroon kang 10 segundo",

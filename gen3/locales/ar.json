@@ -1,7 +1,7 @@
 {
   "get_your_offer": "احصل على عرضك!",
   "congratulations": "تهانينا!",
-  "you_have_10_seconds_tap_to_earn": "لديك فقط 10 ثوانٍ. اضغط للحصول على المكافأة!",
+  "you_have_10_seconds_tap_to_earn": "فرصتك للفوز بـ {amount}. اضغط لكسب مكافأتك!",
   "start": "ابدأ",
   "tap_to_earn": "اضغط للحصول على مكافأتك",
   "you_have_10_seconds": "لديك 10 ثوانٍ",

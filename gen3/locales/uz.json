@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Taklifingizni oling!",
   "congratulations": "Tabriklaymiz!",
-  "you_have_10_seconds_tap_to_earn": "Sizda atigi 10 soniya bor. Bonusni olish uchun bosing!",
+  "you_have_10_seconds_tap_to_earn": "{amount} yutish imkoniyatingiz. Bonusingizni olish uchun bosing!",
   "start": "Boshlash",
   "tap_to_earn": "Bonusni olish uchun bosing",
   "you_have_10_seconds": "Sizda 10 soniya bor",

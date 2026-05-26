@@ -1,7 +1,7 @@
 {
   "get_your_offer": "अपना ऑफ़र प्राप्त करें!",
   "congratulations": "बधाई हो!",
-  "you_have_10_seconds_tap_to_earn": "आपके पास केवल 10 सेकंड हैं। बोनस पाने के लिए टैप करें!",
+  "you_have_10_seconds_tap_to_earn": "{amount} जीतने का आपका मौका। अपना बोनस पाने के लिए टैप करें!",
   "start": "शुरू करें",
   "tap_to_earn": "टैप करें और अपना बोनस प्राप्त करें",
   "you_have_10_seconds": "आपके पास 10 सेकंड हैं",

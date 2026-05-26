@@ -1,7 +1,7 @@
 {
   "get_your_offer": "Fumana Tlhahiso Ya Hao!",
   "congratulations": "Mahlohonolo!",
-  "you_have_10_seconds_tap_to_earn": "U na le metsotsoana e 10 feela. Tobetsa ho fumana bonase ea hao!",
+  "you_have_10_seconds_tap_to_earn": "Monyetla oa hau ho hapa {amount}. Tobetsa ho fumana bonase ea hau!",
   "start": "Qala",
   "tap_to_earn": "Tobetsa ho fumana bonase ea hao",
   "you_have_10_seconds": "U na le metsotsoana e 10",
