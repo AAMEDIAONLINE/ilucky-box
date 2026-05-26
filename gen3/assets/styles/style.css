@@ -316,6 +316,7 @@ p {
   position: absolute;
   right: 7rem;
   width: 8rem;
+  filter: brightness(0) invert(1);
 }
 
 .game__main__image-hand-animation-pulse {
