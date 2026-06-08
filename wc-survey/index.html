@@ -1,0 +1,505 @@
+<!doctype html>
+<html data-version="0.0.203" data-landing-name="player" data-env="production-archive" data-js-version="kFQ2ADbyt8-U8a53c_e_QJhtZBBRw3B1ajYWxJZrJfFYW0g" lang="" data-template-hash-by-main="d19b99d0a62dc622778ba0b90da02588de435a2df65b238502020ddae9586491" data-template-hash-by-html="f625dd283925e87500a4cdef2ab5b0a4029b0bdef352194c6d3dc01604f8c6c9" data-template-hash-by-css="a01393783a2858877d4711b0f3a6417d815ab39c6e5da83352efa9b6546e7df5" data-template-hash-by-js="1fdd95419680199aadec256c16ca843c7bd66e99bbac725b9e653e22f49ce018" data-build-html-stats='eyJub2RlQ291bnQiOjQ5LCJ0ZXh0TGVuZ3RoIjoxOTMyOSwic3R5bGVDb3VudCI6MCwic2NyaXB0Q291bnQiOjV9'>
+
+<head>
+    <script>
+        var APP_CONFIG = {
+            "domain": "https://jup9.com",
+            "mainExit_currentTab_zoneId": 11119441,
+            "mainExit_newTab_zoneId": 11119440,
+            "reverse_zoneId": 11119439,
+            "back_zoneId": 11119446,
+            "back_count": 10,
+            "tabUnderClick_zoneId": 11119448,
+            "ageExit_currentTab_zoneId": 11119443,
+            "ageExit_newTab_zoneId": 11119442,
+            "videoCount": 3
+        };
+    </script>
+    <script>"use strict";(()=>{var S=()=>{let t=new Date,e=t.getUTCFullYear(),n=String(t.getUTCMonth()+1).padStart(2,"0"),a=String(t.getUTCDate()).padStart(2,"0"),l=String(t.getUTCHours()).padStart(2,"0"),i=String(t.getUTCMinutes()).padStart(2,"0"),m=String(t.getUTCSeconds()).padStart(2,"0"),s=String(t.getUTCMilliseconds()*1e3).padStart(6,"0");return`${e}-${n}-${a} ${l}:${i}:${m}.${s} +00:00`};var b="events_history",p=()=>{try{let t=sessionStorage.getItem(b);return t?JSON.parse(t):[]}catch(t){return t instanceof Error&&window.syncMetric&&window.syncMetric({event:"error",errorMessage:t.message,errorType:"CUSTOM",errorSubType:"EventsHistoryGet"}),[]}},E=t=>{try{sessionStorage.setItem(b,JSON.stringify(t))}catch(e){e instanceof Error&&window.syncMetric&&window.syncMetric({event:"error",errorMessage:e.message,errorType:"CUSTOM",errorSubType:"EventsHistorySave"})}};var x=()=>{let t=window.location.search,e=new URLSearchParams(t).get("lang"),n=navigator.language.split("-")[0];return e||n||"en"};var u="data-template-hash-by-",st={main:`${u}main`,html:`${u}html`,css:`${u}css`,js:`${u}js`},at={main:"",html:"",css:"",js:""};var N=()=>window.templateHashes?JSON.stringify(window.templateHashes):null;var r=new URL(window.location.href),C,D,I,w,B,P,M,A,$,J,L,F,z,G,U,k,j,O,V,o={pz:(C=r.searchParams.get("pz"))!=null?C:"",tb:(D=r.searchParams.get("tb"))!=null?D:"",tb_reverse:(I=r.searchParams.get("tb_reverse"))!=null?I:"",ae:(w=r.searchParams.get("ae"))!=null?w:"",z:(B=r.searchParams.get("z"))!=null?B:"",var:(P=r.searchParams.get("var"))!=null?P:"",var_1:(M=r.searchParams.get("var_1"))!=null?M:"",var_2:(A=r.searchParams.get("var_2"))!=null?A:"",var_3:($=r.searchParams.get("var_3"))!=null?$:"",b:(J=r.searchParams.get("b"))!=null?J:"",campaignid:(L=r.searchParams.get("campaignid"))!=null?L:"",abtest:(F=r.searchParams.get("abtest"))!=null?F:"",rhd:(z=r.searchParams.get("rhd"))!=null?z:"1",s:(G=r.searchParams.get("s"))!=null?G:"",ymid:(U=r.searchParams.get("ymid"))!=null?U:"",wua:(k=r.searchParams.get("wua"))!=null?k:"",use_full_list_or_browsers:(j=r.searchParams.get("use_full_list_or_browsers"))!=null?j:"",cid:(O=r.searchParams.get("cid"))!=null?O:"",geo:(V=r.searchParams.get("geo"))!=null?V:""};var ot=()=>{var t,e;return typeof document<"u"&&((e=(t=document.documentElement)==null?void 0:t.dataset)==null?void 0:e.jsVersion)||""};var it={start:"start",ageExit:"age_exit",mainExit:"main_exit",push:"push",autoexit:"autoexit",back:"back",reverse:"reverse",tabUnderClick:"tab_under_click",error:"error",unhandledRejection:"unhandled_rejection",template_hash_ready:"template_hash_ready",template_hashes_ready:"template_hashes_ready"},ct=S(),lt=()=>o.abtest?o.abtest:APP_CONFIG.abtest?String(APP_CONFIG.abtest):void 0,q=({event:t,exitZoneId:e,errorMessage:n,errorSubType:a,errorType:l,skipHistory:i,skipContext:m})=>{var _,T,v,f,H;let s=(_=document.querySelector("html"))==null?void 0:_.dataset,Q=(s==null?void 0:s.landingName)||"",R=(s==null?void 0:s.version)||"",K=(s==null?void 0:s.env)||"",W=window.location.host,d=it[t]||t,Z=x(),tt=30,h=Date.now(),c=p(),y=c[c.length-1],et=y?h-y.currentTs:0;i||(c.push({currentTs:h,eventName:d,delta:et}),c.length>=tt&&c.shift(),E(c));let rt=[{app:"landings-constructor",event:d,language:Z,landing_name:Q,build_version:R,landing_domain:W,landing_url:window.location.href,exit_zone_id:e?Number(e):void 0,template_hash:(T=window.templateHash)!=null?T:"",request_var:o.var_3,source_zone_id:Number.isNaN(Number(o.var_2))?null:Number(o.var_2),sub_id:o.var_1,landing_load_date_time:ct,error_message:n!=null?n:"",ab2r:lt(),event_history:(v=JSON.stringify({event_history:JSON.parse(JSON.stringify(p()))}))!=null?v:null,context:m?void 0:JSON.stringify({template_hashes:JSON.parse((f=N())!=null?f:"{}")}),error_sub_type:a,error_type:l,env:K,js_version:ot()}],nt=(H=APP_CONFIG.isAnalyticEnabled)!=null?H:!0;return{eventData:rt,isAnalyticEnabled:nt}};function g({url:t,data:e}){var a;return((a=window==null?void 0:window.navigator)==null?void 0:a.sendBeacon(t.toString(),e?JSON.stringify(e):void 0))?Promise.resolve():Promise.reject(new Error("sendBeacon failed"))}var X=t=>{let e;(i=>i[i.BAD_REQUEST=400]="BAD_REQUEST")(e||(e={}));let n="https://wuytl.com",a=new URL(`${n}/sync-metrics`);g({url:a,data:t}).catch(l=>{l.status!==400&&g({url:a,data:t}).catch(()=>{console.error(`Metrics sync failed: ${t}`)})})};var Y=t=>{let{eventData:e,isAnalyticEnabled:n}=q(t);n&&X(e)};window.syncMetric=Y;Y({event:"start"});})();</script>
+    <script>"use strict";(()=>{var d=()=>{let r=new Date,c=r.getUTCFullYear(),a=String(r.getUTCMonth()+1).padStart(2,"0"),l=String(r.getUTCDate()).padStart(2,"0"),e=String(r.getUTCHours()).padStart(2,"0"),s=String(r.getUTCMinutes()).padStart(2,"0"),o=String(r.getUTCSeconds()).padStart(2,"0"),n=String(r.getUTCMilliseconds()*1e3).padStart(6,"0");return`${c}-${a}-${l} ${e}:${s}:${o}.${n} +00:00`};var i="data-template-hash-by-",L={main:`${i}main`,html:`${i}html`,css:`${i}css`,js:`${i}js`},A={main:"",html:"",css:"",js:""};var t=new URL(window.location.href),g,y,h,_,v,f,T,b,E,H,S,x,C,N,w,I,D,P,M,G={pz:(g=t.searchParams.get("pz"))!=null?g:"",tb:(y=t.searchParams.get("tb"))!=null?y:"",tb_reverse:(h=t.searchParams.get("tb_reverse"))!=null?h:"",ae:(_=t.searchParams.get("ae"))!=null?_:"",z:(v=t.searchParams.get("z"))!=null?v:"",var:(f=t.searchParams.get("var"))!=null?f:"",var_1:(T=t.searchParams.get("var_1"))!=null?T:"",var_2:(b=t.searchParams.get("var_2"))!=null?b:"",var_3:(E=t.searchParams.get("var_3"))!=null?E:"",b:(H=t.searchParams.get("b"))!=null?H:"",campaignid:(S=t.searchParams.get("campaignid"))!=null?S:"",abtest:(x=t.searchParams.get("abtest"))!=null?x:"",rhd:(C=t.searchParams.get("rhd"))!=null?C:"1",s:(N=t.searchParams.get("s"))!=null?N:"",ymid:(w=t.searchParams.get("ymid"))!=null?w:"",wua:(I=t.searchParams.get("wua"))!=null?I:"",use_full_list_or_browsers:(D=t.searchParams.get("use_full_list_or_browsers"))!=null?D:"",cid:(P=t.searchParams.get("cid"))!=null?P:"",geo:(M=t.searchParams.get("geo"))!=null?M:""};var ce=d();var B=(n=>(n.Error="Error",n.RangeError="RangeError",n.ReferenceError="ReferenceError",n.SecurityError="SecurityError",n.SyntaxError="SyntaxError",n.TypeError="TypeError",n.Unknown="Unknown",n))(B||{}),$=(a=>(a.rejectionhandled="rejectionhandled",a.unhandledrejection="unhandledrejection",a))($||{}),O=()=>{let r=window.syncMetric;if(!r){console.log("Sync metric is not initialized");return}let c=()=>{var s;(((s=document.querySelector("html"))==null?void 0:s.getAttribute("data-env"))||"")==="production-archive"&&!Object.keys(APP_CONFIG).length&&(console.error("Empty APP_CONFIG!",APP_CONFIG),r({event:"error",errorMessage:"Empty APP_CONFIG",errorSubType:"EmptyAppConfig",errorType:"CUSTOM"}))},a=e=>{if(e.filename.includes("extension"))return;let s=`errorMessage: ${e.message}, lineNumber: ${e.lineno}, columnNumber: ${e.colno}, file: ${e.filename}`,o=e.error.name&&Object.values(B).includes(e.error.name)?e.error.name:"Unknown";r({event:"error",errorMessage:s,errorSubType:o,errorType:"JS"})},l=e=>{var u,m,p;if(typeof e.reason=="object"&&((m=(u=e.reason)==null?void 0:u.stack)!=null&&m.includes("extension")))return;let s=typeof e.reason=="object"&&((p=e.reason)!=null&&p.message)?e.reason.message:JSON.stringify(e.reason),o=e.type,n=Object.values($).includes(o)?o:"Unknown";r({event:"unhandledRejection",errorMessage:s,errorSubType:n,errorType:"JS"})};window.addEventListener("error",a),window.addEventListener("unhandledrejection",l),window.addEventListener("DOMContentLoaded",c)};O();})();</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>Copa do Mundo 2026 — Quem é melhor?</title>
+    <meta name="description" content="Vote na maior rivalidade da Copa do Mundo 2026" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" id="main-css" href="./assets/styles/style.css">
+    <script defer src="./assets/scripts/common.js"></script>
+</head>
+
+<body>
+  <div id="landing-design" style="position:relative;z-index:1;">
+<style>
+/* ======== WC SURVEY: PLAYER SHOWDOWN ======== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{
+  background:#0a1628;
+  font-family:-apple-system,'Segoe UI',sans-serif;
+  color:#fff;overflow-x:hidden;min-height:100vh
+}
+body{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(30,126,240,0.12) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 100%,rgba(0,156,59,0.06) 0%,transparent 40%),
+    #0a1628
+}
+
+/* HEADER */
+.wc-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(0,0,0,0.4);border-bottom:1px solid rgba(255,255,255,0.06)}
+.wc-logo{display:flex;align-items:center;gap:6px}
+.wc-logo-icon{width:28px;height:28px;background:linear-gradient(135deg,#FFD700,#ff8c00);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px}
+.wc-logo-text{font-size:15px;font-weight:800;letter-spacing:-0.5px}
+.wc-logo-text em{color:#FFD700;font-style:normal}
+.wc-hdr-right{display:flex;align-items:center;gap:8px}
+.wc-live{display:flex;align-items:center;gap:4px;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:20px;padding:3px 8px;font-size:10px;font-weight:700;color:#ef4444}
+.wc-live-dot{width:6px;height:6px;background:#ef4444;border-radius:50%;animation:blink 1s infinite}
+.wc-fans{font-size:11px;color:#7a90a8}
+
+/* TOURNAMENT BADGE */
+.wc-badge{text-align:center;padding:14px 16px 8px;font-size:9px;font-weight:700;letter-spacing:2.5px;color:#FFD700;text-transform:uppercase}
+
+/* PLAYER SHOWCASE */
+.players-hero{display:flex;align-items:flex-end;justify-content:center;gap:0;padding:0 8px 16px;position:relative}
+.player-side{display:flex;flex-direction:column;align-items:center;flex:1;max-width:160px}
+.player-img-wrap{width:130px;height:170px;border-radius:14px;overflow:hidden;position:relative;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06)}
+.player-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
+.player-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.player-placeholder .p-number{font-size:64px;font-weight:900;opacity:0.1;line-height:1}
+.player-placeholder .p-silhouette{font-size:48px;opacity:0.15}
+.player-side.left .player-img-wrap{border-color:rgba(0,156,59,0.2);background:linear-gradient(180deg,rgba(0,156,59,0.06),rgba(0,0,0,0.1))}
+.player-side.right .player-img-wrap{border-color:rgba(0,35,149,0.2);background:linear-gradient(180deg,rgba(0,35,149,0.06),rgba(0,0,0,0.1))}
+.player-name{font-size:12px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;margin-top:8px}
+.player-country{font-size:10px;color:#7a90a8;display:flex;align-items:center;gap:4px;margin-top:2px}
+
+/* VS BADGE */
+.vs-center{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 4px 30px;flex-shrink:0}
+.vs-badge{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#ff8c00);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#000;box-shadow:0 0 20px rgba(255,215,0,0.3);animation:vs-glow 2.5s infinite}
+.vs-sub{font-size:8px;color:#7a90a8;letter-spacing:1px;text-transform:uppercase;margin-top:4px;text-align:center}
+
+/* DIVIDER */
+.pitch-line{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),rgba(0,156,59,0.15),rgba(255,255,255,0.08),transparent);margin:0 16px}
+
+/* SURVEY SECTION */
+.survey-section{padding:20px 16px 16px}
+
+/* PROGRESS DOTS */
+.progress-dots{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);transition:all 0.3s}
+.dot.active{background:#FFD700;box-shadow:0 0 8px rgba(255,215,0,0.4)}
+.dot.done{background:#22c55e}
+
+/* QUESTION CARD */
+.q-card{text-align:center;animation:fade-in 0.35s ease-out}
+.q-label{font-size:10px;font-weight:700;letter-spacing:2px;color:#1e7ef0;text-transform:uppercase;margin-bottom:6px}
+.q-icon{font-size:28px;margin-bottom:6px}
+.q-title{font-size:22px;font-weight:900;line-height:1.25;margin-bottom:20px}
+
+/* CHOICE BUTTONS */
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:6px;padding:18px 10px;border-radius:14px;
+  border:2px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);
+  cursor:pointer;transition:all 0.25s;-webkit-tap-highlight-color:transparent;
+  position:relative;overflow:hidden
+}
+.choice-btn:active{transform:scale(0.96)}
+.choice-btn .c-flag{font-size:36px;line-height:1}
+.choice-btn .c-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px}
+.choice-btn .c-sub{font-size:10px;color:#7a90a8}
+
+.choice-btn.vini:hover,.choice-btn.vini:active{border-color:#009c3b;background:rgba(0,156,59,0.1)}
+.choice-btn.mbappe:hover,.choice-btn.mbappe:active{border-color:#002395;background:rgba(0,35,149,0.1)}
+
+.choice-btn.picked{transform:scale(0.97)}
+.choice-btn.picked.vini{border-color:#009c3b;background:rgba(0,156,59,0.15)}
+.choice-btn.picked.mbappe{border-color:#002395;background:rgba(0,35,149,0.15)}
+.choice-btn.picked::after{content:'✓';position:absolute;top:6px;right:8px;font-size:16px;font-weight:700;color:#22c55e}
+.choice-btn.faded{opacity:0.35;transform:scale(0.95)}
+
+/* SOCIAL PROOF */
+.social-proof{text-align:center;margin-top:16px;font-size:11px;color:#7a90a8}
+.social-proof strong{color:#fff}
+
+/* ============================================
+   RESULTS SECTION
+   ============================================ */
+.results-section{display:none;animation:fade-in 0.4s ease-out}
+.results-header{text-align:center;margin-bottom:18px}
+.results-header .r-icon{font-size:32px;margin-bottom:4px}
+.results-header .r-title{font-size:18px;font-weight:900}
+.results-header .r-sub{font-size:12px;color:#7a90a8;margin-top:4px}
+
+/* RESULT BARS */
+.result-item{margin-bottom:14px}
+.ri-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:#7a90a8;text-transform:uppercase;margin-bottom:8px}
+.ri-bars{display:flex;gap:4px;align-items:center}
+.ri-player{display:flex;align-items:center;gap:4px;width:80px;flex-shrink:0}
+.ri-player.right{justify-content:flex-end;text-align:right}
+.ri-player .ri-flag{font-size:14px}
+.ri-player .ri-name{font-size:10px;font-weight:700}
+.ri-bar-area{flex:1;display:flex;gap:2px}
+.ri-bar{height:10px;border-radius:5px;transition:width 1.2s ease-out;width:0}
+.ri-bar.vini-bar{background:linear-gradient(90deg,#006e29,#22c55e);border-radius:5px 0 0 5px}
+.ri-bar.mbappe-bar{background:linear-gradient(90deg,#002395,#4a7cff);border-radius:0 5px 5px 0}
+.ri-pct{font-size:11px;font-weight:700;min-width:32px;text-align:center}
+.ri-pct.vini-pct{color:#22c55e}
+.ri-pct.mbappe-pct{color:#4a7cff}
+
+/* WINNER CARD */
+.winner-card{background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.02));border:1px solid rgba(255,215,0,0.2);border-radius:14px;padding:16px;text-align:center;margin:18px 0}
+.wc-winner-label{font-size:9px;font-weight:700;letter-spacing:2px;color:#FFD700;text-transform:uppercase;margin-bottom:8px}
+.wc-winner-flag{font-size:40px;margin-bottom:4px}
+.wc-winner-name{font-size:20px;font-weight:900}
+.wc-winner-stat{font-size:12px;color:#7a90a8;margin-top:4px}
+
+/* CTA BUTTON */
+.cta-main{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;border-radius:12px;border:none;font-size:16px;font-weight:800;color:#000;cursor:pointer;background:linear-gradient(135deg,#FFD700,#ffc107);box-shadow:0 4px 24px rgba(255,215,0,0.3);animation:gold-pulse 2.5s infinite;text-transform:uppercase;letter-spacing:0.3px;margin-top:16px}
+.cta-sub{text-align:center;font-size:10px;color:#7a90a8;margin-top:8px}
+.cta-sub a{color:#1e7ef0;text-decoration:none}
+
+/* FAN REACTIONS */
+.fans-section{padding:16px;border-top:1px solid rgba(255,255,255,0.05)}
+.fans-title{font-size:10px;font-weight:700;letter-spacing:2px;color:#7a90a8;text-transform:uppercase;margin-bottom:12px}
+.fan-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.fan-av{width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#1a1a2e}
+.fan-av img{width:100%;height:100%;object-fit:cover}
+.fan-info{flex:1;min-width:0}
+.fan-name{font-size:12px;font-weight:700}
+.fan-pick{font-size:10px;color:#7a90a8}
+.fan-stat{text-align:right;flex-shrink:0}
+.fan-badge{font-size:10px;font-weight:700;color:#22c55e;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:2px 8px}
+
+/* FOOTER */
+.wc-footer{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.05);text-align:center}
+.wc-footer p{font-size:9px;color:#3a5070;line-height:1.6}
+
+/* ANIMATIONS */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes gold-pulse{0%,100%{box-shadow:0 4px 24px rgba(255,215,0,0.3)}50%{box-shadow:0 6px 32px rgba(255,215,0,0.55)}}
+@keyframes vs-glow{0%,100%{box-shadow:0 0 20px rgba(255,215,0,0.3)}50%{box-shadow:0 0 30px rgba(255,215,0,0.5)}}
+@keyframes fade-in{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes bar-grow{from{width:0}}
+</style>
+
+<!-- HEADER -->
+<div class="wc-hdr">
+  <div class="wc-logo">
+    <div class="wc-logo-icon">⚽</div>
+    <div class="wc-logo-text">Match<em>Cast</em></div>
+  </div>
+  <div class="wc-hdr-right">
+    <div class="wc-live"><div class="wc-live-dot"></div>LIVE</div>
+    <div class="wc-fans">2.4M votando</div>
+  </div>
+</div>
+
+<!-- TOURNAMENT BADGE -->
+<div class="wc-badge">🏆 FIFA World Cup 2026™ — A Grande Rivalidade</div>
+
+<!-- PLAYER SHOWCASE -->
+<div class="players-hero">
+  <!-- LEFT: VINÍCIUS JR -->
+  <div class="player-side left">
+    <div class="player-img-wrap" id="img-vini">
+      <div class="player-placeholder">
+        <div class="p-number">7</div>
+      </div>
+      <!-- <img src="./assets/images/vinicius.png" alt="Vinícius Jr" /> -->
+    </div>
+    <div class="player-name">Vinícius Jr</div>
+    <div class="player-country"><span>🇧🇷</span> Brasil</div>
+  </div>
+
+  <!-- VS -->
+  <div class="vs-center">
+    <div class="vs-badge">VS</div>
+    <div class="vs-sub">Quem vence?</div>
+  </div>
+
+  <!-- RIGHT: MBAPPÉ -->
+  <div class="player-side right">
+    <div class="player-img-wrap" id="img-mbappe">
+      <div class="player-placeholder">
+        <div class="p-number">10</div>
+      </div>
+      <!-- <img src="./assets/images/mbappe.png" alt="Mbappé" /> -->
+    </div>
+    <div class="player-name">Mbappé</div>
+    <div class="player-country"><span>🇫🇷</span> França</div>
+  </div>
+</div>
+
+<div class="pitch-line"></div>
+
+<!-- SURVEY SECTION -->
+<div class="survey-section">
+
+  <!-- QUESTION VIEW -->
+  <div id="survey-q">
+    <!-- Progress -->
+    <div class="progress-dots">
+      <div class="dot active" id="dot-0"></div>
+      <div class="dot" id="dot-1"></div>
+      <div class="dot" id="dot-2"></div>
+    </div>
+
+    <!-- Question Card -->
+    <div class="q-card" id="q-card">
+      <div class="q-label" id="q-label">Questão 1 de 3</div>
+      <div class="q-icon" id="q-icon">⚡</div>
+      <div class="q-title" id="q-title">Quem dribla melhor?</div>
+
+      <div class="choices">
+        <div class="choice-btn vini" id="pick-vini" onclick="pickPlayer('vini');return false;">
+          <div class="c-flag">🇧🇷</div>
+          <div class="c-name">Vinícius Jr</div>
+          <div class="c-sub">Brasil</div>
+        </div>
+        <div class="choice-btn mbappe" id="pick-mbappe" onclick="pickPlayer('mbappe');return false;">
+          <div class="c-flag">🇫🇷</div>
+          <div class="c-name">Mbappé</div>
+          <div class="c-sub">França</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-proof">💬 <strong>2.4M</strong> torcedores já votaram</div>
+  </div>
+
+  <!-- RESULTS VIEW -->
+  <div class="results-section" id="results">
+    <div class="results-header">
+      <div class="r-icon">📊</div>
+      <div class="r-title">Resultado da Votação</div>
+      <div class="r-sub">Veja como os torcedores votaram</div>
+    </div>
+
+    <!-- Q1 Result -->
+    <div class="result-item">
+      <div class="ri-label">⚡ Quem dribla melhor?</div>
+      <div class="ri-bars">
+        <div class="ri-pct vini-pct" id="r1-vini-pct">58%</div>
+        <div class="ri-bar-area">
+          <div class="ri-bar vini-bar" id="r1-vini-bar"></div>
+          <div class="ri-bar mbappe-bar" id="r1-mbappe-bar"></div>
+        </div>
+        <div class="ri-pct mbappe-pct" id="r1-mbappe-pct">42%</div>
+      </div>
+    </div>
+
+    <!-- Q2 Result -->
+    <div class="result-item">
+      <div class="ri-label">⚽ Artilheiro da Copa?</div>
+      <div class="ri-bars">
+        <div class="ri-pct vini-pct" id="r2-vini-pct">44%</div>
+        <div class="ri-bar-area">
+          <div class="ri-bar vini-bar" id="r2-vini-bar"></div>
+          <div class="ri-bar mbappe-bar" id="r2-mbappe-bar"></div>
+        </div>
+        <div class="ri-pct mbappe-pct" id="r2-mbappe-pct">56%</div>
+      </div>
+    </div>
+
+    <!-- Q3 Result -->
+    <div class="result-item">
+      <div class="ri-label">👑 Melhor do mundo?</div>
+      <div class="ri-bars">
+        <div class="ri-pct vini-pct" id="r3-vini-pct">52%</div>
+        <div class="ri-bar-area">
+          <div class="ri-bar vini-bar" id="r3-vini-bar"></div>
+          <div class="ri-bar mbappe-bar" id="r3-mbappe-bar"></div>
+        </div>
+        <div class="ri-pct mbappe-pct" id="r3-mbappe-pct">48%</div>
+      </div>
+    </div>
+
+    <!-- Winner Card -->
+    <div class="winner-card">
+      <div class="wc-winner-label">🏆 Os torcedores escolheram</div>
+      <div class="wc-winner-flag" id="winner-flag">🇧🇷</div>
+      <div class="wc-winner-name" id="winner-name">Vinícius Jr</div>
+      <div class="wc-winner-stat" id="winner-stat">Venceu 2 de 3 categorias</div>
+    </div>
+
+    <button class="cta-main" id="cta-btn">🏆 VER ANÁLISE COMPLETA</button>
+    <div class="cta-sub">18+ · Conteúdo esportivo · <a href="#">Termos</a></div>
+  </div>
+
+</div><!-- /survey-section -->
+
+<!-- FAN REACTIONS -->
+<div class="fans-section">
+  <div class="fans-title">Torcedores que votaram</div>
+  <div class="fan-row">
+    <div class="fan-av"><img src="./designs/video-stream/assets/avatar5.webp" width="32" height="32"/></div>
+    <div class="fan-info">
+      <div class="fan-name">Lucas M. ⭐</div>
+      <div class="fan-pick">Votou: Vinícius Jr em todas</div>
+    </div>
+    <div class="fan-stat"><div class="fan-badge">🇧🇷 Fiel</div></div>
+  </div>
+  <div class="fan-row">
+    <div class="fan-av"><img src="./designs/video-stream/assets/avatar3.webp" width="32" height="32"/></div>
+    <div class="fan-info">
+      <div class="fan-name">Rafael S.</div>
+      <div class="fan-pick">Votou: Mbappé artilheiro, Vini melhor</div>
+    </div>
+    <div class="fan-stat"><div class="fan-badge">Dividido</div></div>
+  </div>
+  <div class="fan-row">
+    <div class="fan-av"><img src="./designs/video-stream/assets/avatar6.webp" width="32" height="32"/></div>
+    <div class="fan-info">
+      <div class="fan-name">Ana P.</div>
+      <div class="fan-pick">Votou: Mbappé em todas</div>
+    </div>
+    <div class="fan-stat"><div class="fan-badge">🇫🇷 Fiel</div></div>
+  </div>
+  <div class="fan-row">
+    <div class="fan-av"><img src="./designs/video-stream/assets/avatar7.webp" width="32" height="32"/></div>
+    <div class="fan-info">
+      <div class="fan-name">Pedro C.</div>
+      <div class="fan-pick">Votou: Vinícius dribla e é melhor</div>
+    </div>
+    <div class="fan-stat"><div class="fan-badge">🇧🇷 Brasil</div></div>
+  </div>
+</div>
+
+<div class="wc-footer">
+  <p>⚠ 18+ apenas. Conteúdo esportivo para entretenimento. Resultados baseados em votação de torcedores.</p>
+</div>
+
+<script>
+/* ---- SURVEY LOGIC ---- */
+var currentQ = 0;
+var answers = [];
+var locked = false;
+
+var questions = [
+  { label:'Questão 1 de 3', icon:'⚡', title:'Quem dribla melhor?' },
+  { label:'Questão 2 de 3', icon:'⚽', title:'Quem vai ser artilheiro da Copa?' },
+  { label:'Questão 3 de 3', icon:'👑', title:'Quem é o MELHOR do mundo?' }
+];
+
+var voteData = [
+  { vini:58, mbappe:42 },
+  { vini:44, mbappe:56 },
+  { vini:52, mbappe:48 }
+];
+
+function pickPlayer(player) {
+  if (locked) return;
+  locked = true;
+  answers.push(player);
+
+  var vinBtn = document.getElementById('pick-vini');
+  var mbBtn = document.getElementById('pick-mbappe');
+
+  if (player === 'vini') {
+    vinBtn.classList.add('picked');
+    mbBtn.classList.add('faded');
+  } else {
+    mbBtn.classList.add('picked');
+    vinBtn.classList.add('faded');
+  }
+
+  setTimeout(function() {
+    currentQ++;
+    if (currentQ < 3) {
+      showQuestion(currentQ);
+    } else {
+      showResults();
+    }
+  }, 700);
+}
+
+function showQuestion(idx) {
+  var q = questions[idx];
+  var card = document.getElementById('q-card');
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(6px)';
+
+  setTimeout(function() {
+    document.getElementById('q-label').textContent = q.label;
+    document.getElementById('q-icon').textContent = q.icon;
+    document.getElementById('q-title').textContent = q.title;
+
+    // Reset buttons
+    var vinBtn = document.getElementById('pick-vini');
+    var mbBtn = document.getElementById('pick-mbappe');
+    vinBtn.classList.remove('picked','faded');
+    mbBtn.classList.remove('picked','faded');
+
+    // Update dots
+    for (var i = 0; i < 3; i++) {
+      var dot = document.getElementById('dot-' + i);
+      dot.classList.remove('active','done');
+      if (i < idx) dot.classList.add('done');
+      else if (i === idx) dot.classList.add('active');
+    }
+
+    card.style.transition = 'opacity 0.3s, transform 0.3s';
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+    locked = false;
+  }, 200);
+}
+
+function showResults() {
+  document.getElementById('survey-q').style.display = 'none';
+  var results = document.getElementById('results');
+  results.style.display = 'block';
+
+  // Determine winner
+  var viniWins = 0;
+  for (var i = 0; i < 3; i++) {
+    if (voteData[i].vini > voteData[i].mbappe) viniWins++;
+  }
+  if (viniWins >= 2) {
+    document.getElementById('winner-flag').textContent = '🇧🇷';
+    document.getElementById('winner-name').textContent = 'Vinícius Jr';
+    document.getElementById('winner-stat').textContent = 'Venceu ' + viniWins + ' de 3 categorias';
+  } else {
+    document.getElementById('winner-flag').textContent = '🇫🇷';
+    document.getElementById('winner-name').textContent = 'Mbappé';
+    document.getElementById('winner-stat').textContent = 'Venceu ' + (3 - viniWins) + ' de 3 categorias';
+  }
+
+  // Animate bars with stagger
+  setTimeout(function() {
+    for (var i = 0; i < 3; i++) {
+      (function(idx) {
+        setTimeout(function() {
+          var v = voteData[idx].vini;
+          var m = voteData[idx].mbappe;
+          document.getElementById('r' + (idx+1) + '-vini-bar').style.width = v + '%';
+          document.getElementById('r' + (idx+1) + '-mbappe-bar').style.width = m + '%';
+        }, idx * 300);
+      })(i);
+    }
+  }, 200);
+}
+
+// Stop propagation on survey choices (don't trigger mainExit)
+(function(){
+  ['pick-vini','pick-mbappe'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+  // CTA button does NOT stopPropagation — it triggers mainExit
+})();
+</script>
+
+</div>
+
+<script >"use strict";(()=>{var u=()=>{let r=new Date,e=r.getUTCFullYear(),o=String(r.getUTCMonth()+1).padStart(2,"0"),n=String(r.getUTCDate()).padStart(2,"0"),s=String(r.getUTCHours()).padStart(2,"0"),c=String(r.getUTCMinutes()).padStart(2,"0"),i=String(r.getUTCSeconds()).padStart(2,"0"),a=String(r.getUTCMilliseconds()*1e3).padStart(6,"0");return`${e}-${o}-${n} ${s}:${c}:${i}.${a} +00:00`};var l="data-template-hash-by-",A={main:`${l}main`,html:`${l}html`,css:`${l}css`,js:`${l}js`},L={main:"",html:"",css:"",js:""};var t=new URL(window.location.href),g,p,d,h,y,_,T,H,f,v,b,S,E,w,x,N,C,D,I,J={pz:(g=t.searchParams.get("pz"))!=null?g:"",tb:(p=t.searchParams.get("tb"))!=null?p:"",tb_reverse:(d=t.searchParams.get("tb_reverse"))!=null?d:"",ae:(h=t.searchParams.get("ae"))!=null?h:"",z:(y=t.searchParams.get("z"))!=null?y:"",var:(_=t.searchParams.get("var"))!=null?_:"",var_1:(T=t.searchParams.get("var_1"))!=null?T:"",var_2:(H=t.searchParams.get("var_2"))!=null?H:"",var_3:(f=t.searchParams.get("var_3"))!=null?f:"",b:(v=t.searchParams.get("b"))!=null?v:"",campaignid:(b=t.searchParams.get("campaignid"))!=null?b:"",abtest:(S=t.searchParams.get("abtest"))!=null?S:"",rhd:(E=t.searchParams.get("rhd"))!=null?E:"1",s:(w=t.searchParams.get("s"))!=null?w:"",ymid:(x=t.searchParams.get("ymid"))!=null?x:"",wua:(N=t.searchParams.get("wua"))!=null?N:"",use_full_list_or_browsers:(C=t.searchParams.get("use_full_list_or_browsers"))!=null?C:"",cid:(D=t.searchParams.get("cid"))!=null?D:"",geo:(I=t.searchParams.get("geo"))!=null?I:""};var ce=u();var $=typeof window<"u"&&(window.isSecureContext||window.location.protocol==="https:"||window.location.hostname==="localhost");function k(r){return new Promise((e,o)=>{try{if(!$)return o("this feature is available only in secure contexts (HTTPS)");if(!(crypto!=null&&crypto.subtle.digest))return o("crypto.subtle.digest is not available");let n=new TextEncoder;crypto.subtle.digest("SHA-256",n.encode(r)).then(s=>{let i=Array.from(new Uint8Array(s)).map(a=>a.toString(16).padStart(2,"0")).join("");e(i)}).catch(o)}catch(n){o(n)}})}function O(r){let e=r;return e=e.replace(/<base.*?>/gm,""),e=e.replace(/var\s+APP_CONFIG\s*=\s*\{[^}]*\};*/gm,""),e=e.replace(/<script[^>]*src=["'].*?hid\.js.*?["'][^>]*><\/script>/gm,""),e=e.replace(/[\r\n]/gm,""),e=e.replace(/\s+/g,""),e.trim()}function P(r){let e=r instanceof Error?r.message:JSON.stringify(r);window.syncMetric&&window.syncMetric({event:"error",errorMessage:e,errorType:"CUSTOM",errorSubType:"TemplateHash"})}(async()=>{var r;try{window.templateHash=null;let e=(r=document.querySelector("html"))==null?void 0:r.dataset,n=`templateHash:${(e==null?void 0:e.landingName)||""}`,s=await cookieStore.get({name:n}),c=!!new URL(window.location.href).searchParams.get("debug");if(!s||s.expires<Date.now()){document.addEventListener("DOMContentLoaded",async()=>{let i=O(document.documentElement.innerHTML);c&&console.log("HTML used for templateHash after DOMContentLoaded",i),k(JSON.stringify([i])).then(async a=>{var m;window.templateHash=a,(m=window.syncMetric)==null||m.call(window,{event:"template_hash_ready"});let M=24*60*60*1e3;cookieStore.set({name:n,value:a,expires:Date.now()+M})}).catch(a=>{P(a)})});return}!window.templateHash&&s.value&&(window.templateHash=s.value,c&&console.log("templateHash after DOMContentLoaded was already sent:",window.templateHash))}catch(e){P(e)}})();})();</script>
+    <script >"use strict";(()=>{var o=["/assets/scripts/appSdk.js","/assets/scripts/autoexit.js","/assets/scripts/common.js","/assets/scripts/designs.js","/assets/scripts/mainExit.js","/assets/scripts/pushScript.js","/assets/scripts/reverse.js","/assets/scripts/translateElements.js","/assets/styles/style.css"];var M=()=>{let e=new Date,t=e.getUTCFullYear(),r=String(e.getUTCMonth()+1).padStart(2,"0"),s=String(e.getUTCDate()).padStart(2,"0"),n=String(e.getUTCHours()).padStart(2,"0"),i=String(e.getUTCMinutes()).padStart(2,"0"),a=String(e.getUTCSeconds()).padStart(2,"0"),l=String(e.getUTCMilliseconds()*1e3).padStart(6,"0");return`${t}-${r}-${s} ${n}:${i}:${a}.${l} +00:00`};var H=(n=>(n.MAIN="main",n.HTML="html",n.CSS="css",n.JS="js",n))(H||{}),z=e=>{let t={nodeCount:0,textLength:0,styleCount:0,scriptCount:0};if(!e)return t;let r=s=>{var n,i;if(t.nodeCount++,s.tag==="#text"?t.textLength+=((i=(n=s.attrs)==null?void 0:n.text)==null?void 0:i.length)||0:s.tag==="style"?t.styleCount++:s.tag==="script"&&t.scriptCount++,s.children)for(let a of s.children)r(a)};return r(e),t},j=(e,t)=>({nodeCountDiff:e.nodeCount-t.nodeCount,textLengthDiff:e.textLength-t.textLength,styleCountDiff:e.styleCount-t.styleCount,scriptCountDiff:e.scriptCount-t.scriptCount});var v={ELEMENT:1,TEXT:3,COMMENT:8},E={key:"data-cs",value:"exclude"},S="data-template-hash-by-",R={main:`${S}main`,html:`${S}html`,css:`${S}css`,js:`${S}js`},A={main:"",html:"",css:"",js:""},P=/var\s+APP_CONFIG\s*=\s*\{[^}]*\};*/gm,w="data-build-html-stats",$=["data-js-version"];var U=e=>{let t=A;return Object.values(R).forEach(r=>{let s=e.getAttribute(r),n=r.replace(S,"");s!==null&&(t[n]=s)}),t};var J=e=>{let t=e.getAttribute(w);if(!t)return null;try{return JSON.parse(atob(t))}catch{return null}};var u=new URL(window.location.href),k,G,Y,F,X,W,V,q,K,Q,Z,ee,te,re,se,ne,oe,ae,ie,Ce={pz:(k=u.searchParams.get("pz"))!=null?k:"",tb:(G=u.searchParams.get("tb"))!=null?G:"",tb_reverse:(Y=u.searchParams.get("tb_reverse"))!=null?Y:"",ae:(F=u.searchParams.get("ae"))!=null?F:"",z:(X=u.searchParams.get("z"))!=null?X:"",var:(W=u.searchParams.get("var"))!=null?W:"",var_1:(V=u.searchParams.get("var_1"))!=null?V:"",var_2:(q=u.searchParams.get("var_2"))!=null?q:"",var_3:(K=u.searchParams.get("var_3"))!=null?K:"",b:(Q=u.searchParams.get("b"))!=null?Q:"",campaignid:(Z=u.searchParams.get("campaignid"))!=null?Z:"",abtest:(ee=u.searchParams.get("abtest"))!=null?ee:"",rhd:(te=u.searchParams.get("rhd"))!=null?te:"1",s:(re=u.searchParams.get("s"))!=null?re:"",ymid:(se=u.searchParams.get("ymid"))!=null?se:"",wua:(ne=u.searchParams.get("wua"))!=null?ne:"",use_full_list_or_browsers:(oe=u.searchParams.get("use_full_list_or_browsers"))!=null?oe:"",cid:(ae=u.searchParams.get("cid"))!=null?ae:"",geo:(ie=u.searchParams.get("geo"))!=null?ie:""};var gt=M();var D=()=>{var e,t;return typeof window>"u"?!0:(t=(e=window==null?void 0:window.location)==null?void 0:e.search)==null?void 0:t.includes("debug=1")},ce=(e,t)=>{D()&&(t!==void 0?console.log(e,t):console.log(e))},O=e=>{D()&&console.group(e)},ue=(e,t)=>{D()&&(t!==void 0?console.warn(e,t):console.warn(e))};var le={css:{pattern:/\.css$/,htmlRegex:/<link[^>]+href="([^"]+\.css)"/g,initiator:"link"},js:{pattern:/\.js$/,htmlRegex:/<script[^>]+src="([^"]+\.js)"/g,initiator:"script"}};var me=e=>Object.values(le).some(t=>e.initiatorType===t.initiator&&t.pattern.test(e.name));var pe=e=>{var t;return((t=e.match(/\.([a-z0-9]+)(?:\?|$)/i))==null?void 0:t[1])||""},ge=e=>{let t={};for(let r of e){let s=r.extension;t[s]||(t[s]=[]),t[s].push(r)}return t},de=e=>(e.startsWith(location.origin)&&(e=e.replace(location.origin,"")),ve(e)),ve=e=>{let t=e.indexOf("/assets/");if(t!==-1)return e.slice(t);if(e.startsWith("./assets/"))return e.slice(1);if(e.startsWith("assets/")||!e.startsWith("/"))return"/"+e;let r=e.lastIndexOf("/"),s=e.slice(r+1);return s?"/"+s:e};var fe=async({html:e,resources:t,hashFunction:r})=>{let s=JSON.stringify({html:e,resources:t}),n=JSON.stringify({html:e}),i=ge(t),a=Object.entries(i).map(([T,N])=>{let I=N.map(y=>({name:y.name,size:y.size})).sort((y,f)=>y.name.localeCompare(f.name));return[T,JSON.stringify(I)]}),[l,h,...p]=await Promise.all([r(s),r(n),...a.map(([,T])=>r(T))]),b=z(e);return{payload:s,resourcesHash:{...A,main:l,html:h,...Object.fromEntries(a.map(([T],N)=>[T,p[N]]))},htmlStats:b}};var he=e=>e?e.nodeType===v.TEXT?"text":e.nodeType===v.COMMENT?"comment":e.nodeType===v.ELEMENT?"element":"element":"text";var B=e=>{let t={};if(!e)return t;if(typeof e.getAttributeNames=="function"){let r=e.getAttributeNames();for(let s of r){let n=e.getAttribute(s);t[s]=n!=null?n:""}return t}return t},Te=(e,t)=>B(e)[t];var ye=e=>{var t,r;return e&&((r=(t=e.content)==null?void 0:t.childNodes)==null?void 0:r.length)>0?Array.from(e.content.childNodes):e&&e.childNodes?Array.from(e.childNodes):[]};var Ee=e=>e.tagName.toLowerCase();var _e=e=>e.textContent!==void 0&&e.textContent!==null?e.textContent:"";var Ae=[...Object.values(R),w,...$],Pe=e=>Ae.includes(e),He=e=>{let t=Object.entries(e).filter(([r])=>!Pe(r)).map(([r,s])=>[r,s!=null?s:""]).sort((r,s)=>r[0].localeCompare(s[0]));return Object.fromEntries(t)};var L=(e,t=null)=>{if(t!=="runtime"&&t!=="build")return null;let r=he(e);if(r==="comment")return null;if(r==="text"){let p=_e(e).replace(/\s+/g," ").trim();return p?{tag:"#text",attrs:{text:p}}:null}let s=Ee(e);if(!s||s==="base"||Te(e,E.key)||s==="script"&&e.textContent.match(P))return null;let n=He(B(e)),i=ye(e),a=[];for(let h of i){let p=L(h,t);p&&a.push(p)}let l={tag:s};return Object.keys(n).length&&(l.attrs=n),a.length&&(l.children=a),l};var Se=o!=null?o:[],De=["adblock","via_inject_blocker.css","ibfunctions.js","fbevents.js"],Oe=/shared-[^/]*\.js$/,Be=e=>Se.length===0||Oe.test(e)?!0:Se.some(t=>e.endsWith(t)||t.endsWith(e)),Le=e=>De.some(t=>e.name.includes(t))?"external":Be(e.name)?e.size?"normal":"unloaded":"unknown",xe=e=>{let r=e.getEntriesByType("resource").filter(i=>!!me(i)),s={};return{hashResources:r.map(i=>{let a={name:de(i.name),size:i.decodedBodySize||0,extension:pe(i.name)},l=Le(a);return s[l]?s[l].push(a):s[l]=[a],a}).sort((i,a)=>i.name.localeCompare(a.name)),resourcesLogs:s}};var x=document.documentElement.cloneNode(!0),Me=async e=>{let r=new TextEncoder().encode(e),s=await crypto.subtle.digest("SHA-256",r),n=new Uint8Array(s);return Array.from(n).map(i=>i.toString(16).padStart(2,"0")).join("")},ze=async()=>{if(!x)return;let e=L(x,"runtime"),{hashResources:t,resourcesLogs:r}=xe(performance);return{...await fe({html:e,resources:t,hashFunction:Me}),resourcesPayload:r}};document.addEventListener("DOMContentLoaded",async()=>{var e,t;try{let r=U(x);if(!r.main)return;let n=await ze();if(!n)return;let{payload:i,resourcesHash:a,resourcesPayload:l,htmlStats:h}=n,p={};O("[TemplateHash] Payload"),ce(i),console.groupEnd(),O(`[TemplateHash] ${Object.keys(a).filter(c=>a[c]!=="").join(", ")}`),Object.entries(a).forEach(([c,m])=>{let d=c,g=r[d];if(!g)return;let C=g===m,Ne=C?"are identical":"was modified";p[d]={buildHash:g,clientHash:m,equal:C},ue(`${c.toUpperCase()} ${Ne}.
+Build hash:   ${g}
+Runtime hash: ${m}`)}),console.groupEnd();let b=Object.values(H),T=Object.values(p).some(c=>c.equal===!1);window.templateHashes=Object.fromEntries(Object.entries(p).sort(([c],[m])=>{let d=b.indexOf(c),g=b.indexOf(m);return d!==-1&&g!==-1?d-g:d!==-1?-1:g!==-1?1:c.localeCompare(m)}));let N=4096,I=150,y=10,f={scripts:[],styles:[]};x.querySelectorAll("style").forEach(c=>{if(c.getAttribute(E.key)===E.value||f.styles.length>=y)return;let m=(c.textContent||"").replace(/\s+/g," ").trim();if(m){let g=m.slice(0,I).replace(/</g,"\\u003C");f.styles.push(g)}}),x.querySelectorAll("script:not([src])").forEach(c=>{var d;if(c.getAttribute(E.key)===E.value||(d=c.textContent)!=null&&d.match(P)||f.scripts.length>=y)return;let m=(c.textContent||"").replace(/\s+/g," ").trim();if(m){let C=m.slice(0,I).replace(/</g,"\\u003C");f.scripts.push(C)}});let _={...window.templateHashes};if(T){_.inlineSources=f,_.resources=l;let c=J(x);c&&h&&(_.diffHints=j(h,c)),JSON.stringify(_).length>N&&(_.inlineSources={scripts:f.scripts.slice(0,3),styles:f.styles.slice(0,3)})}window.templateHashes=_,(e=window.syncMetric)==null||e.call(window,{event:"template_hashes_ready"})}catch(r){console.error("Error computing runtime template hash:",r),r instanceof Error&&((t=window.syncMetric)==null||t.call(window,{event:"error",errorMessage:r.message,errorType:"TemplateHashes"}))}});})();
+</script>
+</body>
+
+</html>
