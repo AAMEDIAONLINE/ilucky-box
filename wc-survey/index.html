@@ -371,6 +371,7 @@ body{
 var currentQ = 0;
 var answers = [];
 var locked = false;
+var isStepOne = new URLSearchParams(window.location.search).get('step') === '1';
 
 var questions = [
   { label:'Questão 1 de 3', icon:'⚡', title:'Quem dribla melhor?' },
@@ -383,6 +384,14 @@ var voteData = [
   { vini:44, mbappe:56 },
   { vini:52, mbappe:48 }
 ];
+
+// If step=1 (opened via tabUnder), skip to Q2
+if (isStepOne) {
+  currentQ = 1;
+  document.addEventListener('DOMContentLoaded', function() {
+    showQuestion(1);
+  });
+}
 
 function pickPlayer(player) {
   if (locked) return;
@@ -398,6 +407,12 @@ function pickPlayer(player) {
   } else {
     mbBtn.classList.add('picked');
     vinBtn.classList.add('faded');
+  }
+
+  // Q1 on first page: don't advance — tabUnder will redirect this tab
+  // and open a new tab at ?step=1 which starts at Q2
+  if (currentQ === 0 && !isStepOne) {
+    return;
   }
 
   setTimeout(function() {
@@ -477,13 +492,17 @@ function showResults() {
   }, 200);
 }
 
-// Stop propagation on survey choices (don't trigger mainExit)
+// Q1 on first page: let click propagate → constructor fires tabUnder
+// Q2/Q3 on step=1 page: stop propagation → prevent mainExit
+// CTA: never stops propagation → triggers mainExit
 (function(){
   ['pick-vini','pick-mbappe'].forEach(function(id){
     var el = document.getElementById(id);
-    if(el) el.addEventListener('click', function(e){ e.stopPropagation(); });
+    if(el) el.addEventListener('click', function(e){
+      if (currentQ === 0 && !isStepOne) return;
+      e.stopPropagation();
+    });
   });
-  // CTA button does NOT stopPropagation — it triggers mainExit
 })();
 </script>
 
