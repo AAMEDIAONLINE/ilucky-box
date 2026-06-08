@@ -98,17 +98,17 @@ body{
 .q-title{font-size:22px;font-weight:900;line-height:1.25;margin-bottom:20px}
 
 /* CHOICE BUTTONS */
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choices{display:flex;flex-direction:column;gap:10px}
 .choice-btn{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;padding:18px 10px;border-radius:14px;
+  display:flex;flex-direction:row;align-items:center;
+  gap:12px;padding:16px 18px;border-radius:14px;
   border:2px solid rgba(255,255,255,0.07);background:rgba(255,255,255,0.03);
   cursor:pointer;transition:all 0.25s;-webkit-tap-highlight-color:transparent;
   position:relative;overflow:hidden
 }
-.choice-btn:active{transform:scale(0.96)}
-.choice-btn .c-flag{font-size:36px;line-height:1}
-.choice-btn .c-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px}
+.choice-btn:active{transform:scale(0.97)}
+.choice-btn .c-flag{font-size:28px;line-height:1;flex-shrink:0}
+.choice-btn .c-name{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:0.3px}
 .choice-btn .c-sub{font-size:10px;color:#7a90a8}
 
 .choice-btn.vini:hover,.choice-btn.vini:active{border-color:#009c3b;background:rgba(0,156,59,0.1)}
@@ -250,13 +250,11 @@ body{
       <div class="choices">
         <div class="choice-btn vini" id="pick-vini" onclick="pickPlayer('vini');return false;">
           <div class="c-flag">🇧🇷</div>
-          <div class="c-name">Vinícius Jr</div>
-          <div class="c-sub">Brasil</div>
+          <div><div class="c-name">Vinícius Jr</div><div class="c-sub">Brasil</div></div>
         </div>
         <div class="choice-btn mbappe" id="pick-mbappe" onclick="pickPlayer('mbappe');return false;">
           <div class="c-flag">🇫🇷</div>
-          <div class="c-name">Mbappé</div>
-          <div class="c-sub">França</div>
+          <div><div class="c-name">Mbappé</div><div class="c-sub">França</div></div>
         </div>
       </div>
     </div>
